@@ -1,0 +1,76 @@
+.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+
+	%header.mdl-layout__header.mdl-color--grey-900
+		.mdl-layout__header-row
+			%nav#menu.mdl-navigation.mdl-layout--large-screen-only
+				= image_tag('testlogo.png')
+				= link_to "Компания", { controller: :main }, class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+				= link_to "Ассортимент", { controller: :main }, class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+				= link_to "Покупателю", { controller: :main }, class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+
+	.mdl-layout__drawer.mdl-layout--small-screen-only.mdl-color--amber-800
+		%nav#mainMenu.my-list.mdl-navigation
+			%h5.mdl-color--grey-900= "Навигация"
+			%ul.mdl-list
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Компания
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Покупателю
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+
+		%nav#itemsCatalogue.my-list.mdl-navigation
+			%h5.mdl-color--grey-900= "Ассортимент"
+			%ul.mdl-list
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Кухни
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Спальни
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Детские
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Прихожие
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Детские
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Кресла-качалки
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Кровати
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Шкафы
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Столы и стулья
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+				%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+					Матрасы
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+
+	%main.mdl-layout__content
+		.page-content
+			.jcarousel-wrapper
+				.jcarousel{ 'data-jcarousel': 'true' }
+					%ul.clearfix
+						%li
+							= image_tag('carousel/pic1.png')
+						%li
+							= image_tag('carousel/pic2.png')
+						%li
+							= image_tag('carousel/pic3.png')
+
+				%a.jcarousel-control-prev.mdl-color--amber-900{ 'data-jcarouselcontrol': 'true' }
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_left
+				%a.jcarousel-control-next.mdl-color--amber-900{ 'data-jcarouselcontrol': 'true' }
+					%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+
+				%p.jcarousel-pagination{ 'data-jcarouselpagination': 'true' }
+					%a{ href: '#1' }
+					%a.active{ href: '#2' }
+					%a{ href: '#3' }
