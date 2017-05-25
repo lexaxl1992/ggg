@@ -7,7 +7,8 @@
 *= require jquery.mCustomScrollbar
 *= require mdlComponentHandler
 *= require_tree ./mdl
-*= require_tree ./modules
+*= require ./modules/jcarousel
+*= require ./modules/carouselInit
 */
 
 document.addEventListener('turbolinks:load', function() {

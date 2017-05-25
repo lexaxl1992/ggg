@@ -2,13 +2,16 @@
 
 	%header.mdl-layout__header.mdl-color--grey-900
 		.mdl-layout__header-row
+			= image_tag('testlogo.jpg')
+			%span.mdl-layout-title.mdl-layout--large-screen-only
+				%h4= "+7(918)145-10-80"
+			.mdl-layout-spacer
 			%nav#menu.mdl-navigation.mdl-layout--large-screen-only
-				= image_tag('testlogo.png')
 				= link_to "Компания", { controller: :main }, class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 				= link_to "Ассортимент", { controller: :main }, class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 				= link_to "Покупателю", { controller: :main }, class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
-	.mdl-layout__drawer.mdl-layout--small-screen-only.mdl-color--amber-800
+	.mdl-layout__drawer.mdl-layout--small-screen-only.mdl-color--orange-600
 		%nav#mainMenu.my-list.mdl-navigation
 			%h5.mdl-color--grey-900= "Навигация"
 			%ul.mdl-list
