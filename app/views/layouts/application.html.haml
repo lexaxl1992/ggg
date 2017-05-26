@@ -20,9 +20,20 @@
 						Краснодар
 				.mdl-layout-spacer
 				%nav#menu.mdl-navigation.mdl-layout--large-screen-only
-					= link_to "Ассортимент", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+					%button#catalogue.mdl-button.mdl-js-button.mdl-js-ripple-effect= "Ассортимент"
+					%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'catalogue' }
+						%li.mdl-menu__item
+							= link_to "Спальни", '/'
+						%li.mdl-menu__item
+							= link_to "Кухни", '/'
+						%li.mdl-menu__item
+							= link_to "Шкафы купе", '/'
+						%li.mdl-menu__item
+							= link_to "Диваны и кресла", '/'
+						%li.mdl-menu__item
+							= link_to "Столы и стулья", '/'
 					= link_to "О компании", '/about', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
-					= link_to "Покупателю", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+					= link_to "3D-конструктор", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
 		.mdl-layout__drawer.mdl-color--orange-600.mdl-layout--small-screen-only
 			%nav#mainMenu.my-list.mdl-navigation
@@ -49,9 +60,6 @@
 						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
 					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
 						Диваны и кресла
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
-						Детские
 						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
 					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
 						Столы и стулья

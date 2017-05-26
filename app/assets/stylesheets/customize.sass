@@ -2,7 +2,8 @@
 
 body
 	background-color: #333333
-
+main
+	color: #FFF
 
 .mdl-layout__header
 	.mdl-layout__drawer-button
@@ -48,11 +49,26 @@ body
 
 		.mdl-navigation
 			padding: 0 30px 0 0 !important
-			a
+			button, a.mdl-button
 				color: #FFF
 				font-size: 17px
 				&:hover
 					color: #FFA000
+			.mdl-menu__outline
+				background-color: #212121
+				width: 154px !important
+				margin-left: 0
+			.mdl-menu__item
+				width: 122px
+				a
+					color: #FFF
+					text-decoration: none
+					font-family: 'Futuris Cyrillic'
+					font-size: 16px
+				&:hover
+					background-color: #FF6600
+					a
+						color: #212121
 
 
 .my-list
@@ -105,7 +121,7 @@ body
 
 .jcarousel-wrapper
 	position: relative
-	box-shadow: 0 0 2px #999
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
 
 .jcarousel-wrapper .photo-credits
 	position: absolute
