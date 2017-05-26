@@ -19,9 +19,9 @@ gem 'modernizr-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-
 gem 'material_icons'
 gem 'scrollbar-rails'
+gem 'jquery-turbolinks'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 3.0'

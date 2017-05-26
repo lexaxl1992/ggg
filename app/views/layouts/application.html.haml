@@ -1,0 +1,59 @@
+!!! 5
+
+%title ДЮК Мебель
+= csrf_meta_tags
+%meta{ name:'viewport', content:'width=device-width, initial-scale=1.0' }
+= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+%body
+	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+		%header.mdl-layout__header.mdl-color--grey-900
+			.mdl-layout__drawer-button{ 'aria-expanded': 'false', role: 'button', tabindex: '0' }
+				%i.material-icons more_horiz
+			.mdl-layout__header-row
+				= link_to image_tag('testlogo.jpg', border: 0), '/'
+				%span.mdl-layout-title
+					%h4= "8 918 145 1080"
+					%small
+						%i.material-icons= 'location_on'
+						Краснодар
+				.mdl-layout-spacer
+				%nav#menu.mdl-navigation.mdl-layout--large-screen-only
+					= link_to "Ассортимент", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+					= link_to "О компании", '/about', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+					= link_to "Покупателю", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+
+		.mdl-layout__drawer.mdl-color--orange-600.mdl-layout--small-screen-only
+			%nav#mainMenu.my-list.mdl-navigation
+				%h5.mdl-color--grey-900= "Навигация"
+				%ul.mdl-list
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						О компании
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						Покупателю
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+
+			%nav#itemsCatalogue.my-list.mdl-navigation
+				%h5.mdl-color--grey-900= "Ассортимент"
+				%ul.mdl-list
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						Спальни
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						Кухни
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						Шкафы купе
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						Диваны и кресла
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						Детские
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
+						Столы и стулья
+						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
+		= yield
