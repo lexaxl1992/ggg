@@ -14,6 +14,6 @@
 
 document.addEventListener('turbolinks:load', function() {
   componentHandler.upgradeDom();
-});
+})
 
 $.turbo.use('turbolinks:load', 'turbolinks:request-start')
