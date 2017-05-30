@@ -10,7 +10,7 @@
 *= require_tree ./mdl
 *= require ./modules/jcarousel
 *= require ./modules/carouselInit
-*= require_tree ./snippets
+*  require_tree ./snippets
 */
 
 //function afterDOMinit(ev) { function() }
