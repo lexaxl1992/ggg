@@ -5,8 +5,9 @@
 *= require turbolinks
 *= require modernizr
 *= require ./mdl/main
-*= require ./materialize/global
+*  require ./materialize/global
 *= require ./materialize/carousel
+*= require ./materialize/collapsible
 *= require ./materialize/dropdown
 *= require_tree ./snippets
 */
