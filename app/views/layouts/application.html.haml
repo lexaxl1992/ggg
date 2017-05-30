@@ -9,8 +9,8 @@
 %body
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 		%header.mdl-layout__header.mdl-color--grey-900
-			.mdl-layout__drawer-button{ 'aria-expanded': 'false', role: 'button', tabindex: '0' }
-				%i.material-icons more_horiz
+			//.mdl-layout__drawer-button{ 'aria-expanded': 'false', role: 'button', tabindex: '0' }
+			//	%i.material-icons more_horiz
 			.mdl-layout__header-row
 				= link_to image_tag('testlogo.jpg', border: 0), '/'
 				%span.mdl-layout-title
@@ -19,49 +19,25 @@
 						%i.material-icons= 'location_on'
 						Краснодар
 				.mdl-layout-spacer
-				%nav#menu.mdl-navigation.mdl-layout--large-screen-only
-					%button#catalogue.mdl-button.mdl-js-button.mdl-js-ripple-effect= "Ассортимент"
-					%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'catalogue' }
-						%li.mdl-menu__item
-							= link_to "Спальни", '/'
-						%li.mdl-menu__item
-							= link_to "Кухни", '/'
-						%li.mdl-menu__item
-							= link_to "Шкафы купе", '/'
-						%li.mdl-menu__item
-							= link_to "Диваны и кресла", '/'
-						%li.mdl-menu__item
-							= link_to "Столы и стулья", '/'
-					= link_to "О компании", '/about', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+				%nav.menu.mdl-navigation.mdl-layout--large-screen-only
+					#catalogueMenu
+						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'catalogueButton' }
+							%li.mdl-menu__item
+								= link_to "Спальни", '/'
+							%li.mdl-menu__item
+								= link_to "Кухни", '/'
+							%li.mdl-menu__item
+								= link_to "Шкафы купе", '/'
+							%li.mdl-menu__item
+								= link_to "Диваны и кресла", '/'
+							%li.mdl-menu__item
+								= link_to "Столы и стулья", '/'
+					#aboutMenu
+						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
+						%ul#aboutList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'aboutButton' }
+							%li.mdl-menu__item
+								= link_to "Всё о мебели", '/'
 					= link_to "3D-конструктор", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
-		.mdl-layout__drawer.mdl-color--orange-600.mdl-layout--small-screen-only
-			%nav#mainMenu.my-list.mdl-navigation
-				%h5.mdl-color--grey-900= "Навигация"
-				%ul.mdl-list
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/about' }
-						О компании
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
-						Покупателю
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
-
-			%nav#itemsCatalogue.my-list.mdl-navigation
-				%h5.mdl-color--grey-900= "Ассортимент"
-				%ul.mdl-list
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
-						Спальни
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
-						Кухни
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
-						Шкафы купе
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
-						Диваны и кресла
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
-					%a.mdl-list__item.mdl-button.mdl-js-button.mdl-js-ripple-effect{ href: '/' }
-						Столы и стулья
-						%i.material-icons.mdl-list__item-icon keyboard_arrow_right
 		= yield

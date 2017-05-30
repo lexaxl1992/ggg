@@ -10,10 +10,10 @@
 *= require_tree ./mdl
 *= require ./modules/jcarousel
 *= require ./modules/carouselInit
+*= require_tree ./snippets
 */
 
-document.addEventListener('turbolinks:load', function() {
-  componentHandler.upgradeDom();
-})
-
+//function afterDOMinit(ev) { function() }
+document.addEventListener('turbolinks:load', function() { componentHandler.upgradeDom() })
 $.turbo.use('turbolinks:load', 'turbolinks:request-start')
+//document.addEventListener('DOMContentLoaded', afterDOMinit, false);

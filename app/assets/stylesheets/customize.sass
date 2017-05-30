@@ -2,7 +2,7 @@
 
 body
 	background-color: #333333
-	font-family: 'Futuris Cyrillic'
+	font-family: 'Futuris'
 main
 	color: #FFF
 
@@ -43,26 +43,37 @@ main
 				display: flex
 				align-items: flex-end
 				align-self: baseline
+				color: #FF6600
 				@media screen and (max-width: 479px)
 					display: none
 				@media screen and (max-width: 1024px)
 					margin-left: 15px
 
-		.mdl-navigation
+		.menu
 			padding: 0 30px 0 0 !important
 			button, a.mdl-button
 				color: #FFF
 				font-size: 17px
+				cursor: default
+				&.mdl-button--hover.is-activated
+					border-bottom-left-radius: 0
+					border-bottom-right-radius: 0
+					background-color: #3A3A3A
 			.mdl-menu__outline
-				background-color: #212121
-				width: 154px !important
+				background-color: #3A3A3A 
 				margin-left: 0
+				border-top-left-radius: 0
+				border-top-right-radius: 0
+			#catalogueMenu .mdl-menu__outline
+				width: 154px !important
+			#aboutMenu .mdl-menu__outline
+				width: 152px !important
 			.mdl-menu__item
 				width: 122px
 				a
 					color: #FFF
 					text-decoration: none
-					font-family: 'Futuris Cyrillic'
+					font-family: Futuris
 					font-size: 16px
 				&:hover
 					background-color: #FF6600
@@ -109,7 +120,7 @@ main
 			display: flex
 			justify-content: center
 			@media screen and (max-width: 1024px)
-				height: 70vw
+				height: 66vw
 				max-height: 500px
 	ul
 		width: 20000em
