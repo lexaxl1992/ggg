@@ -1,0 +1,74 @@
+$error-color: color("red", "base") !default;
+$success-color: color("green", "base") !default;
+$secondary-color: color("teal", "lighten-1") !default;
+$input-border-color: color("grey", "base") !default;
+$placeholder-text-color: color($input-border-color, 20%) !default;
+$input-height: 3rem !default;
+$input-border: 1px solid $input-border-color !default;
+$input-background: #fff !default;
+$input-error-color: $error-color !default;
+$input-success-color: $success-color !default;
+$input-focus-color: $secondary-color !default;
+$input-font-size: 1rem !default;
+$input-margin-bottom: 20px;
+$input-margin: 0 0 $input-margin-bottom 0 !default;
+$input-padding: 0 !default;
+$input-transition: all .3s !default;
+$label-font-size: .8rem !default;
+$input-disabled-color: rgba(0,0,0, .26) !default;
+$input-disabled-solid-color: #BDBDBD !default;
+$input-disabled-border: 1px dotted $input-disabled-color !default;
+$input-invalid-border: 1px solid $input-error-color !default;
+$select-focus: 1px solid color($secondary-color, 47%) !default;
+$button-background-focus: color($secondary-color, 4%) !default;
+
+// Remove Focus Boxes
+select:focus {
+  outline: $select-focus;
+}
+
+button:focus {
+  outline: none;
+  background-color: $button-background-focus;
+}
+
+label {
+  font-size: $label-font-size;
+  color: $input-border-color;
+}
+
+.file-field {
+  position: relative;
+
+  .file-path-wrapper {
+    overflow: hidden;
+    padding-left: 10px;
+  }
+
+  input.file-path { width: 100%; }
+
+  .btn {
+    float: left;
+    height: $input-height;
+    line-height: $input-height;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}
