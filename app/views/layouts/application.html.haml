@@ -40,4 +40,14 @@
 								= link_to "Всё о мебели", '/'
 					= link_to "3D-конструктор", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
-		= yield
+		%main.mdl-layout__content
+			.carousel.carousel-slider.center{ 'data-indicators': 'true' }
+
+				.carousel-item{ href: '#firstImg' }
+					= image_tag('carousel/1.jpg')
+				.carousel-item.active{ href: '#secondImg' }
+					= image_tag('carousel/2.jpg')
+				.carousel-item{ href: '#thirdImg' }
+					= image_tag('carousel/3.jpg')
+
+			= yield
