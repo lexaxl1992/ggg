@@ -5,15 +5,19 @@
 *= require turbolinks
 *= require modernizr
 *= require ./mdl/main
-*= require ./materialize/global
-*= require ./materialize/carousel
-*= require ./materialize/collapsible
-*= require ./materialize/dropdown
-*  require ./materialize.min
+*  require ./materialize/animation
+*  require ./materialize/global
+*  require ./materialize/carousel
+*  require ./materialize/collapsible
+*  require ./materialize/dropdown
+*= require ./materialize.min
 *  require_tree ./snippets
 */
 
-function someElemsInit() { $('.carousel.carousel-slider').carousel({fullWidth: true}); }
+function someElemsInit() {
+	$('.carousel.carousel-slider').carousel({fullWidth: true})
+	$('.collapsible').collapsible()
+}
 
 $(document).ready(someElemsInit)
 document.addEventListener('turbolinks:load', function() { componentHandler.upgradeDom(); someElemsInit() });

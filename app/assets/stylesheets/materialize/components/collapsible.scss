@@ -1,19 +1,18 @@
 $collapsible-height: 3rem !default;
 $collapsible-line-height: $collapsible-height !default;
-$collapsible-header-color: #fff !default;
-$collapsible-border-color: #ddd !default;
+$collapsible-header-color: #454545;
+$collapsible-border-color: #656565 !default;
 $sidenav-padding: 16px !default;
 
 .collapsible {
-  border-top: 1px solid $collapsible-border-color;
-  border-right: 1px solid $collapsible-border-color;
-  border-left: 1px solid $collapsible-border-color;
+  border-top: 2px solid #000;
   @extend .z-depth-1 !optional;
 }
 
 .collapsible-header {
   display: block;
   cursor: pointer;
+  color: #FFF;
   min-height: $collapsible-height;
   line-height: $collapsible-line-height;
   padding: 0 1rem;

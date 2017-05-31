@@ -84,136 +84,15 @@ main
 					a
 						color: #212121
 
-
-.my-list
-	padding: 0 !important
-	margin: 0 !important
-	h5
-		margin: 0 !important
-		padding: 24px !important
-		color: #FFF
-	.mdl-list
-		margin: 0
-		padding: 0
-		.mdl-list__item
-			padding: 0 !important
-			border-bottom: 1px solid rgba(0, 0, 0, 0.3)
-			justify-content: space-between
-			font-size: 14px
-			font-family: roboto
-			i
-				margin: 12px
-				color: #212121
-
+ul.collapsible
+	padding: 0
+	margin: 0
+	li
+		list-style-type: none
+		.collapsible-header
+			font-size: 18px
 
 #about
 	padding: 25px
 	p
 		font-size: 20px
-
-
-.jcarousel
-	position: relative
-	overflow: hidden
-	.clearfix
-		transition-duration: 0s
-		transition-timing-function: ease
-		transition-property: all
-		transform: translate3d(-724px, 0px, 0px)
-		li
-			display: flex
-			justify-content: center
-			@media screen and (max-width: 1024px)
-				height: 66vw
-				max-height: 500px
-	ul
-		width: 20000em
-		position: relative
-		list-style: none
-		margin: 0
-		padding: 0
-		li
-			float: left
-	img
-		display: block
-		max-width: 100%
-		height: auto !important
-
-.jcarousel-wrapper
-	position: relative
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
-
-.jcarousel-wrapper .photo-credits
-	position: absolute
-	right: 15px
-	bottom: 0
-	font-size: 13px
-	color: #FFF
-	text-shadow: 0 0 1px rgba(0, 0, 0, 0.85)
-	opacity: .66
-
-.jcarousel-wrapper .photo-credits a
-	color: #FFF
-
-.jcarousel-control-prev,
-.jcarousel-control-next
-	position: absolute
-	top: 50%
-	width: 30px
-	height: 30px
-	display: flex
-	align-items: center
-	justify-content: center
-	background-color: #4E443C
-	color: #FFF
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
-	cursor: pointer
-	i
-		color: #FFF !important
-
-@media (max-width: 480px)
-	.jcarousel-control-prev,
-	.jcarousel-control-next
-		margin-top: -10px
-		width: 20px
-		height: 20px
-		font: 16px/18px Arial, sans-serif
-
-.jcarousel-control-prev
-	left: 15px
-
-.jcarousel-control-next
-	right: 15px
-
-.jcarousel-control-prev:hover span,
-.jcarousel-control-next:hover span
-	display: block
-
-.jcarousel-control-prev.inactive,
-.jcarousel-control-next.inactive
-	opacity: .25
-	cursor: default
-
-.jcarousel-pagination
-	position: absolute
-	bottom: 10px
-	left: 50%
-	margin: 0
-	margin-left: -22px
-	a
-		text-decoration: none
-		display: inline-block
-		font-size: 11px
-		height: 10px
-		width: 10px
-		line-height: 10px
-		background: #FFF
-		color: #4E443C
-		border-radius: 10px
-		text-indent: -9999px
-		margin-right: 7px
-		box-shadow: 0 0 2px #4E443C
-		&.active
-			background: #FF6F00
-			color: #FFF
-			opacity: 1
