@@ -10,7 +10,7 @@
 *= require ./materialize/collapsible
 *= require ./materialize/dropdown
 *  require ./materialize.min
-*= require_tree ./snippets
+*  require_tree ./snippets
 */
 
 function someElemsInit() { $('.carousel.carousel-slider').carousel({fullWidth: true}); }
