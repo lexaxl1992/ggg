@@ -29,8 +29,10 @@ main
 			align-items: center
 			margin: 24px 47px
 			letter-spacing: 0.01rem !important
-			@media screen and (min-width: 480px) and (max-width: 800px)
-				margin: 20px
+			@media screen and (min-width: 320px) and (max-width: 800px)
+				margin: 0 0 0 14px
+			@media screen and (min-width: 1024px) and (max-width: 1100px)
+				margin: 0 14px 0 28px
 			@media screen and (max-width: 1024px)
 				flex-direction: row
 
@@ -38,10 +40,19 @@ main
 				margin: 0
 				font-size: 25px
 				font-weight: 300
-				@media screen and (max-width: 479px)
+				@media screen and (max-width: 319px)
 					display: none
 				@media screen and (max-width: 1024px)
 					font-size: 20px
+				a
+					text-decoration: none
+					color: #FFF
+					display: flex
+					i
+						align-self: center
+						margin: 0 10px 4px 0
+						@media screen and (max-width: 380px)
+							display: none
 
 			small
 				display: flex
@@ -53,7 +64,20 @@ main
 				@media screen and (max-width: 1024px)
 					margin-left: 15px
 
-		.menu
+		.mdl-menu__container
+			.mdl-menu__outline
+				background-color: #3A3A3A
+			.mdl-menu__item
+				width: 122px
+				color: #FFF
+				text-decoration: none
+				font-family: Futuris
+				font-size: 16px
+				&:hover
+					background-color: #FF6600
+					color: #212121
+
+		.mdl-navigation
 			padding: 0 30px 0 0 !important
 			button, a.mdl-button
 				color: #FFF
@@ -64,7 +88,6 @@ main
 					border-bottom-right-radius: 0
 					background-color: #3A3A3A
 			.mdl-menu__outline
-				background-color: #3A3A3A 
 				margin-left: 0
 				border-top-left-radius: 0
 				border-top-right-radius: 0
@@ -72,17 +95,6 @@ main
 				width: 154px !important
 			#aboutMenu .mdl-menu__outline
 				width: 152px !important
-			.mdl-menu__item
-				width: 122px
-				a
-					color: #FFF
-					text-decoration: none
-					font-family: Futuris
-					font-size: 16px
-				&:hover
-					background-color: #FF6600
-					a
-						color: #212121
 
 ul.collapsible
 	padding: 0

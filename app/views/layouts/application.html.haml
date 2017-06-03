@@ -2,52 +2,57 @@
 
 %title ДЮК Мебель
 = csrf_meta_tags
-%meta{ name:'viewport', content:'width=device-width, initial-scale=1.0' }
+%meta{ name:'viewport', content:'width=device-width, initial-scale=1.0, minimum-scale=1.0' }
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
 = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
 %body
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 		%header.mdl-layout__header
-			//.mdl-layout__drawer-button{ 'aria-expanded': 'false', role: 'button', tabindex: '0' }
-			//	%i.material-icons more_horiz
 			.mdl-layout__header-row
 				= link_to image_tag('testlogo.jpg', border: 0), '/'
+
 				%span.mdl-layout-title
-					%h4= "8 918 145 1080"
+					%h4
+
+						%a{ href: 'tel:+79181451080' }
+							%i.material-icons= 'call'
+							8 918 145 1080
 					%small
 						%i.material-icons= 'location_on'
 						Краснодар
+
 				.mdl-layout-spacer
-				%nav.menu.mdl-navigation.mdl-layout--large-screen-only
+
+				%nav.mdl-navigation.mdl-layout--large-screen-only
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'catalogueButton' }
-							%li.mdl-menu__item
-								= link_to "Спальни", '/'
-							%li.mdl-menu__item
-								= link_to "Кухни", '/'
-							%li.mdl-menu__item
-								= link_to "Прихожие", '/'
-							%li.mdl-menu__item
-								= link_to "Шкафы-купе", '/'
-							%li.mdl-menu__item
-								= link_to "ЛДСП", '/'
-							%li.mdl-menu__item
-								= link_to "Диваны и кресла", '/'
-							%li.mdl-menu__item
-								= link_to "Гостинные", '/'
-							%li.mdl-menu__item
-								= link_to "Столы и стулья", '/'
+							= link_to "Спальни", '/', class: 'mdl-menu__item'
+							= link_to "Кухни", '/', class: 'mdl-menu__item'
+							= link_to "Прихожие", '/', class: 'mdl-menu__item'
+							= link_to "Шкафы-купе", '/', class: 'mdl-menu__item'
+							= link_to "ЛДСП", '/', class: 'mdl-menu__item'
+							= link_to "Диваны и кресла", '/', class: 'mdl-menu__item'
+							= link_to "Гостинные", '/', class: 'mdl-menu__item'
+							= link_to "Столы и стулья", '/', class: 'mdl-menu__item'
+
 					#aboutMenu
 						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
 						%ul#aboutList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'aboutButton' }
-							%li.mdl-menu__item
-								= link_to "Всё о мебели", '/'
+							= link_to "Всё о мебели", '/', class: 'mdl-menu__item'
+
 					= link_to "3D-конструктор", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
+				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
+					%i.material-icons more_vert
+				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'menu-lower-right' }
+					= link_to "О компании", '/about', class: 'mdl-menu__item'
+					= link_to "Всё о мебели", '/', class: 'mdl-menu__item'
+
+
 		%main.mdl-layout__content
-			.carousel.carousel-slider.center{ 'data-indicators': 'true' }
+			.carousel.carousel-slider.center{'data-indicators': 'true' }
 
 				.carousel-item{ href: '#firstImg' }
 					= image_tag('carousel/1.jpg')
