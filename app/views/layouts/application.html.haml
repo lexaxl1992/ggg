@@ -3,8 +3,7 @@
 %title ДЮК Мебель
 = csrf_meta_tags
 %meta{ name:'viewport', content:'width=device-width, initial-scale=1.0, minimum-scale=1.0' }
-= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+= render 'layouts/assetTags'
 
 %body
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
@@ -14,7 +13,6 @@
 
 				%span.mdl-layout-title
 					%h4
-
 						%a{ href: 'tel:+79181451080' }
 							%i.material-icons= 'call'
 							8 918 145 1080

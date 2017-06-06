@@ -14,11 +14,11 @@
 *  require_tree ./snippets
 */
 
-function someElemsInit() {
+function someElemsInit(){
 	$('.carousel.carousel-slider').carousel({fullWidth: true})
 	$('.collapsible').collapsible()
 }
 
 $(document).ready(someElemsInit)
-document.addEventListener('turbolinks:load', function() { componentHandler.upgradeDom(); someElemsInit() });
+document.addEventListener('turbolinks:load', function(){ componentHandler.upgradeDom(); someElemsInit() });
 $.turbo.use('turbolinks:load', 'turbolinks:request-start');

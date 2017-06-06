@@ -1,0 +1,63 @@
+body
+	background-color: #333333
+	font-family: 'Futuris'
+main
+	color: #FFF
+
+.mdl-layout__header
+	background-color: #111111
+	.mdl-layout__drawer-button
+		left: inherit !important
+		right: 0
+		i
+			font-size: 42px
+
+	.mdl-layout__header-row
+		justify-content: flex-start
+		padding: 0 !important
+		img
+			height: 118px
+		@media screen and (max-width: 1024px)
+			img
+				height: 52px
+
+		.mdl-layout-title
+			display: flex
+			flex-direction: column
+			align-items: center
+			margin: 24px 47px
+			letter-spacing: 0.01rem !important
+			@media screen and (min-width: 320px) and (max-width: 800px)
+				margin: 0 0 0 14px
+			@media screen and (min-width: 1024px) and (max-width: 1100px)
+				margin: 0 14px 0 28px
+			@media screen and (max-width: 1024px)
+				flex-direction: row
+
+			h4
+				margin: 0
+				font-size: 25px
+				font-weight: 300
+				@media screen and (max-width: 319px)
+					display: none
+				@media screen and (max-width: 1024px)
+					font-size: 20px
+				a
+					text-decoration: none
+					color: #FFF
+					display: flex
+					i
+						align-self: center
+						margin: 0 10px 4px 0
+						@media screen and (max-width: 380px)
+							display: none
+
+			small
+				display: flex
+				align-items: flex-end
+				align-self: baseline
+				color: #FF6600
+				@media screen and (max-width: 479px)
+					display: none
+				@media screen and (max-width: 1024px)
+					margin-left: 15px

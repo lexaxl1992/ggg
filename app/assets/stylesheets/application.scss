@@ -1,9 +1,7 @@
 /*
 *= require_self
-*= require snippets/fonts
 *= require material_icons
 *= require materialize/main
 *= require mdl/main
-*= require customize
-*= require catalogue
+*= require_tree ./snippets
 */

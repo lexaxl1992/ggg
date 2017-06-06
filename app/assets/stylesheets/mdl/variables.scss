@@ -32,9 +32,9 @@ $image_path: '/images' !default;
 $trim-color-classes: false !default;
 
 // Главный цвет в палитре темы
-$color-primary: $palette-amber-900 !default;
+$color-primary: #333333;
 $color-primary-dark: $palette-indigo-700 !default;
-$color-accent: $palette-pink-A200 !default;
+$color-accent: $palette-amber-900 !default;
 
 // Our primary is dark, so use $color-dark-contrast for overlaid text.
 $color-primary-contrast: $color-dark-contrast !default;

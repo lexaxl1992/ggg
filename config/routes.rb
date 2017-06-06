@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 	root 'main#index'
 	get '/about', to: 'main#about'
-	get '/catalogue', to: 'catalogue#index'
+	get '/adminpanel', to: 'adminpanel#index'
+	resources :items, controller: 'adminpanel'
 end
