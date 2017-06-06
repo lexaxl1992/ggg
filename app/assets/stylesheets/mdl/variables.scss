@@ -32,7 +32,7 @@ $image_path: '/images' !default;
 $trim-color-classes: false !default;
 
 // Главный цвет в палитре темы
-$color-primary: #333333;
+$color-primary: $palette-grey-900 !default;
 $color-primary-dark: $palette-indigo-700 !default;
 $color-accent: $palette-amber-900 !default;
 

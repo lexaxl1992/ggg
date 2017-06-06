@@ -11,7 +11,7 @@ gem 'sqlite3', platforms: :ruby
 gem 'jdbc-sqlite3', platforms: :jruby
 gem 'puma', '~> 3.7'
 gem 'haml'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 #gem 'therubyrhino', platforms: :jruby
