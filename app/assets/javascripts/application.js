@@ -4,6 +4,8 @@
 *= require rails-ujs
 *= require turbolinks
 *= require modernizr
+*= require jquery.jscrollpane
+*= require jquery.mousewheel
 *= require ./mdl/main
 *  require ./materialize/animation
 *  require ./materialize/global
@@ -17,6 +19,7 @@
 function someElemsInit(){
 	$('.carousel.carousel-slider').carousel({fullWidth: true})
 	$('.collapsible').collapsible()
+	$('main').jScrollPane()
 }
 
 $(document).ready(someElemsInit)
