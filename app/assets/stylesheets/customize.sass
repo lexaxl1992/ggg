@@ -34,7 +34,9 @@
 #slider
 	margin-bottom: 0 !important
 	.slick-dots
-		bottom: 0 !important
+		bottom: 10px !important
+		@media screen and (max-width: 480px)
+			bottom: 0px !important
 		li
 			button:before
 				font-size: 13px
@@ -45,6 +47,41 @@
 					opacity: 1
 					color: #FFF
 
+.category
+	width: auto !important
+	margin-bottom: 5px
+	padding: 20px 20px 40px
+	h2
+		color: #FFF !important
+
+.itemSlider
+	.slick-dots
+		bottom: -60px !important
+		li
+			button:before
+				font-size: 13px
+				opacity: 1
+				color: #FF6600
+			&.slick-active
+				button:before
+					opacity: 1
+					color: #FFF
+	.item
+		display: flex
+		flex-direction: column
+		justify-content: space-around
+		align-items: center
+		width: 200px
+		border-radius: 2px
+		padding-top: 24px
+		padding-bottom: 24px
+		img
+			border-radius: 2px
+		figcaption
+			display: inherit
+			flex-direction: inherit
+			width: 180px
+
 ul.collapsible
 	padding: 0
 	margin: 0
@@ -54,7 +91,7 @@ ul.collapsible
 			display: flex
 			align-items: center
 			justify-content: center
-			font-size: 18px
+			font-size: 24px
 			i
 				height: 32px
 				width: 32px

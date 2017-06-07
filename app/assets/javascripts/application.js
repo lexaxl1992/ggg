@@ -7,19 +7,16 @@
 *= require jquery.slick
 *  require jquery.mousewheel
 *= require ./mdl/main
-*  require ./materialize/animation
-*  require ./materialize/global
-*  require ./materialize/carousel
-*  require ./materialize/collapsible
-*  require ./materialize/dropdown
-*= require ./materialize.min
-*  require_tree ./snippets
+*= require ./materialize/jquery.easing.1.3
+*= require ./materialize/collapsible
+*= require_tree ./snippets
 */
 
 function someElemsInit(){
 	componentHandler.upgradeDom()
 	$('.collapsible').collapsible()
-	$('#slider').slick({ dots: true })
+	$('#slider').slick({ dots: true, prevArrow: false, nextArrow: false })
+	itemSliderInit()
 }
 
 $(document).ready(someElemsInit)

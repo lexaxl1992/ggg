@@ -4,13 +4,13 @@
 			%i
 			Спальни
 		%section.collapsible-body
-			%span Здесь будут товары
+			= render 'bedrooms'
 	%li
 		.collapsible-header
 			%i.icons-kitchen
 			Кухни
 		%section.collapsible-body
-			%span Здесь будут товары
+			= render 'kitchens'
 	%li
 		.collapsible-header
 			%i
@@ -38,7 +38,7 @@
 	%li
 		.collapsible-header
 			%i
-			Гостинные
+			Гостиные
 		%section.collapsible-body
 			%span Здесь будут товары
 	%li
@@ -47,3 +47,13 @@
 			Столы и стулья
 		%section.collapsible-body
 			%span Здесь будут товары
+
+#bedrooms.category.mdl-card.mdl-color--grey-900.mdl-shadow--2dp.mdl-layout--large-screen-only
+	.mdl-card__title
+		%h2.mdl-card__title-text Спальни
+	= render 'bedrooms'
+
+#kitchens.category.mdl-card.mdl-color--grey-900.mdl-shadow--2dp.mdl-layout--large-screen-only
+	.mdl-card__title
+		%h2.mdl-card__title-text Кухни
+	= render 'kitchens'

@@ -25,15 +25,15 @@
 				%nav.mdl-navigation.mdl-layout--large-screen-only
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
-						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'catalogueButton' }
-							= link_to "Спальни", '/', class: 'mdl-menu__item'
-							= link_to "Кухни", '/', class: 'mdl-menu__item'
-							= link_to "Прихожие", '/', class: 'mdl-menu__item'
-							= link_to "Шкафы-купе", '/', class: 'mdl-menu__item'
-							= link_to "ЛДСП", '/', class: 'mdl-menu__item'
-							= link_to "Диваны и кресла", '/', class: 'mdl-menu__item'
-							= link_to "Гостинные", '/', class: 'mdl-menu__item'
-							= link_to "Столы и стулья", '/', class: 'mdl-menu__item'
+						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
+							%a.mdl-menu__item{href: '#bedrooms', 'data-turbolinks': 'false'}= 'Спальни'
+							%a.mdl-menu__item{href: '#kitchens', 'data-turbolinks': 'false'}= 'Кухни'
+							%a.mdl-menu__item{href: '#hallways', 'data-turbolinks': 'false'}= 'Прихожие'
+							%a.mdl-menu__item{href: '#closets', 'data-turbolinks': 'false'}= 'Шкафы-купе'
+							%a.mdl-menu__item{href: '#chipboards', 'data-turbolinks': 'false'}= 'ЛДСП'
+							%a.mdl-menu__item{href: '#sofaschairs', 'data-turbolinks': 'false'}= 'Диваны и кресла'
+							%a.mdl-menu__item{href: '#livingrooms', 'data-turbolinks': 'false'}= 'Гостиные'
+							%a.mdl-menu__item{href: '#tablesstools', 'data-turbolinks': 'false'}= 'Столы и стулья'
 
 					#aboutMenu
 						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
@@ -46,7 +46,7 @@
 					%i.material-icons more_vert
 				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'menu-lower-right' }
 					= link_to "О компании", '/about', class: 'mdl-menu__item'
-					= link_to "Всё о мебели", '/', class: 'mdl-menu__item'
+					= link_to "Всё о мебели", '/about', class: 'mdl-menu__item'
 
 
 		%main.mdl-layout__content
@@ -56,3 +56,5 @@
 				= image_tag('carousel/3.jpg')
 
 			= yield
+
+			= render 'layouts/footer'
