@@ -4,8 +4,8 @@
 *= require rails-ujs
 *= require turbolinks
 *= require modernizr
-*= require jquery.jscrollpane
-*= require jquery.mousewheel
+*= require jquery.slick
+*  require jquery.mousewheel
 *= require ./mdl/main
 *  require ./materialize/animation
 *  require ./materialize/global
@@ -17,11 +17,12 @@
 */
 
 function someElemsInit(){
-	$('.carousel.carousel-slider').carousel({fullWidth: true})
+	componentHandler.upgradeDom()
 	$('.collapsible').collapsible()
-	$('main').jScrollPane()
+	$('#slider').slick({ dots: true })
 }
 
 $(document).ready(someElemsInit)
-document.addEventListener('turbolinks:load', function(){ componentHandler.upgradeDom(); someElemsInit() });
-$.turbo.use('turbolinks:load', 'turbolinks:request-start');
+document.addEventListener('turbolinks:load', someElemsInit)
+document.addEventListener('turbolinks:before-cache', someElemsInit)
+//$.turbo.use('turbolinks:load', 'turbolinks:request-start');

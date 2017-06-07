@@ -17,7 +17,7 @@ gem 'therubyracer', platforms: :ruby
 #gem 'therubyrhino', platforms: :jruby
 gem 'jquery-rails'
 gem 'modernizr-rails'
-gem 'jscrollpane-rails'
+gem "jquery-slick-rails"
 gem 'jquery-mousewheel-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'

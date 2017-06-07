@@ -38,7 +38,7 @@
 					#aboutMenu
 						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
 						%ul#aboutList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'aboutButton' }
-							= link_to "Всё о мебели", '/', class: 'mdl-menu__item'
+							= link_to "Всё о мебели", '/about', class: 'mdl-menu__item'
 
 					= link_to "3D-конструктор", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
@@ -50,13 +50,9 @@
 
 
 		%main.mdl-layout__content
-			.carousel.carousel-slider.center{'data-indicators': 'true' }
-
-				.carousel-item{ href: '#firstImg' }
-					= image_tag('carousel/1.jpg')
-				.carousel-item.active{ href: '#secondImg' }
-					= image_tag('carousel/2.jpg')
-				.carousel-item{ href: '#thirdImg' }
-					= image_tag('carousel/3.jpg')
+			#slider
+				= image_tag('carousel/1.jpg')
+				= image_tag('carousel/2.jpg')
+				= image_tag('carousel/3.jpg')
 
 			= yield
