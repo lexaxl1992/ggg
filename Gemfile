@@ -20,8 +20,8 @@ gem 'modernizr-rails'
 gem "jquery-slick-rails"
 gem 'jquery-mousewheel-rails'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
-gem 'jquery-turbolinks'
+#gem 'turbolinks', '~> 5'
+#gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.5'
 gem 'material_icons'
 
