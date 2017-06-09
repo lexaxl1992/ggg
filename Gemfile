@@ -5,28 +5,33 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.1'
+# MAIN
+gem 'rails'
+gem 'puma'
 gem 'unicode'
-gem 'sqlite3', platforms: :ruby
-gem 'jdbc-sqlite3', platforms: :jruby
-gem 'puma', '~> 3.7'
+gem 'jbuilder', '~> 2.5'
+gem 'uglifier', '>= 1.3.0'
+# PREPROCESSORS
 gem 'haml'
 gem 'sass-rails'
-gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails'
+# DATABASE
+gem 'sqlite3', platforms: :ruby
+gem 'jdbc-sqlite3', platforms: :jruby
+# JS ENGINE
 gem 'therubyracer', platforms: :ruby
-#gem 'therubyrhino', platforms: :jruby
+gem 'therubyrhino', platforms: :jruby
+# JS LIBS
+gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
-gem 'modernizr-rails'
-gem "jquery-slick-rails"
-gem 'jquery-mousewheel-rails'
-gem 'coffee-rails', '~> 4.2'
-#gem 'turbolinks', '~> 5'
-#gem 'jquery-turbolinks'
-gem 'jbuilder', '~> 2.5'
+gem 'jquery-turbolinks'
+# ASSETS
 gem 'material_icons'
+gem 'jquery-slick-rails'
+#gem 'jquery-mousewheel-rails'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.0'
+# gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -47,4 +52,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

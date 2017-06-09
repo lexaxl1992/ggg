@@ -1,15 +1,15 @@
 /*
 *= require jquery
-*  require jquery.turbolinks
+*= require jquery.turbolinks
 *= require rails-ujs
-*  require turbolinks
-*= require modernizr
+*  require modernizr
 *= require jquery.slick
 *  require jquery.mousewheel
 *= require ./mdl/main
 *= require ./materialize/jquery.easing.1.3
 *= require ./materialize/collapsible
 *= require_tree ./snippets
+*= require turbolinks
 */
 
 function someElemsInit(){
@@ -20,6 +20,6 @@ function someElemsInit(){
 }
 
 $(document).ready(someElemsInit)
-//document.addEventListener('turbolinks:load', someElemsInit)
+document.addEventListener('turbolinks:load', someElemsInit)
 //document.addEventListener('turbolinks:before-cache', someElemsInit)
 //$.turbo.use('turbolinks:load', 'turbolinks:request-start');

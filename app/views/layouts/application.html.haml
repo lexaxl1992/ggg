@@ -2,7 +2,8 @@
 
 %title ДЮК Мебель
 = csrf_meta_tags
-%meta{ name:'viewport', content:'width=device-width, initial-scale=1.0, minimum-scale=1.0' }
+%meta{name:'turbolinks-cache-control', content:'no-cache'}
+%meta{name:'viewport', content:'width=device-width, initial-scale=1.0, minimum-scale=1.0'}
 = render 'layouts/assetTags'
 
 %body
@@ -26,14 +27,14 @@
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
-							%a.mdl-menu__item{href: '#bedrooms', 'data-turbolinks': 'false'}= 'Спальни'
-							%a.mdl-menu__item{href: '#kitchens', 'data-turbolinks': 'false'}= 'Кухни'
-							%a.mdl-menu__item{href: '#hallways', 'data-turbolinks': 'false'}= 'Прихожие'
-							%a.mdl-menu__item{href: '#closets', 'data-turbolinks': 'false'}= 'Шкафы-купе'
-							%a.mdl-menu__item{href: '#chipboards', 'data-turbolinks': 'false'}= 'ЛДСП'
-							%a.mdl-menu__item{href: '#sofaschairs', 'data-turbolinks': 'false'}= 'Диваны и кресла'
-							%a.mdl-menu__item{href: '#livingrooms', 'data-turbolinks': 'false'}= 'Гостиные'
-							%a.mdl-menu__item{href: '#tablesstools', 'data-turbolinks': 'false'}= 'Столы и стулья'
+							%a.mdl-menu__item{href:'#bedrooms', 'data-turbolinks': 'false'}= 'Спальни'
+							%a.mdl-menu__item{href:'#kitchens', 'data-turbolinks': 'false'}= 'Кухни'
+							%a.mdl-menu__item{href:'#hallways', 'data-turbolinks': 'false'}= 'Прихожие'
+							%a.mdl-menu__item{href:'#closets', 'data-turbolinks': 'false'}= 'Шкафы-купе'
+							%a.mdl-menu__item{href:'#chipboards', 'data-turbolinks': 'false'}= 'ЛДСП'
+							%a.mdl-menu__item{href:'#sofaschairs', 'data-turbolinks': 'false'}= 'Диваны и кресла'
+							%a.mdl-menu__item{href:'#livingrooms', 'data-turbolinks': 'false'}= 'Гостиные'
+							%a.mdl-menu__item{href:'#tablesstools', 'data-turbolinks': 'false'}= 'Столы и стулья'
 
 					#aboutMenu
 						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
