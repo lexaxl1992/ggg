@@ -11,7 +11,7 @@
 
 function someElemsInit(){
 	componentHandler.upgradeDom()
-	//$('.collapsible').collapsible()
+	$('#catalogue').collapsible()
 	$('#slider').slick({ dots: true, prevArrow: false, nextArrow: false })
 }
 
