@@ -12,7 +12,7 @@
 function someElemsInit(){
 	componentHandler.upgradeDom()
 	$('#catalogue').collapsible()
-	$('#slider').slick({ dots: true, prevArrow: false, nextArrow: false })
+	$('#slider').slick({ dots: true })
 }
 
 document.addEventListener('turbolinks:load', someElemsInit)

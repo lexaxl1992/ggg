@@ -33,6 +33,21 @@
 
 #slider
 	margin-bottom: 0 !important
+	.slick-prev,.slick-next
+		z-index: 1
+		position: absolute
+		margin-top: -25px
+		width: 45px
+		height: 51px
+		overflow: hidden
+		&::before
+			display: none
+	.slick-prev
+		left: 0
+		background: url('/assets/carousel/left.png') no-repeat center center #FF6600
+	.slick-next
+		right: 0
+		background: url('/assets/carousel/right.png') no-repeat center center #FF6600
 	.slick-dots
 		bottom: 10px !important
 		@media screen and (max-width: 480px)
