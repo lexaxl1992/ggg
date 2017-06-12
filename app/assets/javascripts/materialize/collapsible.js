@@ -1,8 +1,3 @@
-  function testfn(event){
-    var object = event.currentTarget.parentNode.getElementsByTagName('section')
-    console.log(object.getElementsByClassName('itemSlider'))
-  }
-
 (function ($) {
   $.fn.collapsible = function(options, methodParam) {
     var defaults = {

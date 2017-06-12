@@ -8,6 +8,9 @@ end
 # MAIN
 gem 'rails'
 gem 'puma'
+gem 'foreman'
+gem 'yarn'
+gem 'webpacker'
 gem 'unicode'
 gem 'jbuilder', '~> 2.5'
 gem 'uglifier', '>= 1.3.0'
