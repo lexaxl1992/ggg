@@ -72,31 +72,25 @@
 	h2
 		color: #FFF !important
 
-.itemSlider
-	.slick-dots
-		bottom: -40px !important
-		li
-			button:before
-				font-size: 13px
-				opacity: 1
-				color: #FF6600
-			&.slick-active
-				button:before
-					opacity: 1
-					color: #FFF
-	.item
-		display: flex
-		flex-direction: column
-		justify-content: space-around
-		align-items: center
-		border-radius: 2px
-		padding: 0
-		img
+.owl-carousel
+	.owl-item
+		display:  flex
+		justify-content: center
+		.item
+			display: flex
+			flex-direction: column
+			justify-content: space-around
+			align-items: center
 			border-radius: 2px
-		figcaption
-			display: inherit
-			flex-direction: inherit
-			width: 188px
+			padding: 0
+			margin:  10px
+			width: 188px !important
+			img
+				border-radius: 2px
+			figcaption
+				display: inherit
+				flex-direction: inherit
+				width: 188px !important
 
 ul#catalogue
 	padding: 0

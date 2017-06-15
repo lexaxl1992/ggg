@@ -4,6 +4,7 @@
 //= require jquery.slick
 //  require jquery.mousewheel
 //= require ./mdl/main
+//= require ./owl/min
 //= require ./materialize/jquery.easing.1.3
 //= require ./materialize/collapsible
 //= require_tree ./snippets
