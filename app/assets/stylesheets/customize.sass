@@ -34,6 +34,7 @@
 #slider
 	margin-bottom: 0 !important
 	margin-top: 0
+	border-bottom: 1px solid #000
 	@media screen and (max-height: 767px) and (min-width: 1352px)
 		margin-top: -118px
 	.slick-prev,.slick-next
@@ -68,7 +69,7 @@
 .category
 	width: auto !important
 	margin-bottom: 5px
-	padding: 20px 20px 40px
+	padding: 20px
 	h2
 		color: #FFF !important
 
@@ -79,18 +80,27 @@
 		.item
 			display: flex
 			flex-direction: column
-			justify-content: space-around
 			align-items: center
 			border-radius: 2px
 			padding: 0
 			margin:  10px
 			width: 188px !important
+			height:  314px
 			img
 				border-radius: 2px
 			figcaption
 				display: inherit
 				flex-direction: inherit
-				width: 188px !important
+				justify-content: center
+				align-items: center
+				height: 52px
+				padding: 8px
+				width: 172px
+				span
+					color: #FFF
+					font-size: 16px
+					font-weight: 600
+					display: inline-table
 
 ul#catalogue
 	padding: 0
