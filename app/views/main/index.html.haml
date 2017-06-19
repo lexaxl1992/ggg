@@ -1,13 +1,13 @@
 %ul#catalogue.mdl-layout--small-screen-only.mdl-shadow--2dp{ 'data-collapsible': 'accordion' }
 	%li
 		.collapsible-header
-			%i
+			%i.custom-icons--bed
 			Спальни
 		%section.collapsible-body
 			= render 'bedrooms'
 	%li
 		.collapsible-header
-			%i.icons-kitchen
+			%i.custom-icons--kitchen
 			Кухни
 		%section.collapsible-body
 			%span Здесь будут товары
@@ -19,41 +19,43 @@
 			%span Здесь будут товары
 	%li
 		.collapsible-header
-			%i.icons-closet
+			%i.custom-icons--closet
 			Шкафы-купе
 		%section.collapsible-body
 			%span Здесь будут товары
 	%li
 		.collapsible-header
-			%i
+			%i.custom-icons--bricks
 			ЛДСП
 		%section.collapsible-body
 			%span Здесь будут товары
 	%li
 		.collapsible-header
-			%i.icons-sofa
+			%i.custom-icons--sofa
 			Диваны и кресла
 		%section.collapsible-body
 			%span Здесь будут товары
 	%li
 		.collapsible-header
-			%i
+			%i.custom-icons--livingroom
 			Гостиные
 		%section.collapsible-body
 			%span Здесь будут товары
 	%li
 		.collapsible-header
-			%i
+			%i.custom-icons--table
 			Столы и стулья
 		%section.collapsible-body
 			%span Здесь будут товары
 
 #bedrooms.category.mdl-card.mdl-color--grey-900.mdl-shadow--2dp.mdl-layout--large-screen-only
 	.mdl-card__title
+		%i.custom-icons--bed
 		%h2.mdl-card__title-text Спальни
 	= render 'bedrooms'
 
 #kitchens.category.mdl-card.mdl-color--grey-900.mdl-shadow--2dp.mdl-layout--large-screen-only
 	.mdl-card__title
+		%i.custom-icons--kitchen
 		%h2.mdl-card__title-text Кухни
 	%span Здесь будут товары
