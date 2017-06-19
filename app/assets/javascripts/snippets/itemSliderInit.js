@@ -7,13 +7,12 @@ document.addEventListener('turbolinks:load',
 			responsiveClass: true,
 			responsive:{
 				0: {
-					items: 1,
-					
+					items: 1,	
 				},
-				420: {
+				320: {
 					items: 2
 				},
-				660: {
+				640: {
 					items: 3
 				},
 				920: {

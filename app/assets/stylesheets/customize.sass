@@ -88,22 +88,35 @@
 			border-radius: 2px
 			padding: 0
 			margin:  10px
-			width: 188px !important
+			width: 188px
 			background-color: #313131
+			@media screen and (width: 320px)
+				width: 134px
 			img
 				border-radius: 2px
 			figcaption
 				display: inherit
 				flex-direction: inherit
-				justify-content: center
-				height: 80px
-				padding: 8px
-				width: 172px
+				justify-content: space-around
+				height: 100px
+				padding: 6px 12px
+				@media screen and (min-width: 320px) and (max-width: 400px)
+					height: 80px
+					padding: 8px 10px
 				span
 					color: #FFF
-					font-size: 16px
-					font-weight: 600
 					display: inline-table
+					&.name
+						font-family: Roboto-Medium
+						font-size: 16px
+						@media screen and (min-width: 320px) and (max-width: 400px)
+							font-size: 12px
+					&.price
+						font-family: Inconsolata-Regular
+						font-size: 20px
+						align-self: flex-end
+						@media screen and (min-width: 320px) and (max-width: 400px)
+							font-size: 15px
 
 ul#catalogue
 	padding: 0

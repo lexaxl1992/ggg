@@ -6,14 +6,20 @@
 }
 
 @font-face {
-	font-family: "Roboto";
+	font-family: "Inconsolata-Regular";
+	src: url("/assets/Inconsolata-Regular.ttf");
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: "Roboto-Thin";
 	src: local(Roboto Thin),
 		url("/assets/roboto/Roboto-Thin.woff2") format("woff2"),
 		url("/assets/roboto/Roboto-Thin.woff") format("woff");
 	font-weight: 100;
 }
 @font-face {
-	font-family: "Roboto";
+	font-family: "Roboto-Light";
 	src: local(Roboto Light),
 		url("/assets/roboto/Roboto-Light.woff2") format("woff2"),
 		url("/assets/roboto/Roboto-Light.woff") format("woff");
@@ -29,7 +35,7 @@
 }
 
 @font-face {
-	font-family: "Roboto";
+	font-family: "Roboto-Medium";
 	src: local(Roboto Medium),
 		url("/assets/roboto/Roboto-Medium.woff2") format("woff2"),
 		url("/assets/roboto/Roboto-Medium.woff") format("woff");
@@ -37,7 +43,7 @@
 }
 
 @font-face {
-	font-family: "Roboto";
+	font-family: "Roboto-Bold";
 	src: local(Roboto Bold),
 		url("/assets/roboto/Roboto-Bold.woff2") format("woff2"),
 		url("/assets/roboto/Roboto-Bold.woff") format("woff");
