@@ -1,7 +1,6 @@
 $collapsible-height: 3rem !default;
 $collapsible-line-height: $collapsible-height !default;
 $collapsible-header-color: #212121;
-$collapsible-border-color: #4a4a4a !default;
 $sidenav-padding: 16px !default;
 
 .collapsible {
@@ -17,7 +16,6 @@ $sidenav-padding: 16px !default;
   line-height: $collapsible-line-height;
   padding: 0 1rem;
   background-color: $collapsible-header-color;
-  border-bottom: 1px solid $collapsible-border-color;
 
   i {
     width: 2rem;
@@ -32,7 +30,6 @@ $sidenav-padding: 16px !default;
 
 .collapsible-body {
   display: none;
-  border-bottom: 1px solid $collapsible-border-color;
   box-sizing: border-box;
   padding: 2rem;
 }
