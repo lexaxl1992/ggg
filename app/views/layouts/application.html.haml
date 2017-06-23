@@ -11,7 +11,9 @@
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 		%header.mdl-layout__header
 			.mdl-layout__header-row
-				= link_to image_tag('testlogo.jpg', border: 0), '/'
+				%a#logo{href: '/'}
+					= image_tag('logo.png')
+
 
 				%span.mdl-layout-title
 					%h4

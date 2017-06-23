@@ -32,10 +32,10 @@
           object.parent().removeClass('active');
         }
         if (object.parent().hasClass('active')){
-          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 800, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideDown({ duration: 700, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
         else{
-          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 700, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
+          object.siblings('.collapsible-body').stop(true,false).slideUp({ duration: 600, easing: "easeOutQuart", queue: false, complete: function() {$(this).css('height', '');}});
         }
 
         $panel_headers.not(object).removeClass('active').parent().removeClass('active');

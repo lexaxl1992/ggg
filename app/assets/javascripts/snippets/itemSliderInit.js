@@ -2,12 +2,14 @@ document.addEventListener('turbolinks:load',
 	function bindSlider(){
 		$('.owl-carousel').owlCarousel({
 			loop: true,
+			lazyLoad: true,
 			margin: 0,
 			dots: true,
+			autoHeight: true,
 			responsiveClass: true,
 			responsive:{
 				0: {
-					items: 1,	
+					items: 1
 				},
 				320: {
 					items: 2
