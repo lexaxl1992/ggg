@@ -1,0 +1,39 @@
+[
+	{
+		"id": 1,
+		"name": "Спальный гарнитур \"Анита\"",
+		"modularity": true,
+		"description": "Тестовое описание товара, для наглядности.",
+
+		"price": {
+			"current": 134850
+		},
+
+		"images": [
+			"/uploads/items/images/anita.jpg",
+			"/uploads/items/images/anita.jpg"
+		]
+	},
+
+	{
+		"id": 2,
+		"name": "Спальный гарнитур \"Валерия 40\"",
+		"modularity": true,
+		"description": "Тестовое описание товара, для наглядности.",
+
+		"price": {
+			"old": 68150,
+			"current": 59999
+		},
+
+		"images": [
+			"/uploads/items/images/anita.jpg",
+			"/uploads/items/images/anita.jpg"
+		],
+
+		"additional_images": [
+			"/uploads/items/images/additional.png",
+			"/uploads/items/images/additional.png"
+		]
+	}
+]

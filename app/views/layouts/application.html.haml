@@ -1,0 +1,71 @@
+!!! 5
+
+%title ДЮК Мебель
+= csrf_meta_tags
+%meta{name:'turbolinks-cache-control', content:'no-cache'}
+%meta{name:'viewport', content:'width=device-width, initial-scale=1.0, minimum-scale=1.0'}
+= favicon_link_tag '/favicon.ico', rel: 'shortcut icon'
+= render 'layouts/assets'
+
+%body
+	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+		%header.mdl-layout__header
+			.mdl-layout__header-row
+				%a#logo{href: '/'}
+					= image_tag('logo.png')
+
+
+				%span.mdl-layout-title
+					%h4
+						%a{ href: 'tel:+79181451080' }
+							%i.material-icons= 'call'
+							8 918 145 1080
+					%small
+						%i.material-icons= 'location_on'
+						Краснодар
+
+				.mdl-layout-spacer
+
+				%nav.mdl-navigation.mdl-layout--large-screen-only
+					#catalogueMenu
+						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
+							%a.mdl-menu__item{href:'/#bedrooms', 'data-turbolinks': 'false'}= 'Спальни'
+							%a.mdl-menu__item{href:'/#kitchens', 'data-turbolinks': 'false'}= 'Кухни'
+							%a.mdl-menu__item{href:'/#hallways', 'data-turbolinks': 'false'}= 'Прихожие'
+							%a.mdl-menu__item{href:'/#closets', 'data-turbolinks': 'false'}= 'Шкафы-купе'
+							%a.mdl-menu__item{href:'/#chipboards', 'data-turbolinks': 'false'}= 'ЛДСП'
+							%a.mdl-menu__item{href:'/#sofas', 'data-turbolinks': 'false'}= 'Диваны и кресла'
+							%a.mdl-menu__item{href:'/#livingrooms', 'data-turbolinks': 'false'}= 'Гостиные'
+							%a.mdl-menu__item{href:'/#tables', 'data-turbolinks': 'false'}= 'Столы и стулья'
+
+					#aboutMenu
+						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
+						%ul#aboutList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'aboutButton' }
+							= link_to "Всё о мебели", '/about', class: 'mdl-menu__item'
+
+					= link_to "3D-конструктор", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+
+				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
+					%i.material-icons more_vert
+				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'menu-lower-right' }
+					= link_to "3D-конструктор", '/', class: 'mdl-menu__item'
+					= link_to "О компании", '/about', class: 'mdl-menu__item'
+
+
+		%main.mdl-layout__content
+			#slider.mdl-shadow--2dp
+				= image_tag('carousel/1.jpg')
+				= image_tag('carousel/2.jpg')
+				= image_tag('carousel/3.jpg')
+
+			= yield
+
+			%footer.mdl-mini-footer
+				.mdl-mini-footer__left-section
+					.mdl-logo ДЮК Мебель
+					%ul.mdl-mini-footer__link-list
+						%li
+							%a{:href => "#"} Ссылка
+						%li
+							%a{:href => "#"} Ещё одна

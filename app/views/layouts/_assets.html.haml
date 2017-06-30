@@ -1,0 +1,14 @@
+= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+- case params[:controller]
+
+	- when 'main'
+		= stylesheet_link_tag    'customize', media: 'all', 'data-turbolinks-track': 'reload'
+		= javascript_include_tag 'aload.min', 'data-turbolinks-track': 'reload'
+		= javascript_include_tag 'owl.min', 'data-turbolinks-track': 'reload'
+		= javascript_include_tag 'snippets/itemSliderInit', 'data-turbolinks-track': 'reload'
+
+	- when 'adminpanel'
+		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+		= stylesheet_link_tag    'adminpanel', media: 'all', 'data-turbolinks-track': 'reload'

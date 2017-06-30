@@ -1,0 +1,100 @@
+body
+	background-color: #212121
+	font-family: 'Futuris'
+
+main
+	color: #FFF
+
+.mdl-color--grey-850
+	background-color: rgb(53, 53, 53) !important
+
+i
+	&[class*=custom-icons--]
+		height: 32px
+		width: 32px
+		margin-right: 11px
+	&.custom-icons--bed
+		background-image: url(/assets/icons/bed.png)
+	&.custom-icons--bricks
+		background-image: url(/assets/icons/bricks.png)
+	&.custom-icons--closet
+		background-image: url(/assets/icons/closet.png)
+	&.custom-icons--coathanger
+		background-image: url(/assets/icons/coathanger.png)
+	&.custom-icons--kitchen
+		background-image: url(/assets/icons/kitchen.png)
+	&.custom-icons--livingroom
+		background-image: url(/assets/icons/livingroom.png)
+	&.custom-icons--sofa
+		background-image: url(/assets/icons/sofa.png)
+	&.custom-icons--table
+		background-image: url(/assets/icons/table.png)
+
+.mdl-layout__header
+	//background-color: #111111
+	.mdl-layout__drawer-button
+		left: inherit !important
+		right: 0
+		i
+			font-size: 42px
+
+	.mdl-layout__header-row
+		justify-content: flex-start
+		padding: 0 !important
+		#logo
+			background-color: #FF6600
+			width: 140px
+			display: flex
+			justify-content: center
+			align-items: center
+			height: 118px
+			img
+				height: 110px
+			@media screen and (max-width: 1024px)
+				height: 52px
+				img
+					height: 50px
+
+		.mdl-layout-title
+			display: flex
+			flex-direction: column
+			align-items: center
+			margin: 24px 32px
+			letter-spacing: 0.01rem !important
+			@media screen and (min-width: 320px) and (max-width: 800px)
+				margin: 0 0 0 14px
+			@media screen and (max-width: 1024px)
+				flex-direction: row
+
+			h4
+				margin: 0
+				font-size: 25px
+				font-weight: 300
+				@media screen and (max-width: 319px)
+					display: none
+				@media screen and (max-width: 1024px)
+					font-size: 20px
+				a
+					text-decoration: none
+					color: #FFF
+					display: flex
+					i
+						align-self: center
+						margin: 0 10px 4px 0
+						@media screen and (max-width: 369px)
+							display: none
+
+			small
+				display: flex
+				align-items: flex-end
+				align-self: baseline
+				color: #FF6600
+				@media screen and (max-width: 479px)
+					display: none
+				@media screen and (max-width: 1024px)
+					margin-left: 15px
+
+footer
+	background-color: transparent !important
+	padding: 16px 24px !important
+	font-size: 16px
