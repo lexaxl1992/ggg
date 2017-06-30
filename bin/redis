@@ -1,4 +1,0 @@
-#!/usr/bin/env ruby
-APP_ROOT = File.expand_path('../', __dir__)
-system('env RAILS_APP_ROOT='+APP_ROOT)
-system('cd '+APP_ROOT+'; vendor/bin/redis-server config/redis.conf &')
