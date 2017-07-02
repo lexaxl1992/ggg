@@ -1,102 +1,24 @@
 %ul#catalogue.mdl-shadow--2dp{ 'data-collapsible': 'accordion' }
-	%li#bedrooms
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--bed
-				Спальни
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--bed
-				Спальни
-		%section.collapsible-body.mdl-color--grey-850
-			.owl-carousel.owl-theme
-				- @bedrooms.each do |bedroom|
-					%figure.item.mdl-shadow--2dp.mdl-color--grey-900{"id": "#{bedroom["id"]}"}
-						%img.owl-lazy{"data-src": "/uploads/items/thumbs/#{bedroom["id"]}.png"}
-						%figcaption
-							%span.name= bedroom["name"]
-							%span.price= bedroom["price"]["current"].to_s + " ₽"
-
-	%li#kitchens
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--kitchen
-				Кухни
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--kitchen
-				Кухни
-		%section.collapsible-body.mdl-color--grey-850
-			= render 'bedrooms'
-
-	%li#hallways
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--coathanger
-				Прихожие
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--coathanger
-				Прихожие
-		%section.collapsible-body.mdl-color--grey-850
-			= render 'bedrooms'
-
-	%li#closets
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--closet
-				Шкафы-купе
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--closet
-				Шкафы-купе
-		%section.collapsible-body.mdl-color--grey-850
-			%span Здесь будут товары
-
-	%li#chipboards
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--bricks
-				ЛДСП
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--bricks
-				ЛДСП
-		%section.collapsible-body.mdl-color--grey-850
-			%span Здесь будут товары
-
-	%li#sofas
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--sofa
-				Диваны и кресла
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--sofa
-				Диваны и кресла
-		%section.collapsible-body.mdl-color--grey-850
-			%span Здесь будут товары
-
-	%li#livingrooms
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--livingroom
-				Гостиные
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--livingroom
-				Гостиные
-		%section.collapsible-body.mdl-color--grey-850
-			%span Здесь будут товары
-
-	%li#tables
-		.collapsible-header
-			.hoverWrapper
-				%i.custom-icons--table
-				Столы и стулья
-		.static-header
-			.hoverWrapper
-				%i.custom-icons--table
-				Столы и стулья
-		%section.collapsible-body.mdl-color--grey-850
-			%span Здесь будут товары
+	- @categories.each do |category|
+		- if category[:visible] == true
+			- items = Items.new.get(category[:name])
+			%li{"id": "#{category[:name]}"}
+				.collapsible-header
+					.hoverWrapper
+						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
+						= category[:label]
+				.static-header
+					.hoverWrapper
+						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
+						= category[:label]
+				%section.collapsible-body.mdl-color--grey-850
+					- unless items == nil
+						.owl-carousel.owl-theme
+							- items.each do |item|
+								%figure.item.mdl-shadow--2dp.mdl-color--grey-900{"id": "#{item[:id]}"}
+									%img.owl-lazy{"data-src": "/uploads/items/thumbs/#{item[:id]}.png"}
+									%figcaption
+										%span.name= item[:name]
+										%span.price= item[:price][:current].to_s + " ₽"
+					- else
+						%h4.no_items В данной  категории товары отсутствуют

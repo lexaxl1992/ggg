@@ -1,6 +1,7 @@
 class MainController < ApplicationController
 	def index
-		@bedrooms = Category.new.get_body("bedrooms")
+		# Получение массива с хэшами данных категорий
+		@categories =  Categories.new.get
 		render 'index'
 	end
 
