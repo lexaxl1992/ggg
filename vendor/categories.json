@@ -1,5 +1,3 @@
-/* redis key name - "categories" */
-/* имена иконок необходимо заменить на пути к их файлам */
 [
 	{
 		"name": "bedrooms",
@@ -7,43 +5,50 @@
 		"icon": "/assets/icons/bed.png",
 		"visible": true
 	},
+
 	{
 		"name": "kitchens",
 		"label": "Кухни",
 		"icon": "/assets/icons/kitchen.png",
 		"visible": true
 	},
+
 	{
 		"name": "hallways",
 		"label": "Прихожие",
 		"icon": "/assets/icons/coathanger.png",
 		"visible": true
 	},
-		{
+
+	{
 		"name": "closets",
 		"label": "Шкафы-купе",
 		"icon": "/assets/icons/closet.png",
 		"visible": true
 	},
-		{
+
+	{
 		"name": "chipboards",
 		"label": "ЛДСП",
 		"icon": "/assets/icons/bricks.png",
 		"visible": true
 	},
-		{
+
+	{
 		"name": "sofas",
 		"label": "Диваны и кресла",
 		"icon": "/assets/icons/sofa.png",
 		"visible": true
 	},
-		{
+
+	{
 		"name": "livingrooms",
 		"label": "Гостиные",
 		"icon": "/assets/icons/livingroom.png",
 		"visible": true
 	},
-		{
+
+	{
 		"name": "tables",
 		"label": "Столы и стулья",
 		"icon": "/assets/icons/table.png",

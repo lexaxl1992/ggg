@@ -13,8 +13,6 @@
 			.mdl-layout__header-row
 				%a#logo{href: '/'}
 					= image_tag('logo.png')
-
-
 				%span.mdl-layout-title
 					%h4
 						%a{ href: 'tel:+79181451080' }
@@ -23,14 +21,13 @@
 					%small
 						%i.material-icons= 'location_on'
 						Краснодар
-
 				.mdl-layout-spacer
 
 				%nav.mdl-navigation.mdl-layout--large-screen-only
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
-							- @categories.each do |category|
+							- $categories.each do |category|
 								- if category[:visible] == true
 									%a.mdl-menu__item{href:"/##{category[:name]}", 'data-turbolinks': 'false'}= category[:label]
 
@@ -38,29 +35,28 @@
 						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
 						%ul#aboutList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'aboutButton' }
 							= link_to "Всё о мебели", '/about', class: 'mdl-menu__item'
-
-					= link_to "3D-конструктор", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
+					= link_to "3D-конструктор", '/constructor/#prodboard-container', class: 'mdl-button mdl-js-button mdl-js-ripple-effect', 'data-turbolinks': 'false'
 
 				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
 					%i.material-icons more_vert
 				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'menu-lower-right' }
-					= link_to "3D-конструктор", '/', class: 'mdl-menu__item'
+					= link_to "3D-конструктор", '/constructor/#prodboard-container', class: 'mdl-menu__item'
 					= link_to "О компании", '/about', class: 'mdl-menu__item'
 
-
 		%main.mdl-layout__content
-			#slider.mdl-shadow--2dp
-				= image_tag('carousel/1.jpg')
-				= image_tag('carousel/2.jpg')
-				= image_tag('carousel/3.jpg')
+			- unless [params[:controller],params[:action]] == ["construct", "index"]
+				#slider.mdl-shadow--2dp
+					= image_tag('carousel/1.jpg')
+					= image_tag('carousel/2.jpg')
+					= image_tag('carousel/3.jpg')
 
 			= yield
 
-			%footer.mdl-mini-footer
-				.mdl-mini-footer__left-section
-					.mdl-logo ДЮК Мебель
-					%ul.mdl-mini-footer__link-list
-						%li
-							%a{:href => "#"} Ссылка
-						%li
-							%a{:href => "#"} Ещё одна
+		%footer.mdl-mini-footer
+			.mdl-mini-footer__left-section
+				.mdl-logo ДЮК Мебель
+				%ul.mdl-mini-footer__link-list
+					%li
+						%a{:href => "#"} Ссылка
+					%li
+						%a{:href => "#"} Ещё одна

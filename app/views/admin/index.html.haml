@@ -11,6 +11,11 @@
 					.wrapper
 						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
 						= category[:label]
+					.buttons-wrapper
+						%button Добавить товары
+						%button Редактировать категорию
+						%button Скрыть категорию
+						%button Удалить категорию
 				%section.collapsible-body.mdl-color--grey-850
 					- unless items == nil
 						.owl-carousel.owl-theme
@@ -21,4 +26,4 @@
 										%span.name= item[:name]
 										%span.price= item[:price][:current].to_s + " ₽"
 					- else
-						%h4.no_items В данной  категории товары отсутствуют
+						%h4 Нет товаров в данной категории
