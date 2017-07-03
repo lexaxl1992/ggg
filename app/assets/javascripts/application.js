@@ -9,11 +9,13 @@
 //= require_tree ./snippets
 //= require turbolinks
 
-function someElemsInit(){
+function some_elems_init(){
 	componentHandler.upgradeDom()
-	$('#catalogue').collapsible()
 	$('#slider').slick({ dots: true })
+	$('#catalogue').collapsible()
+	adapt_header()
+	owl_bind()
 	aload()
 }
 
-document.addEventListener('turbolinks:load', someElemsInit)
+document.addEventListener('turbolinks:load', some_elems_init)

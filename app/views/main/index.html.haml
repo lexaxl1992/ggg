@@ -3,12 +3,8 @@
 		- if category[:visible] == true
 			- items = Item.new.get_all(category[:name])
 			%li{"id": "#{category[:name]}"}
-				.collapsible-header
-					.wrapper
-						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
-						= category[:label]
-				.static-header
-					.wrapper
+				.adaptive_header.collapsible-header
+					.title-wrapper
 						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
 						= category[:label]
 				%section.collapsible-body.mdl-color--grey-850
@@ -21,4 +17,4 @@
 										%span.name= item[:name]
 										%span.price= item[:price][:current].to_s + " ₽"
 					- else
-						%h4.no_items В данной  категории товары отсутствуют
+						%h4.no_items Нет товаров

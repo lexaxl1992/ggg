@@ -1,5 +1,4 @@
 !!! 5
-
 %title ДЮК Мебель
 = csrf_meta_tags
 %meta{name:'turbolinks-cache-control', content:'no-cache'}
@@ -13,31 +12,25 @@
 			.mdl-layout__header-row
 				%a#logo{href: '/admin'}
 					= image_tag('logo.png')
-
-
 				%span.mdl-layout-title
 					%small
 						%i.material-icons= 'warning'
 						Режим администрирования
-
-
 				.mdl-layout-spacer
 
 				%nav.mdl-navigation.mdl-layout--large-screen-only
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
-							- @categories.each do |category|
+							- $categories.each do |category|
 								- if category[:visible] == true
-									%a.mdl-menu__item{href:"/##{category[:name]}", 'data-turbolinks': 'false'}= category[:label]
-
+									%a.mdl-menu__item{href:"/admin/##{category[:name]}", 'data-turbolinks': 'false'}= category[:label]
 					= link_to "Выход", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
 				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
 					%i.material-icons more_vert
 				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'menu-lower-right' }
 					= link_to "Выход", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
-
 
 		%main.mdl-layout__content
 			#slider.mdl-shadow--2dp
@@ -46,7 +39,7 @@
 				= image_tag('carousel/3.jpg')
 
 			= yield
-			= console
+
 			%footer.mdl-mini-footer
 				.mdl-mini-footer__left-section
 					.mdl-logo ДЮК Мебель

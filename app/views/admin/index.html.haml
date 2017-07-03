@@ -3,20 +3,10 @@
 		- if category[:visible] == true
 			- items = Item.new.get_all(category[:name])
 			%li{"id": "#{category[:name]}"}
-				.collapsible-header
-					.wrapper
+				.adaptive_header.collapsible-header
+					.title-wrapper
 						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
 						= category[:label]
-				.static-header
-					.wrapper
-						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
-						= category[:label]
-					.buttons-wrapper
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab
-							%i.material-icons add
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Редактировать категорию
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Скрыть категорию
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Удалить категорию
 				%section.collapsible-body.mdl-color--grey-850
 					- unless items == nil
 						.owl-carousel.owl-theme
@@ -27,4 +17,12 @@
 										%span.name= item[:name]
 										%span.price= item[:price][:current].to_s + " ₽"
 					- else
-						%h4 Нет товаров в данной категории
+						%h4.no_items Нет товаров
+
+					.buttons-wrapper
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab
+							%i.material-icons add
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab
+							%i.material-icons edit
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Скрыть категорию
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Удалить категорию
