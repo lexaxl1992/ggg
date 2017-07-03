@@ -12,10 +12,11 @@
 						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
 						= category[:label]
 					.buttons-wrapper
-						%button Добавить товары
-						%button Редактировать категорию
-						%button Скрыть категорию
-						%button Удалить категорию
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab
+							%i.material-icons add
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Редактировать категорию
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Скрыть категорию
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab Удалить категорию
 				%section.collapsible-body.mdl-color--grey-850
 					- unless items == nil
 						.owl-carousel.owl-theme
