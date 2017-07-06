@@ -28,7 +28,7 @@
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
 							- $categories.each do |category|
 								- if category[:visible] == true
-									%a.mdl-menu__item{href:"/##{category[:name]}", 'data-turbolinks': 'false'}= category[:label]
+									%a.mdl-menu__item{href:"/##{category[:id]}", 'data-turbolinks': 'false'}= category[:label]
 					#aboutMenu
 						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
 						%ul#aboutList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'aboutButton' }

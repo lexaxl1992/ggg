@@ -24,7 +24,7 @@
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
 							- $categories.each do |category|
 								- if category[:visible] == true
-									%a.mdl-menu__item{href:"/admin/##{category[:name]}", 'data-turbolinks': 'false'}= category[:label]
+									%a.mdl-menu__item{href:"/admin/##{category[:id]}", 'data-turbolinks': 'false'}= category[:label]
 					= link_to "Выход", '/', class: 'mdl-button mdl-js-button mdl-js-ripple-effect'
 
 				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
