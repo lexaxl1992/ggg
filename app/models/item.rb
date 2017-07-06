@@ -3,19 +3,23 @@ class Item
 	# хранится json-документ с данными товаров категории
 	Items = Redis.new(host: "127.0.0.1", port: 3100, db: 2)
 
-	def get_all(category_name)
+	def get_all(category_id)
 		# Метод принимает имя категории,
-		# получает json-документ по ключу с именем категории
+		# получает json-строку по ключу с именем категории
 		# и возвращает руби-хэш с данными всех товаров выбранной категории
-		return JSON.parse((Items.get category_name), "symbolize_names": true) unless (Items.get category_name) == nil
+		return JSON.parse(Items.get(category_id), "symbolize_names": true) unless (Items.get(category_id)) == nil
 	end
 
-	def get(category_name, item_id)
+	def get(category_id, item_id)
 		# Метод принимает идентификатор товара,
-		# ищет товар с совпадающим с ним значением ключа "id"
-		# и возвращает хэш данных выбранного товара
-		get_all(category_name).each do |item|
+		# выбирает из него хэш по значению ключа идентификатора товара
+		# и возвращает его
+		get_all(category_id).each do |item|
 			return item if item.values_at(:id)[0] == item_id
 		end
+	end
+
+	def set_all(category_id, items)
+		Items.set(category_id, items.to_json)
 	end
 end

@@ -1,55 +1,55 @@
 [
 	{
-		"name": "bedrooms",
+		"id": "bedrooms",
 		"label": "Спальни",
 		"icon": "/assets/icons/bed.png",
 		"visible": true
 	},
 
 	{
-		"name": "kitchens",
+		"id": "kitchens",
 		"label": "Кухни",
 		"icon": "/assets/icons/kitchen.png",
 		"visible": true
 	},
 
 	{
-		"name": "hallways",
+		"id": "hallways",
 		"label": "Прихожие",
 		"icon": "/assets/icons/coathanger.png",
 		"visible": true
 	},
 
 	{
-		"name": "closets",
+		"id": "closets",
 		"label": "Шкафы-купе",
 		"icon": "/assets/icons/closet.png",
 		"visible": true
 	},
 
 	{
-		"name": "chipboards",
+		"id": "chipboards",
 		"label": "ЛДСП",
 		"icon": "/assets/icons/bricks.png",
 		"visible": true
 	},
 
 	{
-		"name": "sofas",
+		"id": "sofas",
 		"label": "Диваны и кресла",
 		"icon": "/assets/icons/sofa.png",
 		"visible": true
 	},
 
 	{
-		"name": "livingrooms",
+		"id": "livingrooms",
 		"label": "Гостиные",
 		"icon": "/assets/icons/livingroom.png",
 		"visible": true
 	},
 
 	{
-		"name": "tables",
+		"id": "tables",
 		"label": "Столы и стулья",
 		"icon": "/assets/icons/table.png",
 		"visible": true
