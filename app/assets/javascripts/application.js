@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require rails-ujs
+//= require dialog-polyfill
 //= require jquery.slick
 //  require jquery.mousewheel
 //= require ./mdl/main
@@ -9,13 +10,11 @@
 //= require_tree ./snippets
 //= require turbolinks
 
-function some_elems_init(){
+document.addEventListener('turbolinks:load', function() {
 	componentHandler.upgradeDom()
 	$('#slider').slick({ dots: true })
+	bind_owl()
 	$('#catalogue').collapsible()
 	adapt_header()
-	owl_bind()
 	aload()
-}
-
-document.addEventListener('turbolinks:load', some_elems_init)
+})

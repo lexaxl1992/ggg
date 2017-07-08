@@ -20,9 +20,16 @@
 						%h4.no_items Нет товаров
 
 					.buttons-wrapper
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.new_item
 							%i.material-icons add
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab
+						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.edit_category
 							%i.material-icons edit
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab
-							%i.material-icons delete
+
+				%dialog.mdl-dialog.category_editor
+					%h4.mdl-dialog__title Allow data collection?
+					.mdl-dialog__content
+						%p
+							Allowing us to collect data will let us get you the information you want faster.
+					.mdl-dialog__actions
+						%button.mdl-button{:type => "button"} Agree
+						%button.mdl-button.close{:type => "button"} Disagree

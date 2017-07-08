@@ -1,11 +1,12 @@
-= stylesheet_link_tag			'application', media: 'all', 'data-turbolinks-track': 'reload'
-= stylesheet_link_tag			'customize', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag					'application', media: 'all', 'data-turbolinks-track': 'reload'
+= stylesheet_link_tag					'customize', media: 'all', 'data-turbolinks-track': 'reload'
 	
-= javascript_include_tag		'application', 'data-turbolinks-track': 'reload'
-= javascript_include_tag		'aload.min', 'data-turbolinks-track': 'reload'
-= javascript_include_tag		'owl.min', 'data-turbolinks-track': 'reload'
+= javascript_include_tag			'application', 'data-turbolinks-track': 'reload'
+= javascript_include_tag			'aload.min', 'data-turbolinks-track': 'reload'
+= javascript_include_tag			'owl.min', 'data-turbolinks-track': 'reload'
 
 - case params[:controller]
 
 	- when 'admin'
-		= stylesheet_link_tag    'admin_mode', media: 'all', 'data-turbolinks-track': 'reload'
+		= stylesheet_link_tag			'admin_mode', media: 'all', 'data-turbolinks-track': 'reload'
+		= javascript_include_tag	'admin_mode', 'data-turbolinks-track': 'reload'

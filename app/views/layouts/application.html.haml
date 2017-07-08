@@ -7,8 +7,14 @@
 = render 'layouts/assets'
 
 %body
-	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
-		%header.mdl-layout__header
+	- unless params[:controller] == 'construct'
+		- @layout_classes = 'mdl-layout mdl-js-layout mdl-layout--fixed-header'
+		- @header_classes = 'mdl-layout__header'
+	-else
+		- @layout_classes = 'mdl-layout mdl-js-layout'
+		- @header_classes = 'mdl-layout__header mdl-layout__header--scroll'
+	.mainLayout{class: "#{@layout_classes}"}
+		%header{class: "#{@header_classes}"}
 			.mdl-layout__header-row
 				%a#logo{href: '/'}
 					= image_tag('logo.png')
