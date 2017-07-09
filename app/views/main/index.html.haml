@@ -1,7 +1,7 @@
-%ul#catalogue.mdl-shadow--2dp{ 'data-collapsible': 'accordion' }
+%ul#catalogue.mdl-shadow--2dp{ "data-collapsible": "accordion"}
 	- $categories.each do |category|
 		- if category[:visible] == true
-			- items = Item.new.get_all(category[:id])
+			- items = Item.new.get_all(category[:id], "object")
 			%li{"id": "#{category[:id]}"}
 				.adaptive_header.collapsible-header
 					.title-wrapper

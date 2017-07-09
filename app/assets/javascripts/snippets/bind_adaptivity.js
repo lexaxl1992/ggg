@@ -1,4 +1,4 @@
-function adapt_header() {
+function bind_adaptivity() {
 	function adapt() {
 		var i, headers = document.getElementsByClassName('adaptive_header')
 		for (i = 0; i < headers.length; ++i) {

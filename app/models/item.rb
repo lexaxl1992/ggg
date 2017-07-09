@@ -3,14 +3,14 @@ class Item
 	# хранится json-документ с данными товаров категории
 	Items = Redis.new(host: "127.0.0.1", port: 3100, db: 2)
 
-	def get_all(category_id)
+	def get_all(category_id, format)
 		# Метод принимает имя категории,
 		# получает json-строку по ключу с именем категории
 		# и возвращает руби-хэш с данными всех товаров выбранной категории
 		return JSON.parse(Items.get(category_id), "symbolize_names": true) unless (Items.get(category_id)) == nil
 	end
 
-	def get(category_id, item_id)
+	def get(category_id, item_id, format)
 		# Метод принимает идентификатор товара,
 		# выбирает из него хэш по значению ключа идентификатора товара
 		# и возвращает его

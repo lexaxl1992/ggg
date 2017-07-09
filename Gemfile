@@ -33,7 +33,7 @@ gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 # ASSETS
-gem 'dialog-polyfill-rails'
+#gem 'dialog-polyfill-rails'
 gem 'material_icons'
 gem 'jquery-slick-rails'
 #gem 'jquery-mousewheel-rails'

@@ -1,7 +1,7 @@
-%ul#catalogue.mdl-shadow--2dp{ 'data-collapsible': 'accordion' }
+%ul#catalogue.mdl-shadow--2dp{"data-collapsible": "accordion"}
 	- $categories.each do |category|
 		- if category[:visible] == true
-			- items = Item.new.get_all(category[:id])
+			- items = Item.new.get_all(category[:id], "object")
 			%li{"id": "#{category[:id]}"}
 				.adaptive_header.collapsible-header
 					.title-wrapper
@@ -18,18 +18,9 @@
 										%span.price= item[:price][:current].to_s + " ₽"
 					- else
 						%h4.no_items Нет товаров
-
 					.buttons-wrapper
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.new_item
-							%i.material-icons add
-						%button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.edit_category
-							%i.material-icons edit
-
-				%dialog.mdl-dialog.category_editor
-					%h4.mdl-dialog__title Allow data collection?
-					.mdl-dialog__content
-						%p
-							Allowing us to collect data will let us get you the information you want faster.
-					.mdl-dialog__actions
-						%button.mdl-button{:type => "button"} Agree
-						%button.mdl-button.close{:type => "button"} Disagree
+						- button_classes = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons call_dialog"
+						%button{"class": "#{button_classes}","data-for": "nothing"}
+							add
+						%button{"class": "#{button_classes}","data-for": "edit_#{category[:id]}", "onclick": "edit_category()"}
+							edit

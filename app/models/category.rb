@@ -5,19 +5,36 @@ class Category
 	# Установка подключения к локальной базе данных под номером "1" 
 	Categories = Redis.new(host: "127.0.0.1", port: 3100, db: 1)
 
-	def get_all
-		# Метод получает из базы данных json-строку по ключу "categories"
-		# и возвращает его в виде массива с хэшами данных всех категорий
-		return JSON.parse((Categories.get "categories"), "symbolize_names": true)
+	def get_all(format)
+		# Метод принимает формат представления ответа,
+		# и если данные запрошены в виде руби-объекта,
+		if format == "object"
+			# то получает из базы данных json-строку по ключу "categories"
+			# и возвращает её в виде массива с хэшами данных всех категорий,
+			return JSON.parse((Categories.get "categories"), "symbolize_names": true)
+		# иначе если данные запрошены в виде json-строки,
+		elsif format == "json"
+			# то получает из базы данных json-строку по ключу "categories"
+			# и возвращает её
+			return Categories.get "categories"
+		end
 	end
 
-	def get(category_id)
-		# Метод принимает идентификатор категории,
+	# Метод принимает идентификатор категории и формат представления ответа,
+	def get(category_id, format)
 		# получает хэш данных всех категорий вызовом метода get_all,
 		get_all.each do |category|
-			# выбирает из него хэш по значению ключа идентификатора категории
-			# и возвращает его
-			return category if category.values_at(:id)[0] == category_id
+			# и если данные запрошены в виде руби-объекта,
+			if format == "object"
+				# то выбирает из него хэш по значению ключа идентификатора категории
+				# и возвращает его,
+				return category if category.values_at(:id)[0] == category_id
+			# иначе если данные запрошены в виде json-строки,
+			elsif format == "json"
+				# то выбирает из него хэш по значению ключа идентификатора категории
+				# и возвращает его в виде json-документа
+				return JSON.pretty_generate(category.to_json) if category.values_at(:id)[0] == category_id
+			end
 		end
 	end
 
@@ -25,8 +42,8 @@ class Category
 		Categories.set("categories", categories_hash.to_json)
 	end
 
+	# Метод получает хэш данных категории
 	def set(category_hash)
-		# Метод получает хэш данных категории
 		# и если категория с таким идентификатором существует,
 		unless get(category_hash[:id]).nil?
 			# то перезаписывает его в базу данных,

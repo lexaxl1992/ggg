@@ -6,7 +6,15 @@
 = favicon_link_tag '/favicon.ico', rel: 'shortcut icon'
 = render 'layouts/assets'
 
-%body
+%body#event_handler
+	%dialog.modal_window.mdl-dialog.category_editor{"id": "edit_bedrooms"}
+		%h4.mdl-dialog__title Test title
+		.mdl-dialog__content
+			%p
+				Test content
+		.mdl-dialog__actions
+			%button.mdl-button{type: "button"} Agree
+			%button.mdl-button.close{type: "button"} Disagree
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 		%header.mdl-layout__header
 			.mdl-layout__header-row

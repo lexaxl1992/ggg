@@ -1,4 +1,4 @@
-function bind_owl(){
+function bind_carousel(){
 	$('.owl-carousel').owlCarousel({
 		loop: true,
 		lazyLoad: true,

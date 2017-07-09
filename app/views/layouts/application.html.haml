@@ -6,15 +6,13 @@
 = favicon_link_tag '/favicon.ico', rel: 'shortcut icon'
 = render 'layouts/assets'
 
-%body
+%body#event_handler
 	- unless params[:controller] == 'construct'
-		- @layout_classes = 'mdl-layout mdl-js-layout mdl-layout--fixed-header'
-		- @header_classes = 'mdl-layout__header'
+		- @layout_class = 'mdl-layout--fixed-header'
 	-else
-		- @layout_classes = 'mdl-layout mdl-js-layout'
-		- @header_classes = 'mdl-layout__header mdl-layout__header--scroll'
-	.mainLayout{class: "#{@layout_classes}"}
-		%header{class: "#{@header_classes}"}
+		- @header_class = 'mdl-layout__header--scroll'
+	.mainLayout.mdl-layout.mdl-js-layout{class: "#{@layout_class unless @layout_class.nil?}"}
+		%header.mdl-layout__header{class: "#{@header_class unless @header_class.nil?}"}
 			.mdl-layout__header-row
 				%a#logo{href: '/'}
 					= image_tag('logo.png')

@@ -3,7 +3,6 @@ class AdminController < ApplicationController
 
 	def index
 		# Хэш данных конкретного товара
-		@item = Item.new.get("bedrooms", 2)
 		render layout: 'layouts/managment'
 	end
 end
