@@ -10,11 +10,11 @@ class Item
 		return JSON.parse(Items.get(category_id), "symbolize_names": true) unless (Items.get(category_id)) == nil
 	end
 
-	def get(category_id, item_id, format)
+	def get(category_id, item_id)
 		# Метод принимает идентификатор товара,
 		# выбирает из него хэш по значению ключа идентификатора товара
 		# и возвращает его
-		get_all(category_id).each do |item|
+		get_all(category_id, "object").each do |item|
 			return item if item.values_at(:id)[0] == item_id
 		end
 	end

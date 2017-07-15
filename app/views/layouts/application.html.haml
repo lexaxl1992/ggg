@@ -1,56 +1,54 @@
 !!! 5
 %title ДЮК Мебель
 = csrf_meta_tags
-%meta{name:'turbolinks-cache-control', content:'no-cache'}
-%meta{name:'viewport', content:'width=device-width, initial-scale=1.0, minimum-scale=1.0'}
-= favicon_link_tag '/favicon.ico', rel: 'shortcut icon'
-= render 'layouts/assets'
+%meta{name:"turbolinks-cache-control", content:"no-cache"}
+%meta{name:"viewport", content:"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
+= favicon_link_tag "/favicon.ico", rel:"shortcut icon"
+= render "layouts/assets"
 
 %body#event_handler
-	- unless params[:controller] == 'construct'
-		- @layout_class = 'mdl-layout--fixed-header'
+	- unless params[:action] == "constructor"
+		- @layout_class = "mdl-layout--fixed-header"
 	-else
-		- @header_class = 'mdl-layout__header--scroll'
-	.mainLayout.mdl-layout.mdl-js-layout{class: "#{@layout_class unless @layout_class.nil?}"}
-		%header.mdl-layout__header{class: "#{@header_class unless @header_class.nil?}"}
+		- @header_class = "mdl-layout__header--scroll"
+	.mainLayout.mdl-layout.mdl-js-layout{class:"#{@layout_class unless @layout_class.nil?}"}
+		%header.mdl-layout__header{class:"#{@header_class unless @header_class.nil?}"}
 			.mdl-layout__header-row
-				%a#logo{href: '/'}
-					= image_tag('logo.png')
+				%a#logo{href:"/"}
+					= image_tag("logo.png")
 				%span.mdl-layout-title
 					%h4
-						%a{ href: 'tel:+79181451080' }
-							%i.material-icons= 'call'
+						%a{ href:"tel:+79181451080" }
+							%i.material-icons= "call"
 							8 918 145 1080
 					%small
-						%i.material-icons= 'location_on'
+						%i.material-icons= "location_on"
 						Краснодар
 				.mdl-layout-spacer
 
 				%nav.mdl-navigation.mdl-layout--large-screen-only
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
-						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for: 'catalogueButton'}
+						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
 							- $categories.each do |category|
 								- if category[:visible] == true
-									%a.mdl-menu__item{href:"/##{category[:id]}", 'data-turbolinks': 'false'}= category[:label]
-					#aboutMenu
-						%a#aboutButton.mdl-button.mdl-js-button.mdl-button--hover= "О компании"
-						%ul#aboutList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{ for: 'aboutButton' }
-							= link_to "Всё о мебели", '/about', class: 'mdl-menu__item'
-					= link_to "3D-конструктор", '/constructor/#prodboard-container', class: 'mdl-button mdl-js-button mdl-js-ripple-effect', 'data-turbolinks': 'false'
+									%a.mdl-menu__item{href:"/##{category[:id]}", "data-turbolinks":"false"}= category[:label]
+					- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
+					= link_to "Всё о мебели","/#about","class":"#{classes}","data-turbolinks":"false"
+					= link_to "3D-конструктор","/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false"
 
 				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
 					%i.material-icons more_vert
-				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: 'menu-lower-right' }
-					= link_to "3D-конструктор", '/constructor/#prodboard-container', class: 'mdl-menu__item'
-					= link_to "О компании", '/about', class: 'mdl-menu__item'
+				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for:"menu-lower-right" }
+					= link_to "3D-конструктор", "/constructor/#prodboard-container", class:"mdl-menu__item"
+					= link_to "О компании", "/about", class:"mdl-menu__item"
 
 		%main.mdl-layout__content
-			- unless [params[:controller],params[:action]] == ["construct", "index"]
+			- unless params[:action] == "constructor"
 				#slider.mdl-shadow--2dp
-					= image_tag('carousel/1.jpg')
-					= image_tag('carousel/2.jpg')
-					= image_tag('carousel/3.jpg')
+					= image_tag("carousel/1.jpg")
+					= image_tag("carousel/2.jpg")
+					= image_tag("carousel/3.jpg")
 
 			= yield
 

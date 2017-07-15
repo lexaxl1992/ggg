@@ -23,7 +23,7 @@ class Category
 	# Метод принимает идентификатор категории и формат представления ответа,
 	def get(category_id, format)
 		# получает хэш данных всех категорий вызовом метода get_all,
-		get_all.each do |category|
+		get_all("object").each do |category|
 			# и если данные запрошены в виде руби-объекта,
 			if format == "object"
 				# то выбирает из него хэш по значению ключа идентификатора категории
@@ -33,7 +33,7 @@ class Category
 			elsif format == "json"
 				# то выбирает из него хэш по значению ключа идентификатора категории
 				# и возвращает его в виде json-документа
-				return JSON.pretty_generate(category.to_json) if category.values_at(:id)[0] == category_id
+				return category.to_json if category.values_at(:id)[0] == category_id
 			end
 		end
 	end

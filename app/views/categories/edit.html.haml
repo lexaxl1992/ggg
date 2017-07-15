@@ -1,0 +1,13 @@
+%h4.mdl-dialog__title Редактирование категории
+%form{"action":"/admin/categories", "data-remote":"true", "method":"post"}
+  .mdl-dialog__content
+    .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+      %input#label.mdl-textfield__input{"name":"category[label]", "type":"text"}
+      %label.mdl-textfield__label{"for":"label"}= "Название категории"
+    %label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"visible"}
+      %input#visible.mdl-checkbox__input{"checked":"checked", "name":"category[visible]", "type":"checkbox"}
+      %span.mdl-checkbox__label Отображать в каталоге
+  .mdl-dialog__actions
+    %input.mdl-button.close{"type":"submit", "value":"Сохранить"}
+    %button.mdl-button{"type":"button"}= "Свернуть"
+    %button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Выйти"

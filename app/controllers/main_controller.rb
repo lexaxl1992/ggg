@@ -3,10 +3,6 @@ class MainController < ApplicationController
 		render 'index'
 	end
 
-	def about
-		render 'about'
-	end
-
 	def construct
 		render 'constructor'
 	end

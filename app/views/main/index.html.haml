@@ -1,18 +1,18 @@
-%ul#catalogue.mdl-shadow--2dp{ "data-collapsible": "accordion"}
+%ul#catalogue.mdl-shadow--2dp{ "data-collapsible":"accordion"}
 	- $categories.each do |category|
 		- if category[:visible] == true
 			- items = Item.new.get_all(category[:id], "object")
-			%li{"id": "#{category[:id]}"}
+			%li{"id":"#{category[:id]}"}
 				.adaptive_header.collapsible-header
 					.title-wrapper
-						%i.custom-icons{"style": "background-image: url(\"#{category[:icon]}\")"}
+						%i.custom-icons{"style":"background-image: url(\"#{category[:icon]}\")"}
 						= category[:label]
 				%section.collapsible-body.mdl-color--grey-850
 					- unless items == nil
 						.owl-carousel.owl-theme
 							- items.each do |item|
-								%figure.item.mdl-shadow--2dp.mdl-color--grey-900{"id": "#{item[:id]}"}
-									%img.owl-lazy{"data-src": "#{item[:thumbnail]}"}
+								%figure.item.mdl-shadow--2dp.mdl-color--grey-900{"id":"#{item[:id]}"}
+									%img.owl-lazy{"data-src":"#{item[:thumbnail]}"}
 									%figcaption
 										%span.name= item[:name]
 										%span.price= item[:price][:current].to_s + " ₽"
