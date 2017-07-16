@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'uglifier', '>= 1.3.0'
 gem 'json-minify'
 # GENERATORS
-gem 'hashids'
+gem 'digest-crc'
 # PREPROCESSORS
 gem 'haml'
 gem 'sass-rails'
@@ -24,6 +24,7 @@ gem 'coffee-rails'
 # DATABASE
 gem 'redis'
 gem 'ohm'
+gem 'ohm-contrib'
 #gem 'sqlite3', platforms: :ruby
 #gem 'jdbc-sqlite3', platforms: :jruby
 # JS ENGINE

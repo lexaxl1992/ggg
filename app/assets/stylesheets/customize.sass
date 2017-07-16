@@ -126,6 +126,20 @@
 ul#catalogue
 	margin: 8px 0 0
 	padding: 0 0 6px
+	.mdl-button
+		color: #FFF
+	.no_categories, .no_items, .add_category
+		display: flex
+		flex-direction: column
+		align-items: center
+		h4
+			margin: 0
+			padding: 64px 0
+			text-align: center
+		.mdl-button
+			margin-bottom: 64px
+	.add_category .mdl-button
+		margin: 32px 0
 	@media screen and (min-width: 1024px)
 		padding: 0 0 1px
 	li
@@ -174,15 +188,6 @@ ul#catalogue
 				margin-bottom: 70px
 				.slick-dots
 					margin-bottom: 0px !important
-			h4.no_items
-				margin: 0
-				padding: 64px 0
-				text-align: center
- 
-#about
-	padding: 25px
-	p
-		font-size: 20px
 
 .owl-dots
 	display: block !important

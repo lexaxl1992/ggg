@@ -1,9 +1,9 @@
 class MainController < ApplicationController
 	def index
+		@items = Item.all
 		render 'index'
 	end
 
-	def construct
-		render 'constructor'
+	def constructor
 	end
 end

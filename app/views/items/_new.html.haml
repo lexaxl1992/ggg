@@ -1,0 +1,15 @@
+%h4.mdl-dialog__title= "Создание товара"
+= form_with("scope":"item", "url":items_path) do |field|
+	.mdl-dialog__content
+
+		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+			= field.text_field :name, "class":"mdl-textfield__input"
+			%label.mdl-textfield__label{"for":"label"}= "Название товара"
+
+		%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"visibility"}
+			= field.check_box :visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked":true
+			%span.mdl-checkbox__label= "Модульность"
+
+	.mdl-dialog__actions
+		%input.mdl-button.close{"type":"submit", "value":"Сохранить"}
+		%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

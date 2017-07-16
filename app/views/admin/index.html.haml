@@ -1,28 +1,40 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
-	- $categories.each do |category|
-		- if category[:visible] == true
-			- category_json = Category.new.get(category[:id], "json")
-			- items = Item.new.get_all(category[:id], "object")
-			%li{"id":"#{category[:id]}","data-json":"#{category_json}"}
+	- unless $categories.to_a.length == 0
+
+		- $categories.each do |category|
+			- classes = "unvisible" if (category.visibility == "0")
+			%li{"id":"#{category.index}", "class":"#{classes}"}
 				.adaptive_header.collapsible-header
 					.title-wrapper
-						%i.custom-icons{"style":"background-image: url(\"#{category[:icon]}\")"}
-						= category[:label]
+						%i.custom-icons{"style":"background-image: url(\"#{category.icon}\")"}
+						= category.label
+						
 				%section.collapsible-body.mdl-color--grey-850
-					- unless items == nil
+
+					- unless category.items.to_a.length == 0
 						.owl-carousel.owl-theme
-							- items.each do |item|
+							- category.items.each do |item|
 								- classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
-								%figure{"class":"#{classes}","id":"#{item[:id]}","data-for":"edit_#{item[:id]}","onclick":"call_dialog(event)"}
-									%img.owl-lazy{"data-src":"#{item[:thumbnail]}"}
+								%figure{"class":"#{classes}","id":"#{item.id}","data-for":"edit_#{item.id}","onclick":"call_dialog(event)"}
+									%img.owl-lazy{"data-src":"#{item.thumbnail}"}
 									%figcaption
-										%span.name= item[:name]
-										%span.price= item[:price][:current].to_s + " ₽"
+										%span.name= item.name
+										%span.price= item.price.to_s + " ₽"
+
 					- else
-						%h4.no_items Нет товаров
+						.no_items
+							%h4= "Нет товаров"
+
 					.buttons-wrapper
-						- classes = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons call_dialog"
-						%button{"class":"#{classes}","data-for":"new_item","onclick":"call_dialog(event)","title":"Добавить товар"}
-							add
-						%button{"class":"#{classes}","data-for":"edit_#{category[:id]}","onclick":"call_dialog(event)","title":"Редактировать категорию"}
-							edit
+						- classes = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+						= link_to "add", "/items/new","title":"Добавить товар", "remote":true, "method":"get", "class":"#{classes}"
+						= link_to "delete", "/categories/#{category.id}", "title":"Удалить категорию", "remote":true, "method":"delete", "class":"#{classes}", "data-confirm": "Вы уверены, что хотите удалить категорию \"#{category.label}\"?"
+						= link_to "edit", "/categories/#{category.id}/edit", "title":"Редактировать категорию", "remote":true, "method":"get", "class":"#{classes}"
+
+	- else
+		.no_categories
+			%h4= "Нет категорий"
+
+	.add_category
+		- classes = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+		= link_to "Добавить категорию", "/categories/new", "remote": true, "method": "get", "class":"#{classes}"

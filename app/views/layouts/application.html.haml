@@ -30,9 +30,9 @@
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-							- $categories.each do |category|
-								- if category[:visible] == true
-									%a.mdl-menu__item{href:"/##{category[:id]}", "data-turbolinks":"false"}= category[:label]
+							- $categories.to_a.each do |category|
+								- if category.visibility == "1"
+									%a.mdl-menu__item{href:"/##{category.index}", "data-turbolinks":"false"}= category.label
 					- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
 					= link_to "Всё о мебели","/#about","class":"#{classes}","data-turbolinks":"false"
 					= link_to "3D-конструктор","/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false"

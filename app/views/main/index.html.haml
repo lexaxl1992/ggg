@@ -1,20 +1,31 @@
-%ul#catalogue.mdl-shadow--2dp{ "data-collapsible":"accordion"}
-	- $categories.each do |category|
-		- if category[:visible] == true
-			- items = Item.new.get_all(category[:id], "object")
-			%li{"id":"#{category[:id]}"}
-				.adaptive_header.collapsible-header
-					.title-wrapper
-						%i.custom-icons{"style":"background-image: url(\"#{category[:icon]}\")"}
-						= category[:label]
-				%section.collapsible-body.mdl-color--grey-850
-					- unless items == nil
-						.owl-carousel.owl-theme
-							- items.each do |item|
-								%figure.item.mdl-shadow--2dp.mdl-color--grey-900{"id":"#{item[:id]}"}
-									%img.owl-lazy{"data-src":"#{item[:thumbnail]}"}
-									%figcaption
-										%span.name= item[:name]
-										%span.price= item[:price][:current].to_s + " ₽"
-					- else
-						%h4.no_items Нет товаров
+%ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
+	- unless $categories.to_a.length == 0
+
+		- $categories.each do |category|
+			- if category.visibility == "1"
+
+				%li{"id":"#{category.index}"}
+					.adaptive_header.collapsible-header
+						.title-wrapper
+							%i.custom-icons{"style":"background-image: url(\"#{category.icon}\")"}
+							= category.label
+
+					%section.collapsible-body.mdl-color--grey-850
+
+						- unless category.items.to_a.length == 0
+							.owl-carousel.owl-theme
+								- category.items.each do |item|
+									- classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
+									%figure{"class":"#{classes}","id":"#{item.id}","data-for":"edit_#{item.id}","onclick":"call_dialog(event)"}
+										%img.owl-lazy{"data-src":"#{item.thumbnail}"}
+										%figcaption
+											%span.name= item.name
+											%span.price= item.price.to_s + " ₽"
+
+						- else
+							.no_items
+								%h4= "Нет товаров"
+
+	- else
+		.no_categories
+			%h4= "Нет категорий"

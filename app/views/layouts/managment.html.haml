@@ -22,14 +22,13 @@
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-							- $categories.each do |category|
-								- if category[:visible] == true
-									%a.mdl-menu__item{href:"/admin/##{category[:id]}", "data-turbolinks":"false"}= category[:label]
+							- $categories.to_a.each do |category|
+								%a.mdl-menu__item{href:"/admin/##{category.index}", "data-turbolinks":"false"}= category.label
 					= link_to "Выход", "/", class:"mdl-button mdl-js-button mdl-js-ripple-effect"
 
 				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
 					%i.material-icons more_vert
-				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for:"menu-lower-right" }
+				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
 					= link_to "Выход", "/", class:"mdl-button mdl-js-button mdl-js-ripple-effect"
 
 		%main.mdl-layout__content

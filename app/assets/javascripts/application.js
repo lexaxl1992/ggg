@@ -17,6 +17,6 @@ document.addEventListener('turbolinks:load', function() {
 	bind_carousel()
 	bind_adaptivity()
 	bind_polyfills()
-	bind_modal()
+	bind_report()
 	aload()
 })
