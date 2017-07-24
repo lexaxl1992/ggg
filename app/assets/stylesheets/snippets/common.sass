@@ -19,6 +19,10 @@ i.custom-icons
 dialog.mdl-dialog
 	padding: 0
 	font-family: 'Roboto'
+	@media screen and (max-width: 480px)
+		top: 20px
+	@media screen and (min-width: 480px) and (max-width: 800px)
+		top: 60px
 	.dialog-wrapper
 		padding: 1em
 	.mdl-dialog__content
@@ -37,6 +41,8 @@ dialog.mdl-dialog
 		.mdl-dialog__content
 			display: flex
 			padding: 32px 24px 24px 24px
+			@media screen and (max-width: 800px)
+				flex-direction: column
 			section
 				display: inherit
 				flex-direction: column
