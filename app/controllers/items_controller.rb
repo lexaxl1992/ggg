@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   def show
     @item = Item[params[:id]]
+    respond_to do |format|
+			format.js
+		end
   end
 
 	def new

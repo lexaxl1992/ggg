@@ -13,7 +13,7 @@ document.addEventListener('turbolinks:load', function() {
 	componentHandler.upgradeDom()
 	$("#slider").slick({ dots: true })
 	$("#catalogue").collapsible()
-
+	bind_dialogs()
 	bind_carousel()
 	bind_adaptivity()
 	bind_polyfills()

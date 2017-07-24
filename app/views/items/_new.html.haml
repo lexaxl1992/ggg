@@ -1,30 +1,30 @@
-%h4.mdl-dialog__title= "Создание товара"
-= form_with("scope":"item", "url":items_path) do |form|
-	.mdl-dialog__content
-		= hidden_field(:category_id, nil, "value":params[:category])
+.dialog-wrapper
+	%h4.mdl-dialog__title= "Создание товара"
+	= form_with("scope":"item", "url":items_path) do |form|
+		.mdl-dialog__content
+			= hidden_field(:category_id, nil, "value":params[:category])
 
-		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_field(:name, "class":"mdl-textfield__input")
-			%label.mdl-textfield__label{"for":"name"}= "Название"
+			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+				= form.text_field(:name, "class":"mdl-textfield__input")
+				%label.mdl-textfield__label{"for":"name"}= "Название"
 
-		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_field(:price, "class":"mdl-textfield__input")
-			%label.mdl-textfield__label{"for":"price"}= "Цена"
+			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+				= form.text_field(:price, "class":"mdl-textfield__input")
+				%label.mdl-textfield__label{"for":"price"}= "Цена"
 
-		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_field(:thumbnail, "class":"mdl-textfield__input")
-			%label.mdl-textfield__label{"for":"thumbnail"}= "Миниатюрное изображение"
+			%p Здесь будет поле загрузки изображения-миниатюры
 
-		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_area(:description, "class":"mdl-textfield__input", "rows":4)
-			%label.mdl-textfield__label{"for":"description"}= "Описание"
+			%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"modularity"}
+				= form.check_box(:modularity, "id":"modularity", "class":"mdl-checkbox__input", "checked":true)
+				%span.mdl-checkbox__label= "Модульность"
 
-		%p Здесь будет асинхронная заливка фотографий товара
+			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+				= form.text_area(:description, "class":"mdl-textfield__input", "rows":4)
+				%label.mdl-textfield__label{"for":"description"}= "Описание"
 
-		%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"modularity"}
-			= form.check_box(:modularity, "id":"modularity", "class":"mdl-checkbox__input", "checked":true)
-			%span.mdl-checkbox__label= "Модульность"
+			%p Здесь будет поле загрузки фотографий товара
+			%p Здесь будет поле загрузки дополнительных изображений
 
-	.mdl-dialog__actions
-		%input.mdl-button.close{"type":"submit", "value":"Сохранить"}
-		%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"
+		.mdl-dialog__actions
+			%input.mdl-button.close{"type":"submit", "value":"Сохранить"}
+			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

@@ -1,0 +1,20 @@
+.dialog-wrapper
+	- just_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+
+	.mdl-dialog__actions
+		%button{"class":"#{just_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
+
+	%h4.mdl-dialog__title= @item.name
+	.mdl-dialog__content
+
+		%section.left
+			%p Здесь будет карусель с фотографиями товара
+			%p Здесь будет карусель с дополнительными изображениями
+
+		%section.right
+			%p= "Тип: модульный" if to_bool(@item.modularity)
+			%p= "Цена: "+@item.price+" рублей"
+			%p= "Описание:"
+			%p= @item.description
+
+

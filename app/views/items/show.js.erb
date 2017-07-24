@@ -1,0 +1,8 @@
+var dialog = document.createElement('dialog')
+dialog.className = "mdl-dialog show_item"
+dialog.id = "show_item"
+dialog.innerHTML = "<%= j render 'show'%>"
+document.body.appendChild(dialog)
+dialogPolyfill.registerDialog(dialog)
+componentHandler.upgradeDom()
+dialog.showModal()
