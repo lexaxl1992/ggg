@@ -3,15 +3,15 @@
 	.mdl-dialog__content
 
 		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_field :label, "class":"mdl-textfield__input"
+			= form.text_field(:label, "class":"mdl-textfield__input")
 			%label.mdl-textfield__label{"for":"label"}= "Название"
 
 		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_field :icon, "class":"mdl-textfield__input"
+			= form.text_field(:icon, "class":"mdl-textfield__input")
 			%label.mdl-textfield__label{"for":"icon"}= "Иконка"
 
 		%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"visibility"}
-			= form.check_box :visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked":true
+			= form.check_box(:visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked":true)
 			%span.mdl-checkbox__label Отображать в каталоге
 
 	.mdl-dialog__actions

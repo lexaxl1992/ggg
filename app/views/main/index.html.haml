@@ -2,7 +2,7 @@
 	- if $categories.size > 0
 
 		- $categories.each do |category|
-			- if category.visibility == "1"
+			- if to_bool(category.visibility)
 
 				%li{"id":"#{category.index}"}
 					.adaptive_header.collapsible-header

@@ -2,12 +2,12 @@
 	- if $categories.size > 0
 
 		- $categories.each do |category|
-			- classes = "unvisible" if (category.visibility == "0")
-			%li{"id":"#{category.index}", "class":"#{classes}"}
+			%li{"id":"#{category.index}"}
 				.adaptive_header.collapsible-header
 					.title-wrapper
 						%i.custom-icons{"style":"background-image: url(\"#{category.icon}\")"}
 						= category.label
+						= "(Категория спрятана)" unless to_bool(category.visibility)
 						
 				%section.collapsible-body.mdl-color--grey-850
 
@@ -41,3 +41,4 @@
 	.add_category
 		- classes = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
 		= link_to "Добавить категорию", "/categories/new", "remote": true, "method": "get", "class":"#{classes}"
+
