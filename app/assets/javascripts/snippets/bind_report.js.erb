@@ -1,5 +1,5 @@
 function bind_report() {
 	document.body.addEventListener('ajax:error', function() {
-		alert("<%= p $default_error_msg %>")
+		alert("<%= p $custom_error_msg %>")
 	})
 }

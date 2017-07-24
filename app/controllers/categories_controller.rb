@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
 			if @category.save
 				format.js
 			else
-				format.html {notice:"При записи данных произошла ошибка."}
+				format.html {notice:$custom_error_msg}
 			end
 		end
 	end
@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
 			if @category.save
 				format.js
 			else
-				format.html {notice:"При записи данных произошла ошибка."}
+				format.html {notice:$custom_error_msg}
 			end
 		end
 	end

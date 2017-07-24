@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
 			if @item.save
 				format.js
 			else
-				format.html {notice:$default_error_msg}
+				format.html {notice:$custom_error_msg}
 			end
 		end
 	end
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 			if @item.save
 				format.js
 			else
-				format.html {notice:$default_error_msg}
+				format.html {notice:$custom_error_msg}
 			end
 		end
 	end
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
 			if @item.delete
 				format.js
 			else
-				format.html {notice:$default_error_msg}
+				format.html {notice:$custom_error_msg}
 			end
 		end
 	end
