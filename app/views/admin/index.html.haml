@@ -1,5 +1,5 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
-	- unless $categories.to_a.length == 0
+	- if $categories.size > 0
 
 		- $categories.each do |category|
 			- classes = "unvisible" if (category.visibility == "0")
@@ -11,15 +11,18 @@
 						
 				%section.collapsible-body.mdl-color--grey-850
 
-					- unless category.items.to_a.length == 0
+					- if category.items.size > 0
 						.owl-carousel.owl-theme
 							- category.items.each do |item|
 								- classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
-								%figure{"class":"#{classes}","id":"#{item.id}","data-for":"edit_#{item.id}","onclick":"call_dialog(event)"}
+								%figure{"class":"#{classes}","id":"item_#{item.id}","data-for":"edit_item","data-params":"category=#{category.index}"}
 									%img.owl-lazy{"data-src":"#{item.thumbnail}"}
 									%figcaption
 										%span.name= item.name
 										%span.price= item.price.to_s + " ₽"
+										- classes = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+										= link_to "delete", "/items/#{item.id}", "title":"Удалить товар", "remote":true, "method":"delete", "class":"#{classes}", "data-confirm": "Вы уверены, что хотите удалить товар \"#{item.name}\"?","data-params":"category_id=#{category.id}"
+										= link_to "edit", "/items/#{item.id}/edit", "title":"Редактировать товар", "remote":true, "method":"get", "class":"#{classes}"
 
 					- else
 						.no_items
@@ -27,7 +30,7 @@
 
 					.buttons-wrapper
 						- classes = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
-						= link_to "add", "/items/new","title":"Добавить товар", "remote":true, "method":"get", "class":"#{classes}"
+						= link_to "add", "/items/new","title":"Добавить товар", "remote":true, "method":"get", "class":"#{classes}","data-params":"category=#{category.id}"
 						= link_to "delete", "/categories/#{category.id}", "title":"Удалить категорию", "remote":true, "method":"delete", "class":"#{classes}", "data-confirm": "Вы уверены, что хотите удалить категорию \"#{category.label}\"?"
 						= link_to "edit", "/categories/#{category.id}/edit", "title":"Редактировать категорию", "remote":true, "method":"get", "class":"#{classes}"
 

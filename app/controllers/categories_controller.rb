@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 	def show
-		@category = Category.find(params[:id])
+		@category = Category[params[:id]]
 	end
 
 	def new
@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
 	end
 
 	def edit
+		@category = Category[params[:id]]
 		respond_to do |format|
 			format.js
 		end
@@ -24,13 +25,21 @@ class CategoriesController < ApplicationController
 			if @category.save
 				format.js
 			else
-				format.html {render action:"new", notice:"При записи данных произошла ошибка."}
+				format.html {notice:"При записи данных произошла ошибка."}
 			end
 		end
 	end
 
 	def update
-
+		@category = Category[params[:category_id][0]]
+		@category.update(params[:category])
+		respond_to do |format|
+			if @category.save
+				format.js
+			else
+				format.html {notice:"При записи данных произошла ошибка."}
+			end
+		end
 	end
 
 	def destroy

@@ -1,5 +1,5 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
-	- unless $categories.to_a.length == 0
+	- if $categories.size > 0
 
 		- $categories.each do |category|
 			- if category.visibility == "1"
@@ -12,11 +12,11 @@
 
 					%section.collapsible-body.mdl-color--grey-850
 
-						- unless category.items.to_a.length == 0
+						- if category.items.size > 0
 							.owl-carousel.owl-theme
 								- category.items.each do |item|
 									- classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
-									%figure{"class":"#{classes}","id":"#{item.id}","data-for":"edit_#{item.id}","onclick":"call_dialog(event)"}
+									%figure{"class":"#{classes}","id":"#{item.id}","onclick":"call_dialog(event)"}
 										%img.owl-lazy{"data-src":"#{item.thumbnail}"}
 										%figcaption
 											%span.name= item.name

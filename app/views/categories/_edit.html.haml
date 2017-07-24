@@ -1,17 +1,18 @@
-%h4.mdl-dialog__title= "Создание категории"
-= form_with("scope":"category", "url":categories_path) do |form|
+%h4.mdl-dialog__title= "Редактирование категории"
+= form_with("scope":"category", "url":category_path, "method":"patch") do |form|
 	.mdl-dialog__content
+		= hidden_field :category_id, nil, "value":params[:id]
 
 		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_field :label, "class":"mdl-textfield__input"
+			= form.text_field :label, "class":"mdl-textfield__input", "value": @category.label
 			%label.mdl-textfield__label{"for":"label"}= "Название"
 
 		.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-			= form.text_field :icon, "class":"mdl-textfield__input"
+			= form.text_field :icon, "class":"mdl-textfield__input", "value": @category.icon
 			%label.mdl-textfield__label{"for":"icon"}= "Иконка"
 
 		%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"visibility"}
-			= form.check_box :visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked":true
+			= form.check_box :visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked": to_bool(@category.visibility)
 			%span.mdl-checkbox__label Отображать в каталоге
 
 	.mdl-dialog__actions
