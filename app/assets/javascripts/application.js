@@ -1,22 +1,20 @@
+//= require rails-ujs
+//= require_tree ./vue
 //= require jquery
 //= require jquery.turbolinks
-//= require rails-ujs
+//= require turbolinks
 //= require_tree ./polyfills
 //= require jquery.slick
 //= require ./mdl/main
 //= require ./materialize/jquery.easing.1.3
 //= require ./materialize/collapsible
-//= require_tree ./snippets
-//= require turbolinks
+//= require_tree ./init
 
 document.addEventListener('turbolinks:load', function() {
 	componentHandler.upgradeDom()
-	$("#slider").slick({ dots: true })
-	$("#catalogue").collapsible()
-	bind_dialogs()
-	bind_carousel()
-	bind_adaptivity()
-	bind_polyfills()
-	bind_report()
-	aload()
+	init_sliders()
+	init_collapsible()
+	init_modalPolyfills()
+	bind_ajaxReport()
+	//aload()
 })

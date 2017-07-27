@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 	get '/admin', to: 'admin#index'
 	resources :categories
 	resources :items
+	resources :images
 end

@@ -17,10 +17,22 @@ class CategoriesController < ApplicationController
 	end
 
 	def create
-		# генерация индекса категории
-		data = params[:category].merge({"index": Digest::CRC32.hexdigest(params[:category][:label])})
-		@category = Category.create(data)
+		# Генерация индекса категории
+		category_params = params[:category].merge({"index": Digest::CRC32.hexdigest(params[:category][:label])})
+
+		# Сохранение загруженной иконки
+		unless category_params[:icon] == nil
+			uploaded_file = category_params[:icon]
+	    File.open(Rails.root.join('public', 'uploads', 'categories', category_params[:index]+".png"), 'wb') do |file|
+	      file.write(uploaded_file.read)
+	    end
+	    # и запись пути к ней в базу данных
+			lambda = category_params.merge({"icon": "/uploads/categories/"+category_params[:index]+".png"})
+		end
+
+		@category = Category.create(lambda)
 		@category.save
+
 		respond_to do |format|
 			if @category.save
 				format.js

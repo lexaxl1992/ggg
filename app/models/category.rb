@@ -1,7 +1,7 @@
 class Category < Ohm::Model
   attribute  :index
   attribute  :label
-  attribute  :icon #"/uploads/categories/imgname"
+  attribute  :icon
   attribute  :visibility
 
   collection :items, :Item
