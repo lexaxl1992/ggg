@@ -20,7 +20,21 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		@item = Item.create(params[:item])
+		lambda = params[:item]
+		item_params = lambda
+
+		new_fileName = Digest::CRC32.hexdigest(item_params[:name])+".png"
+		# Сохранение загруженной миниатюры
+		unless item_params[:thumbnail] == nil
+			uploaded_file = item_params[:thumbnail]
+	    File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
+	      file.write(uploaded_file.read)
+	    end
+	    # и запись пути к ней в базу данных
+			lambda = item_params.merge({"thumbnail": "/uploads/items/thumbs/"+new_fileName})
+		end
+
+		@item = Item.create(lambda)
 		@item.update(category: Category[params[:category_id][0]])
 		respond_to do |format|
 			if @item.save

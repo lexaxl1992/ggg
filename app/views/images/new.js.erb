@@ -1,1 +1,2 @@
-document.getElementById("<%= j params[:div_id] %>").appendChild(document.createElement.innerHTML = "<%= j render 'new'%>")
+var form = document.createElement.innerHTML = "<%= j render 'new'%>"
+document.getElementById("<%= j params[:div_id] %>").insertBefore(form, null)

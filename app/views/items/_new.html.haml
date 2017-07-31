@@ -5,9 +5,9 @@
 	%section.new_files
 		.mdl-tabs.mdl-js-tabs
 			.mdl-tabs__tab-bar
-				- new_img_div_id = Digest::CRC32.hexdigest("div_"+Random.rand(1..100).to_s)
+				- new_img_div_id = "d_"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s)
 				%a.mdl-tabs__tab.is-active{ "href":"#{'#'+new_img_div_id}" }= "Изображения товара"
-				- new_pic_div_id = Digest::CRC32.hexdigest("div_"+Random.rand(1..100).to_s)
+				- new_pic_div_id = "d_"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s)
 				%a.mdl-tabs__tab{ "href":"#{'#'+new_pic_div_id}" }= "Дополнительные картинки"
 
 			.mdl-tabs__panel.is-active{"id":"#{new_img_div_id}"}
