@@ -3,7 +3,6 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require turbolinks
-//= require_tree ./polyfills
 //= require jquery.slick
 //= require ./mdl/main
 //= require ./materialize/jquery.easing.1.3

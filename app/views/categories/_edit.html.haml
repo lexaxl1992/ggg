@@ -12,7 +12,7 @@
 				= form.text_field(:icon, "class":"mdl-textfield__input", "value": @category.icon)
 				%label.mdl-textfield__label{"for":"icon"}= "Иконка"
 
-			%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"visibility"}
+			%label.mdl-checkbox.mdl-js-checkbox{"for":"visibility"}
 				= form.check_box(:visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked": to_bool(@category.visibility))
 				%span.mdl-checkbox__label Отображать в каталоге
 

@@ -18,7 +18,8 @@ class CategoriesController < ApplicationController
 
 	def create
 		# Генерация индекса категории
-		category_params = params[:category].merge({"index": Digest::CRC32.hexdigest(params[:category][:label])})
+		lambda = params[:category].merge({"index": Digest::CRC32.hexdigest(params[:category][:label])})
+		category_params = lambda
 
 		# Сохранение загруженной иконки
 		unless category_params[:icon] == nil
@@ -31,7 +32,6 @@ class CategoriesController < ApplicationController
 		end
 
 		@category = Category.create(lambda)
-		@category.save
 
 		respond_to do |format|
 			if @category.save

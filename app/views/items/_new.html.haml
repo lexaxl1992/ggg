@@ -1,5 +1,21 @@
 .dialog-wrapper
-	%h4.mdl-dialog__title= "Создание товара"
+	%h4.mdl-dialog__title= "Добавление товара"
+	- new_img_button = "mdl-button mdl-js-button mdl-button--raised"
+
+	%section.new_files
+		.mdl-tabs.mdl-js-tabs
+			.mdl-tabs__tab-bar
+				- new_img_div_id = Digest::CRC32.hexdigest("div_"+Random.rand(1..100).to_s)
+				%a.mdl-tabs__tab.is-active{ "href":"#{'#'+new_img_div_id}" }= "Изображения товара"
+				- new_pic_div_id = Digest::CRC32.hexdigest("div_"+Random.rand(1..100).to_s)
+				%a.mdl-tabs__tab{ "href":"#{'#'+new_pic_div_id}" }= "Дополнительные картинки"
+
+			.mdl-tabs__panel.is-active{"id":"#{new_img_div_id}"}
+				= link_to("Добавить изображение", "/images/new", "remote":true, "class":"#{new_img_button}", "data-params":"div_id=#{new_img_div_id}")
+
+			.mdl-tabs__panel{"id":"#{new_pic_div_id}"}
+				= link_to("Добавить картинку", "/pictures/new", "remote":true, "class":"#{new_img_button}", "data-params":"div_id=#{new_pic_div_id}")
+
 	= form_with("scope":"item", "url":items_path) do |form|
 		.mdl-dialog__content
 			= hidden_field(:category_id, nil, "value":params[:category])
@@ -12,9 +28,20 @@
 				= form.text_field(:price, "class":"mdl-textfield__input")
 				%label.mdl-textfield__label{"for":"price"}= "Цена"
 
-			%p Здесь будет поле загрузки изображения-миниатюры
+			%label= "Миниатюрное изображение (png, 188 x 178 px)"
+			%br
+			.file_input_div
+				.file_input
+					%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+						%i.material-icons= "attach_file"
+						= form.file_field(:thumbnail, "id":"file_input_file")
+				.file_input_text_div.mdl-textfield.mdl-js-textfield
+					%input#file_input_text.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+					%label.mdl-textfield__label{"for":"file_input_text"}
+			%br
+			%br
 
-			%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"modularity"}
+			%label.mdl-checkbox.mdl-js-checkbox{"for":"modularity"}
 				= form.check_box(:modularity, "id":"modularity", "class":"mdl-checkbox__input", "checked":true)
 				%span.mdl-checkbox__label= "Модульность"
 
@@ -22,9 +49,6 @@
 				= form.text_area(:description, "class":"mdl-textfield__input", "rows":4)
 				%label.mdl-textfield__label{"for":"description"}= "Описание"
 
-			%p Здесь будет поле загрузки фотографий товара
-			%p Здесь будет поле загрузки дополнительных изображений
-
 		.mdl-dialog__actions
-			%input.mdl-button.close{"type":"submit", "value":"Сохранить"}
+			= submit_tag("Сохранить", "class":"mdl-button close")
 			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

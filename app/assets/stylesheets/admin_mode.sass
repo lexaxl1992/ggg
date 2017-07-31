@@ -2,6 +2,24 @@
 	small
 		align-items: center !important
 
+.file_input_div
+	display: flex
+	align-items: center
+	.file_input_div
+		margin: auto
+		width: 250px
+		height: 40px
+	.file_input
+		float: left
+		input
+			display: none
+	.file_input_text_div
+		width: 200px
+		margin-top: -8px
+		margin-left: 5px
+		input
+			color: #000
+
 .buttons-wrapper
 	display: flex
 	justify-content: center
@@ -14,3 +32,24 @@
 
 .item .buttons-wrapper
 	margin-top: -60px
+
+section.new_files
+	display: flex
+	justify-content: space-around
+	margin: 24px
+	background-color: aliceblue
+	.mdl-tabs__tab-bar
+		justify-content: space-around
+	.mdl-tabs__panel
+		padding-bottom: 24px
+		form
+			margin-top: 24px
+			display: flex
+			flex-direction: column
+			align-items: center
+			input
+				margin-top: 10px
+
+.mdl-dialog__content
+	margin: 20px 24px 24px 24px
+	background-color: aliceblue

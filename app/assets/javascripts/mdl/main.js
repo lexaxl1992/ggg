@@ -9,3 +9,4 @@
 //= require ./components/ripple
 //= require ./components/tabs
 //= require ./components/textfield
+//= require ./custom/fileInput

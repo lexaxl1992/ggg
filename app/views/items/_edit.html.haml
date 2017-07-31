@@ -14,7 +14,7 @@
 
 			%p Здесь будет поле замены изображения-миниатюры
 
-			%label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect{"for":"modularity"}
+			%label.mdl-checkbox.mdl-js-checkbox{"for":"modularity"}
 				= form.check_box(:modularity, "id":"modularity", "class":"mdl-checkbox__input", "checked": to_bool(@item.modularity))
 				%span.mdl-checkbox__label= "Модульность"
 
@@ -26,5 +26,5 @@
 			%p Здесь будет поле замены дополнительных изображений
 
 		.mdl-dialog__actions
-			%input.mdl-button.close{"type":"submit", "value":"Сохранить"}
+			= submit_tag("Сохранить", class: "mdl-button close")
 			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"
