@@ -1,15 +1,24 @@
 .dialog-wrapper
-	- just_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+	- close_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
 	.mdl-dialog__actions
-		%button{"class":"#{just_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
+		%button{"class":"#{close_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
 
 	%h4.mdl-dialog__title= @item.name
 	.mdl-dialog__content
 
-		%section.left
-			%p Здесь будет карусель с фотографиями товара
-			%p Здесь будет карусель с дополнительными изображениями
+		- if @item.images.size > 0
+			%section.left
+				%p Набросок карусели с изображениями товара
+				.owl-carousel.owl-theme.show_itemImages
+					- @item.images.each do |image|
+						= image_tag(image.url)
+
+				- if @item.pictures.size > 0
+					%p Набросок карусели с дополнительными изображениями
+					.owl-carousel.owl-theme.show_itemImages
+						- @item.pictures.each do |picture|
+							= image_tag(picture.url)
 
 		%section.right
 			%p= "Тип: модульный" if to_bool(@item.modularity)

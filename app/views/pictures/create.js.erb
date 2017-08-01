@@ -2,8 +2,8 @@ var model_id = document.createElement('input')
 var entity = document.getElementById("<%= j params[:entity_id] %>")
 var item_form = entity.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('item_form')[0]
 entity.innerHTML = "<%= j render 'create' %>"
-model_id.id = "image_<%= j @model_id %>"
+model_id.id = "picture_<%= j @model_id %>"
 model_id.setAttribute("type", "hidden")
-model_id.setAttribute("name", "image_models[]")
+model_id.setAttribute("name", "picture_models[]")
 model_id.value = "<%= j @model_id %>"
 item_form.insertBefore(model_id, item_form.firstChild)

@@ -17,6 +17,8 @@ class ImagesController < ApplicationController
 		end
 
 		@image = Image.create("url": "/uploads/items/images/"+new_fileName)
+		@new_filePath = "/uploads/items/images/"+new_fileName
+		@model_id = @image.id
 
 		respond_to do |format|
 			if @image.save

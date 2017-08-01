@@ -1,6 +1,6 @@
 .dialog-wrapper
 	%h4.mdl-dialog__title= "Добавление товара"
-	- new_img_button = "mdl-button mdl-js-button mdl-button--raised"
+	- btn = "mdl-button mdl-js-button mdl-button--raised"
 
 	%section.new_files
 		.mdl-tabs.mdl-js-tabs
@@ -11,12 +11,16 @@
 				%a.mdl-tabs__tab{ "href":"#{'#'+new_pic_div_id}" }= "Дополнительные картинки"
 
 			.mdl-tabs__panel.is-active{"id":"#{new_img_div_id}"}
-				= link_to("Добавить изображение", "/images/new", "remote":true, "class":"#{new_img_button}", "data-params":"div_id=#{new_img_div_id}")
+				.entity-list
+				.button-wrapper
+					= link_to("Добавить изображение", "/images/new", "remote":true, "class":"#{btn}", "data-params":"div_id=#{new_img_div_id}")
 
 			.mdl-tabs__panel{"id":"#{new_pic_div_id}"}
-				= link_to("Добавить картинку", "/pictures/new", "remote":true, "class":"#{new_img_button}", "data-params":"div_id=#{new_pic_div_id}")
+				.entity-list
+				.button-wrapper
+					= link_to("Добавить картинку", "/pictures/new", "remote":true, "class":"#{btn}", "data-params":"div_id=#{new_pic_div_id}")
 
-	= form_with("scope":"item", "url":items_path) do |form|
+	= form_with("scope":"item", "url":items_path, "class":"item_form") do |form|
 		.mdl-dialog__content
 			= hidden_field(:category_id, nil, "value":params[:category])
 

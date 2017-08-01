@@ -36,6 +36,19 @@ class ItemsController < ApplicationController
 
 		@item = Item.create(lambda)
 		@item.update(category: Category[params[:category_id][0]])
+
+		unless params[:image_models] == nil
+			params[:image_models].each do |image_id|
+				Image[image_id].update(item: @item)
+			end
+		end
+
+		unless params[:picture_models] == nil
+			params[:picture_models].each do |picture_id|
+				Picture[picture_id].update(item: @item)
+			end
+		end
+
 		respond_to do |format|
 			if @item.save
 				format.js

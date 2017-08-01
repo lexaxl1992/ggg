@@ -41,15 +41,23 @@ section.new_files
 	.mdl-tabs__tab-bar
 		justify-content: space-around
 	.mdl-tabs__panel
-		padding-bottom: 24px
-		form
-			margin-top: 24px
+		.button-wrapper
+			display: flex
+			justify-content: center
+			padding: 24px 0
+		.entity-list
 			display: flex
 			flex-direction: column
-			align-items: center
-			input
-				margin-top: 10px
+			form
+				margin-top: 24px
+				display: flex
+				flex-direction: column
+				align-items: center
+				input
+					margin-top: 10px
 
 .mdl-dialog__content
 	margin: 20px 24px 24px 24px
 	background-color: aliceblue
+.show_item .mdl-dialog__content
+	background-color: #FFF
