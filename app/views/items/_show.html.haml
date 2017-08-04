@@ -1,10 +1,10 @@
 .dialog-wrapper
 	- close_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
-	.mdl-dialog__actions
+	.mdl-dialog__actions.top
 		%button{"class":"#{close_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
 
-	%h4.mdl-dialog__title= @item.name
+	%h2.my-dialog__title= @item.name
 	.mdl-dialog__content
 
 		- if @item.images.size > 0

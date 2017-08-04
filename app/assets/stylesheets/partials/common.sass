@@ -8,14 +8,16 @@ main
 .mdl-color--grey-850
 	background-color: rgb(53, 53, 53) !important
 
-.mdl-tabs__tab
+.mdl-button, .mdl-tabs__tab, input
 	outline: none
 
 .owl-dots
 	display: block !important
 
-.mdl-textfield__label
-	color: rgba(0, 0, 0, 0.70)
+.mdl-textfield
+	width: 100%
+	.mdl-textfield__label
+		color: rgba(0, 0, 0, 0.70)
 
 i.custom-icons
 	height: 32px
@@ -26,43 +28,50 @@ i.custom-icons
 dialog.mdl-dialog
 	padding: 0
 	font-family: 'Roboto'
-	overflow: auto
-	height: auto
-	input, textarea
-		color: #000
-	&.category_editor,&.item_editor
-		width: 100%
-		max-width: 800px
-		.mdl-textfield
-			width: 100%
+	height: 90vh
+	max-height: 800px
+	width: 90vw
+	max-width: 1200px
+	background: transparent
+	&::backdrop
+		background: rgba(0, 0, 0, 0.64)
 	@media screen and (max-width: 800px)
 		top: 0
 		height: 100vh !important
 		width: 100vw !important
 	.dialog-wrapper
-		padding: 1em
-		height: calc(100% - 2em)
-	.mdl-dialog__content
-		color: #000
-	&::backdrop
-		background: rgba(0, 0, 0, 0.64)
-	&.show_item
-		width: 90vw
-		max-width: 1200px
-		.mdl-dialog__content
-			display: flex
-	.dialog-wrapper
-		.mdl-dialog__title
+		padding: 0 24px
+		height: 100%
+		border-radius: 2px
+		background-color: #009688
+		overflow-y: auto
+		@media screen and (max-width: 800px)
+			padding: 12px
+		input.mdl-textfield__input, textarea
+			color: #000
+		.my-dialog__title
 			text-align: center
-		.mdl-dialog__title, .mdl-dialog__actions
-			padding: 0
+			padding: 52px 48px
+			margin: 0 -24px
+			color: #FFFFFF
+			background-color: #004D40
+		.dialog-component, .mdl-dialog__content
+			background-color: #FFFFFF
+			margin: 24px 0
+		.mdl-dialog__actions
+			background-color: transparent
+			padding: 0 0 24px 0
+			&.top
+				margin-bottom: -48px
+				margin-right: -24px
+				padding: 4px
 		.mdl-dialog__content
-			//display: flex
-			padding: 32px 24px 24px 24px
+			color: #000000
 			@media screen and (max-width: 800px)
+				display: flex
 				flex-direction: column
 			section
-				display: inherit
+				display: flex
 				flex-direction: column
 				&.left
 					flex: 3
@@ -70,8 +79,65 @@ dialog.mdl-dialog
 				&.right
 					flex: 2.5
 
-
 .mdl-layout__header
+	.mdl-layout__drawer-button
+		left: inherit !important
+		right: 0
+		i
+			font-size: 42px
+	.mdl-layout__header-row
+		justify-content: flex-start
+		padding: 0 !important
+		#logo
+			background-color: #FF6600
+			width: 140px
+			display: flex
+			justify-content: center
+			align-items: center
+			height: 118px
+			img
+				height: 110px
+			@media screen and (max-width: 1024px)
+				height: 52px
+				width: 80px
+				img
+					height: 50px
+		.mdl-layout-title
+			display: flex
+			flex-direction: column
+			align-items: center
+			margin: 24px 32px
+			letter-spacing: 0.01rem !important
+			@media screen and (min-width: 320px) and (max-width: 800px)
+				margin: 0 0 0 14px
+			@media screen and (max-width: 1024px)
+				flex-direction: row
+			h4
+				margin: 0
+				font-size: 25px
+				font-weight: 300
+				@media screen and (max-width: 319px)
+					display: none
+				@media screen and (max-width: 1024px)
+					font-size: 20px
+				a
+					text-decoration: none
+					color: #FFF
+					display: flex
+					i
+						align-self: center
+						margin: 0 10px 4px 0
+						@media screen and (max-width: 369px)
+							display: none
+			small
+				display: flex
+				align-items: flex-end
+				align-self: baseline
+				color: #FF6600
+				@media screen and (max-width: 479px)
+					display: none
+				@media screen and (max-width: 1024px)
+					margin-left: 15px
 	.mdl-menu__container
 		.mdl-menu__outline
 			background-color: #3A3A3A
@@ -224,7 +290,10 @@ ul#catalogue
 			img
 				border-radius: 2px
 				width: 188px
-				height: 178px
+				height: 164px
+				@media screen and (width: 320px)
+					width: 134px
+					height: 127px
 			figcaption
 				display: inherit
 				flex-direction: inherit
@@ -255,75 +324,6 @@ ul#catalogue
 
 						@media screen and (min-width: 320px) and (max-width: 400px)
 							font-size: 15px
-
-.mdl-layout__header
-	//background-color: #111111
-	.mdl-layout__drawer-button
-		left: inherit !important
-		right: 0
-		i
-			font-size: 42px
-	.mdl-layout__header-row
-		justify-content: flex-start
-		padding: 0 !important
-		#logo
-			background-color: #FF6600
-			width: 140px
-			display: flex
-			justify-content: center
-			align-items: center
-			height: 118px
-			img
-				height: 110px
-			@media screen and (max-width: 1024px)
-				height: 52px
-				width: 80px
-				img
-					height: 50px
-		.mdl-layout-title
-			display: flex
-			flex-direction: column
-			align-items: center
-			margin: 24px 32px
-			letter-spacing: 0.01rem !important
-			@media screen and (min-width: 320px) and (max-width: 800px)
-				margin: 0 0 0 14px
-			@media screen and (max-width: 1024px)
-				flex-direction: row
-			h4
-				margin: 0
-				font-size: 25px
-				font-weight: 300
-				@media screen and (max-width: 319px)
-					display: none
-				@media screen and (max-width: 1024px)
-					font-size: 20px
-				a
-					text-decoration: none
-					color: #FFF
-					display: flex
-					i
-						align-self: center
-						margin: 0 10px 4px 0
-						@media screen and (max-width: 369px)
-							display: none
-			small
-				display: flex
-				align-items: flex-end
-				align-self: baseline
-				color: #FF6600
-				@media screen and (max-width: 479px)
-					display: none
-				@media screen and (max-width: 1024px)
-					margin-left: 15px
-
-.category
-	width: auto !important
-	margin-bottom: 5px
-	padding: 20px
-	h2
-		font-size: 30px
-		color: #FFF !important
 
 footer
 	background-color: transparent !important

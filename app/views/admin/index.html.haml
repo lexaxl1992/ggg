@@ -11,13 +11,12 @@
 						= "(Категория спрятана)" unless to_bool(category.visibility)
 						
 				%section.collapsible-body.mdl-color--grey-850
-
 					- if category.items.size > 0
 						- item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
 						.owl-carousel.owl-theme.show_items
 							- category.items.each do |item|
-								%figure{"class":"#{item_classes}","id":"item_#{item.id}"}
-									%a{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
+								%figure{"class":"#{item_classes}", "id":"item_#{item.id}"}
+									%a{"href":"/items/#{item.id}", "data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
 										- unless item.thumbnail == nil
 											%img.owl-lazy{"data-src":"#{item.thumbnail}"}
 										- else

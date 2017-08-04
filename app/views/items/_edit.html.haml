@@ -1,5 +1,5 @@
 .dialog-wrapper
-	%h4.mdl-dialog__title= "Редактирование товара"
+	%h2.my-dialog__title= "Редактирование товара"
 	= form_with("scope":"item", "url":item_path, "method":"patch") do |form|
 		.mdl-dialog__content
 			= hidden_field(:item_id, nil, "value":params[:id])

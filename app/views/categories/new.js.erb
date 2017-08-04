@@ -1,7 +1,7 @@
 var dialog = document.createElement('dialog')
-dialog.className = "mdl-dialog category_editor"
-dialog.id = "new_category"
-dialog.innerHTML = "<%= j render 'new'%>"
+dialog.className = 'mdl-dialog adminDialog'
+dialog.id = '<%= j "Ox"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s) %>'
+dialog.innerHTML = '<%= j render "new"%>'
 document.body.appendChild(dialog)
 dialogPolyfill.registerDialog(dialog)
 componentHandler.upgradeDom()

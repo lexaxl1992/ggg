@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   end
 
 	def new
+		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s)
 		respond_to do |format|
 			format.js
 		end
@@ -37,15 +38,9 @@ class ItemsController < ApplicationController
 		@item = Item.create(lambda)
 		@item.update(category: Category[params[:category_id][0]])
 
-		unless params[:image_models] == nil
-			params[:image_models].each do |image_id|
+		unless params[:img_ids] == nil
+			params[:img_ids].each do |image_id|
 				Image[image_id].update(item: @item)
-			end
-		end
-
-		unless params[:picture_models] == nil
-			params[:picture_models].each do |picture_id|
-				Picture[picture_id].update(item: @item)
 			end
 		end
 

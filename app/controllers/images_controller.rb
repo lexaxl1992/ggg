@@ -3,22 +3,28 @@ class ImagesController < ApplicationController
 		@image = Image[params[:id]]
 	end
 
-	def new
-		respond_to do |format|
-			format.js
-		end
-	end
-
 	def create
-		uploadedFile = params[:file]
-		new_fileName = Digest::CRC32.hexdigest(uploadedFile.original_filename)+".png"
+		uploadedPhoto = params[:photo]
+
+		case uploadedPhoto.content_type
+			when "image/jpeg"
+				fileExtension = ".jpg"
+			when "image/png"
+				fileExtension = ".png"
+			when "image/gif"
+				fileExtension = ".gif"
+			else
+				fileExtension = ".undefined"
+		end
+
+		new_fileName = Digest::CRC32.hexdigest(uploadedPhoto.original_filename) + fileExtension
 		File.open(Rails.root.join('public', 'uploads', 'items', 'images', new_fileName), 'wb') do |file|
-			file.write(uploadedFile.read)
+			file.write(uploadedPhoto.read)
 		end
 
 		@image = Image.create("url": "/uploads/items/images/"+new_fileName)
 		@new_filePath = "/uploads/items/images/"+new_fileName
-		@model_id = @image.id
+		@windowId = params[:windowId]
 
 		respond_to do |format|
 			if @image.save

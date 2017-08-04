@@ -1,7 +1,0 @@
-var entity = document.createElement('div')
-var entity_id = "<%= j "d_"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s) %>"
-var panel = document.getElementById("<%= j params[:div_id] %>").getElementsByClassName('entity-list')[0]
-entity.id = entity_id
-panel.appendChild(entity)
-entity.innerHTML = "<%= j render 'new' %>"
-entity.getElementsByClassName('entity_id')[0].value = entity_id

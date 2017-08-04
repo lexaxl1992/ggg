@@ -1,24 +1,29 @@
 .dialog-wrapper
-	%h4.mdl-dialog__title= "Добавление товара"
+	%h2.my-dialog__title= "Добавление товара"
 	- btn = "mdl-button mdl-js-button mdl-button--raised"
 
-	%section.new_files
-		.mdl-tabs.mdl-js-tabs
-			.mdl-tabs__tab-bar
-				- new_img_div_id = "d_"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s)
-				%a.mdl-tabs__tab.is-active{ "href":"#{'#'+new_img_div_id}" }= "Изображения товара"
-				- new_pic_div_id = "d_"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s)
-				%a.mdl-tabs__tab{ "href":"#{'#'+new_pic_div_id}" }= "Дополнительные картинки"
-
-			.mdl-tabs__panel.is-active{"id":"#{new_img_div_id}"}
-				.entity-list
-				.button-wrapper
-					= link_to("Добавить изображение", "/images/new", "remote":true, "class":"#{btn}", "data-params":"div_id=#{new_img_div_id}")
-
-			.mdl-tabs__panel{"id":"#{new_pic_div_id}"}
-				.entity-list
-				.button-wrapper
-					= link_to("Добавить картинку", "/pictures/new", "remote":true, "class":"#{btn}", "data-params":"div_id=#{new_pic_div_id}")
+	.add_files.dialog-component
+		.entity-list
+		= form_with("url":images_path) do |form|
+			.input_wrapper
+				.file_input_div
+					.file_input
+						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+							%i.material-icons= "attach_file"
+							= form.file_field("photo")
+					.file_input_text_div.mdl-textfield.mdl-js-textfield
+						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+						%label.mdl-textfield__label{"for":"file_input_text"}
+				.file_input_div
+					.file_input
+						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+							%i.material-icons= "attach_file"
+							= form.file_field("picture")
+					.file_input_text_div.mdl-textfield.mdl-js-textfield
+						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+						%label.mdl-textfield__label{"for":"file_input_text"}
+				= hidden_field_tag("windowId", "#{@windowId}")
+			= submit_tag("file_upload", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
 
 	= form_with("scope":"item", "url":items_path, "class":"item_form") do |form|
 		.mdl-dialog__content
@@ -33,7 +38,6 @@
 				%label.mdl-textfield__label{"for":"price"}= "Цена"
 
 			%label= "Миниатюрное изображение (png, 188 x 178 px)"
-			%br
 			.file_input_div
 				.file_input
 					%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
@@ -42,8 +46,6 @@
 				.file_input_text_div.mdl-textfield.mdl-js-textfield
 					%input#file_input_text.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 					%label.mdl-textfield__label{"for":"file_input_text"}
-			%br
-			%br
 
 			%label.mdl-checkbox.mdl-js-checkbox{"for":"modularity"}
 				= form.check_box(:modularity, "id":"modularity", "class":"mdl-checkbox__input", "checked":true)
