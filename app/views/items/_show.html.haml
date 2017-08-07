@@ -1,29 +1,25 @@
 .dialog-wrapper
-	- close_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+	- closeButton = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
 	.mdl-dialog__actions.top
-		%button{"class":"#{close_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
+		%button{"class":"#{closeButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
 
 	%h2.my-dialog__title= @item.name
 	.mdl-dialog__content
+		- if @item.imagesets.size > 0
+			%section.gallery
+				- @item.imagesets.each do |imageset|
+					= image_tag(imageset.photo_url) unless imageset.photo_url == nil
+					= image_tag(imageset.picture_url) unless imageset.picture_url == nil
 
-		- if @item.images.size > 0
-			%section.left
-				%p Набросок карусели с изображениями товара
-				.owl-carousel.owl-theme.show_itemImages
-					- @item.images.each do |image|
-						= image_tag(image.url)
-
-				- if @item.pictures.size > 0
-					%p Набросок карусели с дополнительными изображениями
-					.owl-carousel.owl-theme.show_itemImages
-						- @item.pictures.each do |picture|
-							= image_tag(picture.url)
-
-		%section.right
+		%section.main
 			%p= "Тип: модульный" if to_bool(@item.modularity)
-			%p= "Цена: "+@item.price+" рублей"
+			- if @item.price.size > 0
+				%p= "Цена: "+@item.price+" рублей"
 			%p= "Описание:"
-			%p= @item.description
+			- if @item.description.size > 0
+				%p= @item.description
+			- else
+				%p= "Нет описания."
 
 

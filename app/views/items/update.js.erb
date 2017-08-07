@@ -1,1 +1,30 @@
-location.reload()
+document.getElementById('<%= j params[:windowId] %>').remove()
+document.getElementById('<%= j "item_"+@item.id %>').innerHTML = '<%= j render "update" %>'
+$('.owl-carousel').owlCarousel('destroy')
+$('.owl-carousel').owlCarousel({
+	lazyLoad: true,
+	margin: 0,
+	dots: true,
+	autoHeight: true,
+	responsiveClass: true,
+	responsive:{
+		0: {
+			items: 1
+		},
+		320: {
+			items: 2
+		},
+		640: {
+			items: 3
+		},
+		920: {
+			items: 4
+		},
+		1280: {
+			items: 5
+		},
+		1440: {
+			items: 6
+		}
+	}
+})

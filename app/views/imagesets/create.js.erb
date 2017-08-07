@@ -1,0 +1,15 @@
+var modelId = document.createElement('input')
+modelId.value = "<%= j @imageset.id %>"
+modelId.id = "for_imageset_<%= j @imageset.id %>"
+modelId.setAttribute("name", "imagesets[]")
+modelId.setAttribute("type", "hidden")
+var modal = document.getElementById("<%= j params[:windowId] %>")
+var itemForm = modal.getElementsByTagName('form')[1]
+var imgset = document.createElement('div')
+imgset.id = "imageset_<%= j @imageset_id %>"
+
+itemForm.insertBefore(modelId, itemForm.firstChild)
+modal.getElementsByClassName('entity-list')[0].appendChild(imgset)
+imgset.innerHTML = "<%= j render 'create' %>"
+document.getElementsByName("files[photo]")[0].value = ""
+document.getElementsByName("files[picture]")[0].value = ""

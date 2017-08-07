@@ -37,7 +37,7 @@ class CategoriesController < ApplicationController
 			if @category.save
 				format.js
 			else
-				format.html {notice:$custom_error_msg}
+				format.js {render "error"}
 			end
 		end
 	end
@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
 			if @category.save
 				format.js
 			else
-				format.html {notice:$custom_error_msg}
+				format.js {render "error"}
 			end
 		end
 	end
@@ -62,7 +62,7 @@ class CategoriesController < ApplicationController
 			if @category.delete
 				format.js
 			else
-				format.html {notice:"При удалении данных произошла ошибка."}
+				format.js {render "error"}
 			end
 		end
 	end

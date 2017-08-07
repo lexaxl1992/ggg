@@ -1,30 +1,71 @@
 .dialog-wrapper
 	%h2.my-dialog__title= "Редактирование товара"
-	= form_with("scope":"item", "url":item_path, "method":"patch") do |form|
+	- btn = "mdl-button mdl-js-button mdl-button--raised"
+
+	.add_files.dialog-component
+		.entity-list
+			- if @item.imagesets.size > 0
+				- @item.imagesets.each do |imageset|
+					%div{"id":"#{imageset.id}"}
+						= image_tag(imageset.photo_url) unless imageset.photo_url == nil
+						= image_tag(imageset.picture_url) unless imageset.picture_url == nil
+
+		= form_with("scope":"files", "url":imagesets_path) do |form|
+			.input_wrapper
+				.file_input_div
+					.file_input
+						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+							%i.material-icons= "attach_file"
+							= form.file_field(:photo)
+					.file_input_text_div.mdl-textfield.mdl-js-textfield
+						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+						%label.mdl-textfield__label{"for":"file_input_text"}
+				.file_input_div
+					.file_input
+						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+							%i.material-icons= "attach_file"
+							= form.file_field(:picture)
+					.file_input_text_div.mdl-textfield.mdl-js-textfield
+						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+						%label.mdl-textfield__label{"for":"file_input_text"}
+				= hidden_field_tag("windowId", "#{@windowId}")
+			= submit_tag("file_upload", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
+
+	= form_with("scope":"item", "url":item_path, "method":"patch", "class":"item_form") do |form|
 		.mdl-dialog__content
-			= hidden_field(:item_id, nil, "value":params[:id])
+			= hidden_field_tag("itemId", @item.id)
 
 			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 				= form.text_field(:name, "class":"mdl-textfield__input", "value": @item.name)
 				%label.mdl-textfield__label{"for":"name"}= "Название"
 
 			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-				= form.text_field(:price, "class":"mdl-textfield__input", "value": @item.price)
+				= form.number_field(:price, "class":"mdl-textfield__input", "value": @item.price)
 				%label.mdl-textfield__label{"for":"price"}= "Цена"
 
-			%p Здесь будет поле замены изображения-миниатюры
+			%label= "Миниатюрное изображение (png, 188 x 178 px)"
+			.file_input_div
+				.file_input
+					%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+						%i.material-icons= "attach_file"
+						= form.file_field(:thumbnail, "id":"file_input_file")
+				.file_input_text_div.mdl-textfield.mdl-js-textfield
+					%input#file_input_text.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+					%label.mdl-textfield__label{"for":"file_input_text"}
 
-			%label.mdl-checkbox.mdl-js-checkbox{"for":"modularity"}
-				= form.check_box(:modularity, "id":"modularity", "class":"mdl-checkbox__input", "checked": to_bool(@item.modularity))
+			%label.mdl-checkbox.mdl-js-checkbox{"for":"modularity_#{@windowId}"}
+				= form.check_box(:modularity, "id":"modularity_#{@windowId}", "class":"mdl-checkbox__input", "checked": to_bool(@item.modularity))
 				%span.mdl-checkbox__label= "Модульность"
 
 			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-				= form.text_area(:description, "class":"mdl-textfield__input", "rows": 4, "value": @item.description)
+				= form.text_area(:description, "class":"mdl-textfield__input", "rows":6, "value": @item.description)
 				%label.mdl-textfield__label{"for":"description"}= "Описание"
 
-			%p Здесь будет поле замены фотографий товара
-			%p Здесь будет поле замены дополнительных изображений
+			- if @item.imagesets.size > 0
+				- @item.imagesets.each do |imageset|
+					= hidden_field_tag("imagesets[]", imageset.id, "id":"for_"+imageset.id)
 
 		.mdl-dialog__actions
-			= submit_tag("Сохранить", class: "mdl-button close")
+			= hidden_field_tag("windowId", "#{@windowId}")
+			= submit_tag("Сохранить", "class":"mdl-button close")
 			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

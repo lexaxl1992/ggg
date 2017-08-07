@@ -1,6 +1,5 @@
 function init_sliders(){
 	$("#slider").slick({ dots: true })
-
 	$('.owl-carousel').owlCarousel({
 		lazyLoad: true,
 		margin: 0,

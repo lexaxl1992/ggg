@@ -43,7 +43,7 @@ dialog.mdl-dialog
 		padding: 0 24px
 		height: 100%
 		border-radius: 2px
-		background-color: #FFECB3
+		background-color: #FFF3E0
 		overflow-y: auto
 		@media screen and (max-width: 800px)
 			padding: 12px
@@ -72,11 +72,16 @@ dialog.mdl-dialog
 				flex-direction: column
 			section
 				display: flex
-				flex-direction: column
-				&.left
-					flex: 3
+				&.gallery
 					justify-content: space-around
-				&.right
+					padding-bottom: 24px
+					flex-wrap: wrap
+					img
+						// temporary
+						height: 256px
+						width: auto
+				&.main
+					flex-direction: column
 					flex: 2.5
 
 .mdl-layout__header

@@ -1,4 +1,4 @@
-function init_collapsible() {
+function init_accordion() {
 	$("#catalogue").collapsible()
 	function adapt() {
 		var i, headers = document.getElementsByClassName('adaptive_header')

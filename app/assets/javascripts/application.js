@@ -12,7 +12,7 @@
 document.addEventListener('turbolinks:load', function() {
 	componentHandler.upgradeDom()
 	init_sliders()
-	init_collapsible()
+	init_accordion()
 	init_modalPolyfills()
 	bind_ajaxReport()
 	//aload()

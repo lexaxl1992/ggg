@@ -23,7 +23,8 @@
 												= image_tag("no_thumbnail.png")
 										%figcaption
 											%span.name= item.name
-											%span.price= item.price.to_s + " ₽"
+											- if item.price.size > 0
+												%span.price= item.price.to_s + " ₽"
 
 						- else
 							.no_items

@@ -1,1 +1,35 @@
-location.reload()
+document.getElementById('<%= j params[:windowId] %>').remove()
+var new_item = document.createElement('figure')
+new_item.id = '<%= j "item_"+@item.id %>'
+new_item.className = 'item mdl-shadow--2dp mdl-color--grey-900 call_dialog'
+
+document.getElementById('<%= j @item.category.index %>').getElementsByClassName('owl-carousel')[0].appendChild(new_item)
+new_item.innerHTML = '<%= j render "create" %>'
+$('.owl-carousel').owlCarousel('destroy')
+$('.owl-carousel').owlCarousel({
+	lazyLoad: true,
+	margin: 0,
+	dots: true,
+	autoHeight: true,
+	responsiveClass: true,
+	responsive:{
+		0: {
+			items: 1
+		},
+		320: {
+			items: 2
+		},
+		640: {
+			items: 3
+		},
+		920: {
+			items: 4
+		},
+		1280: {
+			items: 5
+		},
+		1440: {
+			items: 6
+		}
+	}
+})
