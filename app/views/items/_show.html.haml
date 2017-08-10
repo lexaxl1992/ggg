@@ -1,7 +1,7 @@
 .dialog-wrapper
 	- closeButton = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
-	.mdl-dialog__actions.top
+	.mdl-dialog__actions
 		%button{"class":"#{closeButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
 
 	.my-dialog__title

@@ -38,7 +38,7 @@ dialog.mdl-dialog
 	@media screen and (max-width: 800px)
 		top: 0
 		height: 100vh !important
-		width: 100vw !important
+		width: 100% !important
 	.dialog-wrapper
 		padding: 0 24px
 		height: 100%
@@ -46,33 +46,41 @@ dialog.mdl-dialog
 		background-color: #FFFFFF //#FFF3E0
 		overflow-y: auto
 		@media screen and (max-width: 800px)
-			padding: 12px
+			padding: 0 12px
 		input.mdl-textfield__input, textarea
 			color: #000
 		.my-dialog__title
 			display: flex
 			align-items: center
-			padding: 40px 0
+			justify-content: space-between
+			padding: 32px 0
 			margin: 0
+			word-wrap: break-word
+			img
+				@media screen and (max-width: 800px)
+					display: none
 			h2
 				margin: 0
-				width: 70%
+				width: 100%
 				text-align: center
 		.dialog-component, .mdl-dialog__content
 			background-color: #FFFFFF
 			margin: 24px 0
 		.mdl-dialog__actions
 			background-color: transparent
-			padding: 0 0 24px 0
-			&.top
-				margin-bottom: -48px
-				margin-right: -24px
-				padding: 4px
+			position: absolute
+			padding: 0
+			right: 16px
+			@media screen and (min-width: 800px)
+				top: 16px
+			@media screen and (max-width: 800px)
+				bottom: 16px
 		.mdl-dialog__content
 			color: #000000
 			@media screen and (max-width: 800px)
 				display: flex
 				flex-direction: column
+				padding: 12px
 			section
 				display: flex
 				&.gallery
