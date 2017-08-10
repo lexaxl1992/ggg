@@ -1,8 +1,9 @@
 function init_sliders(){
-	$("#slider").slick({ dots: true })
+	$("#slider").slick({dots: true})
 	$('.owl-carousel').owlCarousel({
 		lazyLoad: true,
 		margin: 0,
+		nav: true,
 		dots: true,
 		autoHeight: true,
 		responsiveClass: true,

@@ -5,8 +5,8 @@
 	- else
 		= image_tag("no_thumbnail.png")
 .buttons-wrapper
-	= link_to("delete", "/items/#{@item.id}", "title":"Удалить товар", "remote":true, "method":"delete", "class":"#{admin_button}",
-						"data-confirm": "Вы уверены, что хотите удалить товар \"#{@item.name}\"?", "data-params":"category_id=#{@item.category.id}")
+	= link_to("delete", "/items/#{@item.id}", "title":"Удалить товар", "remote":true, "method":"delete",
+						"class":"#{admin_button}","data-confirm": "Вы уверены, что хотите удалить товар \"#{@item.name}\"?")
 	= link_to("edit", "/items/#{@item.id}/edit", "title":"Редактировать товар",
 						"remote":true, "method":"get", "class":"#{admin_button}")
 %figcaption

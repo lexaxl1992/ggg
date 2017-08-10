@@ -1,24 +1,26 @@
 .adminDialog
 	max-width: 800px !important
-	.mdl-dialog__actions
-		.close
-			background-color: #ff6f00
-			color: #FFFFFF
-		button
-			color: #000000
-	.add_files
-		display: flex
-		flex-direction: column
-		align-items: center
-		padding: 24px
-		.entity-list
+	.dialog-wrapper
+		background-color: #FFF3E0 !important
+		.mdl-dialog__actions
+			.close
+				background-color: #ff6f00
+				color: #FFFFFF
+			button
+				color: #000000
+		.add_files
 			display: flex
-			flex-wrap: wrap
-			justify-content: space-around
-			div
-				img
-					height: 160px
-					width: auto
+			flex-direction: column
+			align-items: center
+			padding: 24px
+			.entity-list
+				display: flex
+				flex-wrap: wrap
+				justify-content: space-around
+				div
+					img
+						height: 160px
+						width: auto
 
 .mdl-layout-title
 	small
@@ -43,10 +45,16 @@
 	justify-content: center
 	.mdl-button
 		color: #FFF
-		margin: 10px !important
+		margin: 10px
 		display: flex
 		align-items: center
 		justify-content: center
 
 .item .buttons-wrapper
-	margin-top: -60px
+	position: absolute
+	top: 24%
+	@media screen and (width: 320px)
+		top: 21%
+	.mdl-button
+		background-color: rgba(0, 0, 0, 0.55)
+		margin: 0 18px

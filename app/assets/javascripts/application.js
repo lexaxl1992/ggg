@@ -1,5 +1,4 @@
 //= require rails-ujs
-//= require_tree ./vue
 //= require jquery
 //= require jquery.turbolinks
 //= require turbolinks

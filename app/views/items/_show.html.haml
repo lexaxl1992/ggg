@@ -4,7 +4,9 @@
 	.mdl-dialog__actions.top
 		%button{"class":"#{closeButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()", "type":"button"}= "close"
 
-	%h2.my-dialog__title= @item.name
+	.my-dialog__title
+		= image_tag("/assets/logo--orange.png")
+		%h2= @item.name
 	.mdl-dialog__content
 		- if @item.imagesets.size > 0
 			%section.gallery

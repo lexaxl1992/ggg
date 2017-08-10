@@ -1,6 +1,7 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
 	- if $categories.size > 0
-		- admin_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+		- edit_category = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+		- edit_item = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
 		- $categories.each do |category|
 			%li{"id": category.index}
@@ -22,10 +23,10 @@
 										- else
 											= image_tag("no_thumbnail.png")
 									.buttons-wrapper
-										= link_to("delete", "/items/#{item.id}", "title":"Удалить товар", "remote":true, "method":"delete", "class":"#{admin_button}",
-															"data-confirm": "Вы уверены, что хотите удалить товар \"#{item.name}\"?", "data-params":"category_id=#{category.id}")
+										= link_to("delete", "/items/#{item.id}", "title":"Удалить товар", "remote":true, "method":"delete",
+															"class":"#{edit_item}", "data-confirm": "Вы уверены, что хотите удалить товар \"#{item.name}\"?")
 										= link_to("edit", "/items/#{item.id}/edit", "title":"Редактировать товар",
-															"remote":true, "method":"get", "class":"#{admin_button}")
+															"remote":true, "method":"get", "class":"#{edit_item}")
 									%figcaption
 										%span.name= item.name
 										- if item.price.size > 0
@@ -37,11 +38,11 @@
 
 					.buttons-wrapper
 						= link_to("add", "/items/new","title":"Добавить товар", "remote":true, "method":"get",
-											"class":"#{admin_button}","data-params":"category=#{category.id}")
+											"class":"#{edit_category}","data-params":"category=#{category.id}")
 						= link_to("delete", "/categories/#{category.id}", "title":"Удалить категорию", "remote":true, "method":"delete",
-											"class":"#{admin_button}", "data-confirm": "Вы уверены, что хотите удалить категорию \"#{category.label}\"?")
+											"class":"#{edit_category}", "data-confirm": "Вы уверены, что хотите удалить категорию \"#{category.label}\"?")
 						= link_to("edit", "/categories/#{category.id}/edit", "title":"Редактировать категорию",
-											"remote":true, "method":"get", "class":"#{admin_button}")
+											"remote":true, "method":"get", "class":"#{edit_category}")
 
 	- else
 		.no_categories
