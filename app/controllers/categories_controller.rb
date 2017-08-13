@@ -17,17 +17,18 @@ class CategoriesController < ApplicationController
 	end
 
 	def create
-		# Генерация индекса категории
+		# Сгенерировать индекс категории и добавить его в хэш параметров
 		lambda = params[:category].merge({"index": Digest::CRC32.hexdigest(params[:category][:label])})
-		category_params = lambda
 
-		# Сохранение загруженной иконки
-		unless category_params[:icon] == nil
+		# Если был передан файл иконки,
+		unless lambda[:icon] == nil
+			category_params = lambda
 			uploaded_file = category_params[:icon]
 	    File.open(Rails.root.join('public', 'uploads', 'categories', category_params[:index]+".png"), 'wb') do |file|
+	    	# то записать её на диск по заданному пути
 	      file.write(uploaded_file.read)
 	    end
-	    # и запись пути к ней в базу данных
+	    # и записать её относительный путь для url в хэш
 			lambda = category_params.merge({"icon": "/uploads/categories/"+category_params[:index]+".png"})
 		end
 
@@ -43,8 +44,22 @@ class CategoriesController < ApplicationController
 	end
 
 	def update
-		@category = Category[params[:category_id][0]]
-		@category.update(params[:category])
+		@category = Category[params[:categoryId]]
+		lambda = params[:category]
+
+		# Если был передан файл иконки,
+		unless lambda[:icon] == nil
+			category_params = lambda
+			uploaded_file = category_params[:icon]
+	    File.open(Rails.root.join('public', 'uploads', 'categories', @category.index+".png"), 'wb') do |file|
+	    	# то записать её на диск по заданному пути
+	      file.write(uploaded_file.read)
+	    end
+	    # и записать её относительный путь для url в хэш
+			lambda = category_params.merge({"icon": "/uploads/categories/"+@category.index+".png"})
+		end
+
+		@category.update(lambda)
 		respond_to do |format|
 			if @category.save
 				format.js

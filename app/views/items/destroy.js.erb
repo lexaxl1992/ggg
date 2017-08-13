@@ -1,5 +1,13 @@
 document.getElementById('<%= j "item_"+@item_id %>').parentNode.remove()
-$('.owl-carousel').owlCarousel('destroy')
+
+if (document.getElementById('<%= j @categoryIndex %>').getElementsByClassName('owl-item').length > 0) {
+	$('.owl-carousel').owlCarousel('destroy')
+} else {
+	var carouselFrame = document.getElementById('<%= j @categoryIndex %>').getElementsByClassName('owl-carousel')[0]
+	carouselFrame.remove()
+	document.getElementById('<%= j @categoryIndex %>').getElementsByClassName('no_items')[0].classList.remove('false')
+}
+
 $('.owl-carousel').owlCarousel({
 	lazyLoad: true,
 	margin: 0,

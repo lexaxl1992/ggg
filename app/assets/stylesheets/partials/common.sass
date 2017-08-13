@@ -5,10 +5,15 @@ body
 main
 	color: #FFF
 
+a.mdl-button--fab.material-icons
+	display: flex
+	justify-content: center
+	align-items: center
+
 .mdl-color--grey-850
 	background-color: rgb(53, 53, 53) !important
 
-.mdl-button, .mdl-tabs__tab, input
+.mdl-tabs__tab, input
 	outline: none
 
 .owl-dots
@@ -29,7 +34,6 @@ dialog.mdl-dialog
 	padding: 0
 	font-family: 'Roboto'
 	height: 90vh
-	max-height: 800px
 	width: 90vw
 	max-width: 1200px
 	background: transparent
@@ -68,13 +72,14 @@ dialog.mdl-dialog
 			margin: 24px 0
 		.mdl-dialog__actions
 			background-color: transparent
-			position: absolute
-			padding: 0
-			right: 16px
-			@media screen and (min-width: 800px)
-				top: 16px
-			@media screen and (max-width: 800px)
-				bottom: 16px
+			&.close
+				position: absolute
+				padding: 0
+				right: 16px
+				@media screen and (min-width: 800px)
+					top: 16px
+				@media screen and (max-width: 800px)
+					bottom: 16px
 		.mdl-dialog__content
 			color: #000000
 			@media screen and (max-width: 800px)
@@ -96,11 +101,6 @@ dialog.mdl-dialog
 					flex: 2.5
 
 .mdl-layout__header
-	.mdl-layout__drawer-button
-		left: inherit !important
-		right: 0
-		i
-			font-size: 42px
 	.mdl-layout__header-row
 		justify-content: flex-start
 		padding: 0 !important
@@ -228,7 +228,7 @@ ul#catalogue
 	padding: 0 0 6px
 	.mdl-button
 		color: #FFF
-	.no_categories, .no_items, .add_category
+	.no_categories, article.no_items, .add_category
 		display: flex
 		flex-direction: column
 		align-items: center
@@ -288,6 +288,9 @@ ul#catalogue
 				margin-bottom: 70px
 				.slick-dots
 					margin-bottom: 0px !important
+	article.no_items
+		&.false
+			display: none
 
 .owl-carousel.show_items
 	.owl-item

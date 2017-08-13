@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
 		end
 
 		@item = Item.create(lambda)
-		@item.update(category: Category[params[:category_id]])
+		@item.update(category: Category[params[:categoryId]])
 
 		unless params[:imagesets] == nil
 			params[:imagesets].each do |imageset_id|
@@ -88,6 +88,7 @@ class ItemsController < ApplicationController
 	def destroy
 		@item_id = params[:id]
 		@item = Item[@item_id]
+		@categoryIndex = @item.category.index
 		@item.delete
 		respond_to do |format|
 			if @item.delete

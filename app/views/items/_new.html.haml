@@ -1,6 +1,5 @@
 .dialog-wrapper
 	%h2.my-dialog__title= "Добавление товара"
-	- btn = "mdl-button mdl-js-button mdl-button--raised"
 
 	.add_files.dialog-component
 		.entity-list
@@ -23,11 +22,11 @@
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
 				= hidden_field_tag("windowId", "#{@windowId}")
-			= submit_tag("file_upload", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
+			= submit_tag("file_upload", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
 
 	= form_with("scope":"item", "url":items_path, "class":"item_form") do |form|
 		.mdl-dialog__content
-			= hidden_field_tag("category_id", params[:category])
+			= hidden_field_tag("categoryId", params[:categoryId])
 
 			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 				= form.text_field(:name, "class":"mdl-textfield__input")
@@ -57,5 +56,5 @@
 
 		.mdl-dialog__actions
 			= hidden_field_tag("windowId", "#{@windowId}")
-			= submit_tag("Сохранить", "class":"mdl-button close")
+			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
 			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

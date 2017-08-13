@@ -8,7 +8,6 @@
 				%label.mdl-textfield__label{"for":"label"}= "Название"
 
 			%label= "Иконка (png, 32 x 32 px)"
-			%br
 			.file_input_div
 				.file_input
 					%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
@@ -17,13 +16,11 @@
 				.file_input_text_div.mdl-textfield.mdl-js-textfield
 					%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 					%label.mdl-textfield__label{"for":"file_input_text"}
-			%br
-			%br
 
 			%label.mdl-checkbox.mdl-js-checkbox{"for":"visibility"}
 				= form.check_box(:visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked":true)
 				%span.mdl-checkbox__label Отображать в каталоге
 
 		.mdl-dialog__actions
-			%input.mdl-button.close{"type":"submit", "value":"Сохранить"}
+			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
 			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

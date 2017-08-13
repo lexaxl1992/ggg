@@ -14,6 +14,7 @@
 				%section.collapsible-body.mdl-color--grey-850
 					- if category.items.size > 0
 						- item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
+
 						.owl-carousel.owl-theme.show_items
 							- category.items.each do |item|
 								%figure{"class":"#{item_classes}", "id":"item_#{item.id}"}
@@ -23,22 +24,24 @@
 										- else
 											= image_tag("no_thumbnail.png")
 									.buttons-wrapper
-										= link_to("delete", "/items/#{item.id}", "title":"Удалить товар", "remote":true, "method":"delete",
-															"class":"#{edit_item}", "data-confirm": "Вы уверены, что хотите удалить товар \"#{item.name}\"?")
+										= link_to("delete", "/items/#{item.id}", "title":"Удалить товар", "remote":true, "method":"delete", "class":"#{edit_item}",
+											"data-confirm": "Вы уверены, что хотите удалить товар \"#{item.name}\"?")
 										= link_to("edit", "/items/#{item.id}/edit", "title":"Редактировать товар",
 															"remote":true, "method":"get", "class":"#{edit_item}")
 									%figcaption
 										%span.name= item.name
 										- if item.price.size > 0
 											%span.price= item.price.to_s + " ₽"
+						%article.no_items.false
+							%h4= "Нет товаров"
 
 					- else
-						.no_items
+						%article.no_items
 							%h4= "Нет товаров"
 
 					.buttons-wrapper
 						= link_to("add", "/items/new","title":"Добавить товар", "remote":true, "method":"get",
-											"class":"#{edit_category}","data-params":"category=#{category.id}")
+											"class":"#{edit_category}","data-params":"categoryId=#{category.id}")
 						= link_to("delete", "/categories/#{category.id}", "title":"Удалить категорию", "remote":true, "method":"delete",
 											"class":"#{edit_category}", "data-confirm": "Вы уверены, что хотите удалить категорию \"#{category.label}\"?")
 						= link_to("edit", "/categories/#{category.id}/edit", "title":"Редактировать категорию",
