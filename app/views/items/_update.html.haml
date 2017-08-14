@@ -1,6 +1,6 @@
 - admin_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 %a{"href":"/items/#{@item.id}", "data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
-	- if @item.thumbnail.size > 0
+	- unless @item.thumbnail == nil
 		= image_tag (@item.thumbnail)
 	- else
 		= image_tag("no_thumbnail.png")

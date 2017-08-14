@@ -2,11 +2,11 @@
 .buttons-wrapper
 	= link_to("delete", "/imagesets/#{@imageset.id}", "title":"Удалить изоражение или пару", "method":"delete",
 		"remote":true, "class":"#{lambda}", "data-confirm": "Вы уверены?", "data-params":"windowId=#{@windowId}")
-- unless @imageset.photo_url == nil
-	= image_tag(@imageset.photo_url)
+- unless @imageset.photoUrl == nil
+	= image_tag(@imageset.photoUrl)
 - else
 	%p= "Нет фото"
-- unless @imageset.picture_url == nil
-	= image_tag(@imageset.picture_url)
+- unless @imageset.pictureUrl == nil
+	= image_tag(@imageset.pictureUrl)
 - else
 	%p= "Нет изображения"

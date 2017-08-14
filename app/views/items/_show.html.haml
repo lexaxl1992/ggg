@@ -11,8 +11,8 @@
 		- if @item.imagesets.size > 0
 			%section.gallery
 				- @item.imagesets.each do |imageset|
-					= image_tag(imageset.photo_url) unless imageset.photo_url == nil
-					= image_tag(imageset.picture_url) unless imageset.picture_url == nil
+					= image_tag(imageset.photoUrl) unless imageset.photoUrl == nil
+					= image_tag(imageset.pictureUrl) unless imageset.pictureUrl == nil
 
 		%section.main
 			%p= "Тип: модульный" if to_bool(@item.modularity)

@@ -53,6 +53,8 @@ class ImagesetsController < ApplicationController
 	def destroy
 		@imagesetId = params[:id]
 		@imageset = Imageset[@imagesetId]
+		File.delete(Rails.root.to_s + @imageset.photoFilePath)
+		File.delete(Rails.root.to_s + @imageset.pictureFilePath)
 		@imageset.delete
 		respond_to do |format|
 			format.js	if @imageset.delete

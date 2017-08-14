@@ -1,2 +1,2 @@
 document.getElementById('<%= j "imgset_"+@imagesetId %>').remove()
-document.getElementById('<%= j params[:windowId] %>').getElementsByTagName('form')[1].getElementById('for_imgset_<%= j @imagesetId %>').remove()
+document.getElementById('<%= j "for_imgset_"+@imagesetId %>').remove()
