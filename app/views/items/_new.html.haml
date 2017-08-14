@@ -1,10 +1,12 @@
 .dialog-wrapper
-	%h2.my-dialog__title= "Добавление товара"
+	%h3.my-dialog__title= "Добавление товара"
 
 	.add_files.dialog-component
+		%h4= "Прикреплённые пары изображений"
 		.entity-list
 		= form_with("scope":"files", "url":imagesets_path) do |form|
 			.input_wrapper
+				%label= "Новое фото"
 				.file_input_div
 					.file_input
 						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
@@ -13,6 +15,7 @@
 					.file_input_text_div.mdl-textfield.mdl-js-textfield
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
+				%label= "Новая картинка"
 				.file_input_div
 					.file_input
 						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
@@ -22,7 +25,7 @@
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
 				= hidden_field_tag("windowId", "#{@windowId}")
-			= submit_tag("file_upload", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
+			= submit_tag("file_upload загрузить", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
 
 	= form_with("scope":"item", "url":items_path, "class":"item_form") do |form|
 		.mdl-dialog__content

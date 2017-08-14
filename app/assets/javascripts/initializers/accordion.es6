@@ -1,7 +1,7 @@
-function init_accordion() {
+let init_accordion = () => {
 	$("#catalogue").collapsible()
-	function adapt() {
-		var i, headers = document.getElementsByClassName('adaptive_header')
+	let adapt = () => {
+		let i, headers = document.getElementsByClassName('adaptive_header')
 		for (i = 0; i < headers.length; ++i) {
 			if (document.documentElement.clientWidth > 1023) {
 				if (headers[i].classList.contains('collapsible-header')) {

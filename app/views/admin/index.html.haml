@@ -24,8 +24,8 @@
 										- else
 											= image_tag("no_thumbnail.png")
 									.buttons-wrapper
-										= link_to("delete", "/items/#{item.id}", "title":"Удалить товар", "remote":true, "method":"delete", "class":"#{edit_item}",
-											"data-confirm": "Вы уверены, что хотите удалить товар \"#{item.name}\"?")
+										= link_to("delete", "/items/#{item.id}", "title":"Удалить товар", "remote":true, "method":"delete",
+											"class":"#{edit_item}", "data-confirm": "Вы уверены, что хотите удалить товар \"#{item.name}\"?")
 										= link_to("edit", "/items/#{item.id}/edit", "title":"Редактировать товар",
 															"remote":true, "method":"get", "class":"#{edit_item}")
 									%figcaption
@@ -33,11 +33,11 @@
 										- if item.price.size > 0
 											%span.price= item.price.to_s + " ₽"
 						%article.no_items.false
-							%h4= "Нет товаров"
+							%h4= "Нет в наличии"
 
 					- else
 						%article.no_items
-							%h4= "Нет товаров"
+							%h4= "Нет в наличии"
 
 					.buttons-wrapper
 						= link_to("add", "/items/new","title":"Добавить товар", "remote":true, "method":"get",
@@ -49,7 +49,7 @@
 
 	- else
 		.no_categories
-			%h4= "Нет категорий"
+			%h4= "База данных категорий пуста"
 
 	.add_category
 		- classes = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"

@@ -1,30 +1,60 @@
 .adminDialog
 	max-width: 800px !important
 	.dialog-wrapper
-		background-color: #FFE0B2 !important
+		background-color: #8D6E63 !important
+		@media screen and (max-width: 800px)
+			.my-dialog__title, .dialog-component, .mdl-dialog__content
+				margin: 12px 0 !important
+		@media screen and (min-width: 800px)
+			.my-dialog__title, .dialog-component
+				margin: 24px 0 !important
 		.my-dialog__title
 			background-color: #FFFFFF
-			margin: 24px 0 !important
 			justify-content: center !important
+			padding: 32px 16px !important
 		.mdl-dialog__actions
 			padding: 0 0 24px
+			@media screen and (max-width: 800px)
+				padding: 0 0 12px
 		.add_files
 			display: flex
 			flex-direction: column
 			align-items: center
 			padding: 24px
+			h4
+				margin-top: 0
 			form
 				display: flex
 				flex-direction: column
 				align-items: center
+				margin-top: 24px
+				input.mdl-button--raised
+					width: auto
+					height: 48px
 			.entity-list
+				width: 100%
+				height: auto
 				display: flex
 				flex-wrap: wrap
 				justify-content: space-around
 				div
+					display: flex
+					width: 100%
+					height: auto
+					.buttons-wrapper
+						margin-right: -100%
+						align-self: center
+						.mdl-button
+							background-color: rgba(0, 0, 0, 0.35)
 					img
-						height: 160px
-						width: auto
+						height: 100%
+						width: 50%
+					p
+						width: 50%
+						text-align: center
+						align-self: center
+						font-size: 20px
+						margin: 0
 
 .mdl-layout-title
 	small
@@ -60,5 +90,5 @@
 	@media screen and (width: 320px)
 		top: 21%
 	.mdl-button
-		background-color: rgba(0, 0, 0, 0.55)
+		background-color: rgba(0, 0, 0, 0.35)
 		margin: 0 18px

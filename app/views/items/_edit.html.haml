@@ -1,16 +1,28 @@
 .dialog-wrapper
-	%h2.my-dialog__title= "Редактирование товара"
+	%h3.my-dialog__title= "Редактирование товара"
 
 	.add_files.dialog-component
+		%h4= "Прикрепленные пары изображений"
 		.entity-list
 			- if @item.imagesets.size > 0
 				- @item.imagesets.each do |imageset|
-					%div{"id":"#{imageset.id}"}
-						= image_tag(imageset.photo_url) unless imageset.photo_url == nil
-						= image_tag(imageset.picture_url) unless imageset.picture_url == nil
+					%div{"id":"imgset_#{imageset.id}"}
+						- lambda = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+						.buttons-wrapper
+							= link_to("delete", "/imagesets/#{imageset.id}", "title":"Удалить изоражение или пару", "method":"delete",
+								"remote":true, "class":"#{lambda}", "data-confirm": "Вы уверены?", "data-params":"windowId=#{@windowId}")
+						- unless imageset.photo_url == nil
+							= image_tag(imageset.photo_url)
+						- else
+							%p= "Нет фото"
+						- unless imageset.picture_url == nil
+							= image_tag(imageset.picture_url)
+						- else
+							%p= "Нет картинки"
 
 		= form_with("scope":"files", "url":imagesets_path) do |form|
 			.input_wrapper
+				%label= "Новое фото"
 				.file_input_div
 					.file_input
 						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
@@ -19,6 +31,7 @@
 					.file_input_text_div.mdl-textfield.mdl-js-textfield
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
+				%label= "Новая картинка"
 				.file_input_div
 					.file_input
 						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
@@ -28,9 +41,12 @@
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
 				= hidden_field_tag("windowId", "#{@windowId}")
-			= submit_tag("file_upload", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
+			= submit_tag("file_upload загрузить", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
 
 	= form_with("scope":"item", "url":item_path, "method":"patch", "class":"item_form") do |form|
+		- if @item.imagesets.size > 0
+			- @item.imagesets.each do |imageset|
+				= hidden_field_tag("imagesets[]", imageset.id, "id":"for_imgset_"+imageset.id)
 		.mdl-dialog__content
 			= hidden_field_tag("itemId", @item.id)
 
@@ -59,10 +75,6 @@
 			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
 				= form.text_area(:description, "class":"mdl-textfield__input", "rows":6, "value": @item.description)
 				%label.mdl-textfield__label{"for":"description"}= "Описание"
-
-			- if @item.imagesets.size > 0
-				- @item.imagesets.each do |imageset|
-					= hidden_field_tag("imagesets[]", imageset.id, "id":"for_"+imageset.id)
 
 		.mdl-dialog__actions
 			= hidden_field_tag("windowId", "#{@windowId}")

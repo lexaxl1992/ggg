@@ -9,10 +9,10 @@ end
 gem 'rails'
 gem 'puma'
 gem 'foreman'
-gem 'yarn'
-gem 'webpacker'
-gem 'unicode'
+#gem 'unicode'
 gem 'jbuilder', '~> 2.5'
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'
 gem 'uglifier', '>= 1.3.0'
 gem 'json-minify'
 # GENERATORS
@@ -25,32 +25,15 @@ gem 'coffee-rails'
 gem 'redis'
 gem 'ohm'
 gem 'ohm-contrib'
-#gem 'sqlite3', platforms: :ruby
-#gem 'jdbc-sqlite3', platforms: :jruby
 # JS ENGINE
 gem 'therubyracer', platforms: :ruby
-gem 'therubyrhino', platforms: :jruby
 # JS LIBS
 gem 'turbolinks', '~> 5'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 # ASSETS
-#gem 'dialog-polyfill-rails'
 gem 'material_icons'
 gem 'jquery-slick-rails'
-#gem 'jquery-mousewheel-rails'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Adds support for Capybara system testing and selenium driver
-  #gem 'capybara', '~> 2.13'
-  #gem 'selenium-webdriver'
-  gem 'warbler', platforms: :jruby
-end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -58,6 +41,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

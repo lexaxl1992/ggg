@@ -8,15 +8,14 @@
 = javascript_include_tag	"vue.min","data-turbolinks-track":"reload"
 = javascript_include_tag	"aload.min","data-turbolinks-track":"reload"
 = javascript_include_tag	"application","data-turbolinks-track":"reload"
-= javascript_include_tag	"owl-fork.min","data-turbolinks-track":"reload"
-= javascript_include_tag	"jquery.stellar.min","data-turbolinks-track":"reload"
+= javascript_include_tag	"owl-fork","data-turbolinks-track":"reload"
 = stylesheet_link_tag			"admin_mode",media:"all", "data-turbolinks-track":"reload"
 
 %body#event_handler
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 		%header.mdl-layout__header
 			.mdl-layout__header-row
-				%a#logo{href:"/admin"}
+				%a.logo{href:"/admin"}
 					= image_tag("logo.png")
 				%span.mdl-layout-title
 					%small
@@ -41,14 +40,4 @@
 				= image_tag("carousel/1.jpg")
 				= image_tag("carousel/2.jpg")
 				= image_tag("carousel/3.jpg")
-
 			= yield
-
-			%footer.mdl-mini-footer
-				.mdl-mini-footer__left-section
-					.mdl-logo ДЮК Мебель
-					%ul.mdl-mini-footer__link-list
-						%li
-							%a{:href => "#"} Ссылка
-						%li
-							%a{:href => "#"} Ещё одна

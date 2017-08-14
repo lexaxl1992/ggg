@@ -1,9 +1,8 @@
 body
 	background-color: #212121
-	font-family: 'Futuris'
 
 main
-	color: #FFF
+	color: #FFFFFF
 
 a.mdl-button--fab.material-icons
 	display: flex
@@ -32,7 +31,6 @@ i.custom-icons
 
 dialog.mdl-dialog
 	padding: 0
-	font-family: 'Roboto'
 	height: 90vh
 	width: 90vw
 	max-width: 1200px
@@ -57,16 +55,18 @@ dialog.mdl-dialog
 			display: flex
 			align-items: center
 			justify-content: space-between
-			padding: 32px 0
+			padding: 32px 0 0
 			margin: 0
 			word-wrap: break-word
+			font-family: 'Roboto-Light' !important
 			img
 				@media screen and (max-width: 800px)
 					display: none
-			h2
+			h3
 				margin: 0
 				width: 100%
 				text-align: center
+				font-family: inherit
 		.dialog-component, .mdl-dialog__content
 			background-color: #FFFFFF
 			margin: 24px 0
@@ -76,10 +76,10 @@ dialog.mdl-dialog
 				position: absolute
 				padding: 0
 				right: 16px
-				@media screen and (min-width: 800px)
-					top: 16px
+				top: 16px
 				@media screen and (max-width: 800px)
-					bottom: 16px
+					right: 4px
+					top: 4px
 		.mdl-dialog__content
 			color: #000000
 			@media screen and (max-width: 800px)
@@ -101,16 +101,18 @@ dialog.mdl-dialog
 					flex: 2.5
 
 .mdl-layout__header
+	//font-family: "Futuris" !important
 	.mdl-layout__header-row
 		justify-content: flex-start
 		padding: 0 !important
-		#logo
+		.logo
 			background-color: #FF6600
 			width: 140px
 			display: flex
 			justify-content: center
 			align-items: center
 			height: 118px
+			cursor: pointer
 			img
 				height: 110px
 			@media screen and (max-width: 1024px)
@@ -138,13 +140,12 @@ dialog.mdl-dialog
 					font-size: 20px
 				a
 					text-decoration: none
+					outline: none
 					color: #FFF
 					display: flex
 					i
 						align-self: center
 						margin: 0 10px 4px 0
-						@media screen and (max-width: 369px)
-							display: none
 			small
 				display: flex
 				align-items: flex-end
@@ -244,6 +245,10 @@ ul#catalogue
 		padding: 0 0 1px
 	li
 		list-style-type: none
+		&.active
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
+		@media screen and (min-width: 1024px)
+			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
 		@media screen and (min-width: 1024px)
 			margin: 10px
 		&.active
@@ -261,6 +266,7 @@ ul#catalogue
 		.collapsible-header, .static-header
 			align-items: center
 			justify-content: center
+			font-family: 'Futuris'
 			font-size: 28px
 			.title-wrapper
 				padding: 2px 0
@@ -344,6 +350,17 @@ ul#catalogue
 						@media screen and (min-width: 320px) and (max-width: 400px)
 							font-size: 15px
 
+#about
+	position: relative
+	height: 300px
+	background-color: #69F0AE
+	color: #000000
+	padding: 10px
+	z-index: -1
+	.infoblock-wrapper
+		height: 100%
+		background: #FFFFFF
+		border-radius: 2px
 footer
 	background-color: transparent !important
 	padding: 16px 24px !important

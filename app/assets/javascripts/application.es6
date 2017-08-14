@@ -6,13 +6,9 @@
 //= require ./mdl/main
 //= require ./materialize/jquery.easing.1.3
 //= require ./materialize/collapsible
-//= require_tree ./init
+//= require_tree ./initializers
 
-document.addEventListener('turbolinks:load', function() {
-	componentHandler.upgradeDom()
-	init_sliders()
-	init_accordion()
-	init_modalPolyfills()
-	bind_ajaxReport()
-	//aload()
+document.addEventListener('turbolinks:load', () => {
+	componentHandler.upgradeDom(); init_sliders(); init_accordion(); init_smoothScroll(); init_modalPolyfills(); bind_ajaxReports()
 })
+//aload()

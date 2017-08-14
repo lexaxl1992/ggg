@@ -1,5 +1,7 @@
 !!! 5
 %title ДЮК Мебель
+%meta{"name":"keywords", "content":"дюк мебель, мебель краснодар"}
+%meta{"content":"8fd14621849c0445", "name":"yandex-verification"}
 = csrf_meta_tags
 %meta{name:"turbolinks-cache-control", content:"no-cache"}
 %meta{name:"viewport", content:"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
@@ -8,8 +10,8 @@
 = javascript_include_tag	"vue.min","data-turbolinks-track":"reload"
 = javascript_include_tag	"aload.min","data-turbolinks-track":"reload"
 = javascript_include_tag	"application","data-turbolinks-track":"reload"
-= javascript_include_tag	"owl-fork.min","data-turbolinks-track":"reload"
-= javascript_include_tag	"jquery.stellar.min","data-turbolinks-track":"reload"
+= javascript_include_tag	"owl-fork","data-turbolinks-track":"reload"
+= javascript_include_tag	"smooth-scroll.min","data-turbolinks-track":"reload"
 
 %body#event_handler
 	- unless params[:action] == "constructor"
@@ -19,7 +21,7 @@
 	.mainLayout.mdl-layout.mdl-js-layout{class:"#{@layout_class unless @layout_class.nil?}"}
 		%header.mdl-layout__header{class:"#{@header_class unless @header_class.nil?}"}
 			.mdl-layout__header-row
-				%a#logo{href:"/"}
+				%a#to_slider.logo.scrollLink
 					= image_tag("logo.png")
 				%span.mdl-layout-title
 					%h4
@@ -30,23 +32,34 @@
 						%i.material-icons= "location_on"
 						Краснодар
 				.mdl-layout-spacer
-
+				- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
 				%nav.mdl-navigation.mdl-layout--large-screen-only
-					#catalogueMenu
-						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
-						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-							- $categories.to_a.each do |category|
-								- if category.visibility == "1"
-									%a.mdl-menu__item{href:"/##{category.index}", "data-turbolinks":"false"}= category.label
-					- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
-					= link_to "Всё о мебели","/#about","class":"#{classes}","data-turbolinks":"false"
-					= link_to "3D-конструктор","/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false"
+
+					- if [params[:controller], params[:action]] == ["main", "index"]
+						#catalogueMenu
+							%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
+								- $categories.to_a.each do |category|
+									- if category.visibility == "1"
+										%a.mdl-menu__item.scrollLink{"id":"to_#{category.index}"}= category.label
+						%a#to_about.scrollLink{"class":"#{classes}"}= "О компании"
+						= link_to("3D-конструктор","/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false")
+
+					- else
+						#catalogueMenu
+							%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
+								- $categories.to_a.each do |category|
+									- if category.visibility == "1"
+										%a.mdl-menu__item{href:"/##{category.index}", "data-turbolinks":"false"}= category.label
+						= link_to("О компании", "/#about","class":"#{classes}","data-turbolinks":"false")
+						= link_to("3D-конструктор", "/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false")
 
 				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
-					%i.material-icons more_vert
-				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for:"menu-lower-right" }
-					= link_to "3D-конструктор", "/constructor/#prodboard-container", class:"mdl-menu__item"
-					= link_to "О компании", "/about", class:"mdl-menu__item"
+					%i.material-icons= "more_vert"
+				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
+					= link_to("3D-конструктор", "/constructor/#prodboard-container", "class":"mdl-menu__item","data-turbolinks":"false")
+					= link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")
 
 		%main.mdl-layout__content
 			- unless params[:action] == "constructor"
@@ -54,14 +67,4 @@
 					= image_tag("carousel/1.jpg")
 					= image_tag("carousel/2.jpg")
 					= image_tag("carousel/3.jpg")
-
 			= yield
-
-			%footer.mdl-mini-footer
-				.mdl-mini-footer__left-section
-					.mdl-logo ДЮК Мебель
-					%ul.mdl-mini-footer__link-list
-						%li
-							%a{:href => "#"} Ссылка
-						%li
-							%a{:href => "#"} Ещё одна

@@ -1,4 +1,4 @@
-function init_sliders(){
+let init_sliders = () => {
 	$("#slider").slick({dots: true})
 	$('.owl-carousel').owlCarousel({
 		lazyLoad: true,

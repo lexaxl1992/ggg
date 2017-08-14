@@ -6,7 +6,7 @@
 
 	.my-dialog__title
 		= image_tag("/assets/logo--orange.png")
-		%h2= @item.name
+		%h3= @item.name
 	.mdl-dialog__content
 		- if @item.imagesets.size > 0
 			%section.gallery

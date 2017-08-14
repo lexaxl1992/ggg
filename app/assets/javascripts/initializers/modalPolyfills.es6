@@ -1,4 +1,4 @@
-(function() {
+(() => {
 
   // nb. This is for IE10 and lower _only_.
   var supportCustomEvent = window.CustomEvent;

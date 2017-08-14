@@ -1,4 +1,2 @@
-var modal = document.getElementById('<%= j params[:windowId] %>')
-
-modal.getElementById('imageset_<%= j @imageset_id %>').remove()
-modal.getElementsByTagName('form')[1].getElementById('for_imageset_<%= j @imageset_id %>').remove()
+document.getElementById('<%= j "imgset_"+@imagesetId %>').remove()
+document.getElementById('<%= j params[:windowId] %>').getElementsByTagName('form')[1].getElementById('for_imgset_<%= j @imagesetId %>').remove()

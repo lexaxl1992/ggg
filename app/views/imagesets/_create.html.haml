@@ -1,2 +1,12 @@
-= image_tag(@imageset.photo_url) unless @imageset.photo_url == nil
-= image_tag(@imageset.picture_url) unless @imageset.picture_url == nil
+- lambda = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+.buttons-wrapper
+	= link_to("delete", "/imagesets/#{@imageset.id}", "title":"Удалить изоражение или пару", "method":"delete",
+		"remote":true, "class":"#{lambda}", "data-confirm": "Вы уверены?", "data-params":"windowId=#{@windowId}")
+- unless @imageset.photo_url == nil
+	= image_tag(@imageset.photo_url)
+- else
+	%p= "Нет фото"
+- unless @imageset.picture_url == nil
+	= image_tag(@imageset.picture_url)
+- else
+	%p= "Нет изображения"

@@ -1,6 +1,8 @@
 class Imageset < Ohm::Model
-	attribute :photo_url
-	attribute :picture_url
+	attribute :photoUrl
+	attribute :photoFilePath
+	attribute :pictureUrl
+	attribute :pictureFilePath
 
 	reference :item, :Item
 end
