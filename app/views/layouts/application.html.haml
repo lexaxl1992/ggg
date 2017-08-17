@@ -21,8 +21,12 @@
 	.mainLayout.mdl-layout.mdl-js-layout{class:"#{@layout_class unless @layout_class.nil?}"}
 		%header.mdl-layout__header{class:"#{@header_class unless @header_class.nil?}"}
 			.mdl-layout__header-row
-				%a#to_slider.logo.scrollLink
-					= image_tag("logo.png")
+				- unless params[:action] == 'constructor'
+					%a#to_slider.logo.scrollLink
+						= image_tag("logo.png")
+				- else
+					%a.logo{href:"/"}
+						= image_tag("logo.png")
 				%span.mdl-layout-title
 					%h4
 						%a{ href:"tel:+79181451090" }
