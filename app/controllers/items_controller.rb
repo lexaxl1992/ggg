@@ -7,14 +7,14 @@ class ItemsController < ApplicationController
   end
 
 	def new
-		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s)
+		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..1000).to_s)
 		respond_to do |format|
 			format.js
 		end
 	end
 
 	def edit
-		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..100).to_s)
+		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..1000).to_s)
 		@item = Item[params[:id]]
 		respond_to do |format|
 			format.js

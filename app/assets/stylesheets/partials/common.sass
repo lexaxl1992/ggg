@@ -17,6 +17,7 @@ a.mdl-button--fab.material-icons
 
 .owl-dots
 	display: block !important
+	padding-top: 8px
 
 .mdl-textfield
 	width: 100%
@@ -54,19 +55,23 @@ dialog.mdl-dialog
 		.my-dialog__title
 			display: flex
 			align-items: center
-			justify-content: space-between
 			padding: 32px 0 0
 			margin: 0
 			word-wrap: break-word
 			font-family: 'Roboto-Light' !important
-			img
-				@media screen and (max-width: 800px)
-					display: none
+			@media screen and (max-width: 800px)
+				padding: 40px 0 0
 			h3
 				margin: 0
 				width: 100%
 				text-align: center
 				font-family: inherit
+			spacer
+				width: 99px !important
+				height: auto
+			img, spacer
+				@media screen and (max-width: 800px)
+					display: none
 		.dialog-component, .mdl-dialog__content
 			background-color: #FFFFFF
 			margin: 24px 0
@@ -75,11 +80,16 @@ dialog.mdl-dialog
 			&.close
 				position: absolute
 				padding: 0
-				right: 16px
-				top: 16px
+				top: 8px
+				right: 0
+				@media screen and (min-width: 800px)
+					margin-right: 24px
 				@media screen and (max-width: 800px)
-					right: 4px
-					top: 4px
+					top: 0
+					.mdl-button
+						background: transparent
+						color: #000000
+						box-shadow: none
 		.mdl-dialog__content
 			color: #000000
 			@media screen and (max-width: 800px)
@@ -323,12 +333,10 @@ ul#catalogue
 				display: inherit
 				flex-direction: inherit
 				justify-content: space-around
-				height: 100px
-				padding: 6px 12px
-				width: 80%
+				height: 96px
+				width: 84%
 				@media screen and (min-width: 320px) and (max-width: 400px)
 					height: 80px
-					padding: 8px 10px
 				span
 					color: #FFF
 					&.name

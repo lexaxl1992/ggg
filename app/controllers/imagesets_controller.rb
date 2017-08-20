@@ -18,7 +18,7 @@ class ImagesetsController < ApplicationController
 						fileExtension = ".undefined"
 				end
 
-				new_fileName = Digest::CRC32.hexdigest(fileObject.original_filename) + fileExtension
+				new_fileName = Digest::CRC32.hexdigest(Random.rand(1..1000).to_s) + fileExtension
 				if type == "photo"
 					File.open(Rails.root.join('public', 'uploads', 'items', 'photos', new_fileName), 'wb') do |new_file|
 						new_file.write(fileObject.read)

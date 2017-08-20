@@ -5,8 +5,9 @@
 		%a{"class":"#{closeButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
 
 	.my-dialog__title
-		= image_tag("/assets/logo--orange.png")
+		= image_tag("/assets/logo-min--orange.svg")
 		%h3= @item.name
+		%spacer
 	.mdl-dialog__content
 		- if @item.imagesets.size > 0
 			%section.gallery
