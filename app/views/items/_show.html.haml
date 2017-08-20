@@ -11,9 +11,17 @@
 	.mdl-dialog__content
 		- if @item.imagesets.size > 0
 			%section.gallery
-				- @item.imagesets.each do |imageset|
-					= image_tag(imageset.photoUrl) unless imageset.photoUrl == nil
-					= image_tag(imageset.pictureUrl) unless imageset.pictureUrl == nil
+				.imagesets-slider-for
+					- @item.imagesets.each do |imageset|
+						.imageset
+							= image_tag(imageset.photoUrl) unless imageset.photoUrl == nil
+							= image_tag(imageset.pictureUrl) unless imageset.pictureUrl == nil
+				.imagesets-slider-nav
+					- @item.imagesets.each do |imageset|
+						- unless imageset.photoUrl == nil
+							= image_tag(imageset.photoUrl)
+						- else
+							= image_tag(imageset.pictureUrl)
 
 		%section.main
 			%p= "Тип: модульный" if to_bool(@item.modularity)

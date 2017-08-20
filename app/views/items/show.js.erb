@@ -6,3 +6,18 @@ document.body.appendChild(dialog)
 dialogPolyfill.registerDialog(dialog)
 componentHandler.upgradeDom()
 dialog.showModal()
+ $('.imagesets-slider-for').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  fade: true,
+  asNavFor: '.imagesets-slider-nav'
+});
+$('.imagesets-slider-nav').slick({
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  asNavFor: '.imagesets-slider-for',
+  dots: true,
+  infinite: true,
+  focusOnSelect: true
+});
