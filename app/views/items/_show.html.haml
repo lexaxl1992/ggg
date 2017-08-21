@@ -1,8 +1,8 @@
 .dialog-wrapper
-	- closeButton = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+	- circleButton = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
 	.mdl-dialog__actions.close
-		%a{"class":"#{closeButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
+		%a{"class":"#{circleButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
 
 	.my-dialog__title
 		= image_tag("/assets/logo-min--orange.svg")
@@ -14,8 +14,12 @@
 				.imagesets-slider-for
 					- @item.imagesets.each do |imageset|
 						.imageset
-							= image_tag(imageset.photoUrl) unless imageset.photoUrl == nil
-							= image_tag(imageset.pictureUrl) unless imageset.pictureUrl == nil
+							- unless imageset.photoUrl == nil
+								= image_tag(imageset.photoUrl)
+								= link_to("file_download", imageset.photoUrl, "download": true, "class":"#{circleButton} material-color--red-50")
+							- unless imageset.pictureUrl == nil
+								= image_tag(imageset.pictureUrl)
+								= link_to("file_download", imageset.pictureUrl, "download": true, "class":"#{circleButton} material-color--red-50")
 				.imagesets-slider-nav
 					- @item.imagesets.each do |imageset|
 						- unless imageset.photoUrl == nil
