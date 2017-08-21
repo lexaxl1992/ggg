@@ -24,13 +24,18 @@
 							= image_tag(imageset.pictureUrl)
 
 		%section.main
-			%p= "Тип: модульный" if to_bool(@item.modularity)
-			- if @item.price.size > 0
-				%p= "Цена: "+@item.price+" рублей"
-			%p= "Описание:"
-			- if @item.description.size > 0
-				%p= @item.description
-			- else
-				%p= "Нет описания."
-
-
+			.mdl-tabs.mdl-js-tabs
+				.mdl-tabs__tab-bar
+					%a.mdl-tabs__tab.is-active{"href":"#itemInfo"}= "Характеристики товара"
+					%a.mdl-tabs__tab{"href":"#itemEmpty"}= "Отзывы"
+				#itemInfo.mdl-tabs__panel.is-active
+					%p= "Тип: модульный" if to_bool(@item.modularity)
+					- if @item.price.size > 0
+						%p= "Цена: "+@item.price+" рублей"
+					%p= "Описание:"
+					- if @item.description.size > 0
+						%p= @item.description
+					- else
+						%p= "Нет описания."
+				#itemEmpty.mdl-tabs__panel
+					Модуль отзывов стоит 1000р, делается 4-7 дней.

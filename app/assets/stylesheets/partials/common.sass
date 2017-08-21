@@ -102,7 +102,7 @@ dialog.mdl-dialog
 				&.gallery
 					flex-direction: column
 					justify-content: space-around
-					padding-bottom: 24px
+					//padding-bottom: 24px
 					.imagesets-slider-for
 						.imageset
 							display: flex
@@ -123,7 +123,10 @@ dialog.mdl-dialog
 								height: 80px
 				&.main
 					flex-direction: column
-
+					.mdl-tabs__tab-bar
+						justify-content: flex-start
+					.mdl-tabs__panel
+						padding: 24px
 
 .mdl-layout__header
 	//font-family: "Futuris" !important
