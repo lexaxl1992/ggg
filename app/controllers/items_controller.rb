@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
 		item_params = lambda
 		# Сохранение загруженной миниатюры
 		unless item_params[:thumbnail] == nil
-			new_fileName = Digest::CRC32.hexdigest(item_params[:name])+".png"
+			new_fileName = Digest::CRC32.hexdigest(params[:itemId])+".png"
 			uploaded_file = item_params[:thumbnail]
 	    File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
 	      file.write(uploaded_file.read)
