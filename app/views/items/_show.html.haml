@@ -16,10 +16,10 @@
 						.imageset
 							- unless imageset.photoUrl == nil
 								= image_tag(imageset.photoUrl)
-								= link_to("file_download", imageset.photoUrl, "download": true, "class":"#{circleButton} material-color--red-50")
+								= link_to("file_download", imageset.photoUrl, "download": true, "class":"#{circleButton}")
 							- unless imageset.pictureUrl == nil
 								= image_tag(imageset.pictureUrl)
-								= link_to("file_download", imageset.pictureUrl, "download": true, "class":"#{circleButton} material-color--red-50")
+								= link_to("file_download", imageset.pictureUrl, "download": true, "class":"#{circleButton}")
 				.imagesets-slider-nav
 					- @item.imagesets.each do |imageset|
 						- unless imageset.photoUrl == nil

@@ -5,3 +5,5 @@
 //= link aload.min.js
 //= link owl-fork.js
 //= link smooth-scroll.min.js
+//= link fancybox.min.css
+//= link fancybox.min.js
