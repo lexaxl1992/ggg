@@ -1,4 +1,5 @@
-let open_gallery = () => {
+let open_gallery = (event) => {
+	let windowId = 'show_item_' + event.target.dataset.itemId
 	var pswpElement = document.querySelectorAll('.pswp')[0];
 
 	// define options (if needed)
@@ -7,7 +8,12 @@ let open_gallery = () => {
 		"history": false
 	};
 
-	// Initializes and opens PhotoSwipe
-	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-	gallery.init();
+	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options)
+
+	document.getElementById(windowId).close()
+	gallery.init()
+
+	gallery.listen('close', function() {
+		document.getElementById(windowId).showModal()
+	})
 }
