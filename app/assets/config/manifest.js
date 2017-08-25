@@ -1,9 +1,5 @@
 //= link_tree ../images
 //= link_directory ../javascripts .js
+//= link_directory ../../../vendor/assets/javascripts .js
 //= link_directory ../stylesheets .css
-//= link vue.min.js
-//= link aload.min.js
-//= link owl-fork.js
-//= link smooth-scroll.min.js
-//= link fancybox.min.css
-//= link fancybox.min.js
+//= link_directory ../../../vendor/assets/stylesheets .css

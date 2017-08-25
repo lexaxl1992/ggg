@@ -1,23 +1,26 @@
 var dialog = document.createElement('dialog')
 dialog.className = "mdl-dialog show_item"
-dialog.id = "item_<%= j @item.id %>"
+dialog.id = '<%= "show_item_" + @item.id %>'
 dialog.innerHTML = "<%= j render 'show'%>"
-document.body.appendChild(dialog)
+document.body.insertBefore(dialog, document.body.firstElementChild)
 dialogPolyfill.registerDialog(dialog)
 componentHandler.upgradeDom()
 dialog.showModal()
+
  $('.imagesets-slider-for').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: true,
-  fade: true,
-  asNavFor: '.imagesets-slider-nav'
+	slidesToShow: 1,
+	slidesToScroll: 1,
+	arrows: true,
+	fade: true,
+	asNavFor: '.imagesets-slider-nav'
 });
 $('.imagesets-slider-nav').slick({
-  slidesToShow: 5,
-  slidesToScroll: 1,
-  asNavFor: '.imagesets-slider-for',
-  dots: true,
-  infinite: true,
-  focusOnSelect: true
+	slidesToShow: 5,
+	slidesToScroll: 1,
+	asNavFor: '.imagesets-slider-for',
+	dots: true,
+	infinite: true,
+	focusOnSelect: true
 });
+
+var items = JSON.parse(dialog.getElementsByClassName('gallery')[0].dataset.json)

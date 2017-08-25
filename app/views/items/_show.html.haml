@@ -10,16 +10,14 @@
 		%spacer
 	.mdl-dialog__content
 		- if @item.imagesets.size > 0
-			%section.gallery
+			%section.gallery{"data-json": @galleryData.to_json}
 				.imagesets-slider-for
 					- @item.imagesets.each do |imageset|
 						.imageset
 							- unless imageset.photoUrl == nil
-								= image_tag(imageset.photoUrl)
-								= link_to("file_download", imageset.photoUrl, "download": true, "class":"#{circleButton}")
+								= image_tag(imageset.photoUrl, "class":"photo", "onclick":"open_gallery()")
 							- unless imageset.pictureUrl == nil
-								= image_tag(imageset.pictureUrl)
-								= link_to("file_download", imageset.pictureUrl, "download": true, "class":"#{circleButton}")
+								= image_tag(imageset.pictureUrl, "class":"picture", "onclick":"open_gallery()")
 				.imagesets-slider-nav
 					- @item.imagesets.each do |imageset|
 						- unless imageset.photoUrl == nil

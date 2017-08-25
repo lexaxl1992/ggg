@@ -6,9 +6,11 @@
 //= require ./mdl/main
 //= require ./materialize/jquery.easing.1.3
 //= require ./materialize/collapsible
+//= require photoswipe
 //= require_tree ./initializers
 
 document.addEventListener('turbolinks:load', () => {
-	componentHandler.upgradeDom(); init_sliders(); init_accordion(); init_smoothScroll(); init_modalPolyfills(); bind_ajaxReports()
+	componentHandler.upgradeDom(); init_sliders(); init_accordion();
+	init_smoothScroll(); init_modalPolyfills(); bind_ajaxReports();
 })
 //aload()

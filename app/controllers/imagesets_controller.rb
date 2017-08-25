@@ -19,21 +19,29 @@ class ImagesetsController < ApplicationController
 				end
 
 				new_fileName = Digest::CRC32.hexdigest(Random.rand(1..1000).to_s) + fileExtension
+
 				if type == "photo"
 					File.open(Rails.root.join('public', 'uploads', 'items', 'photos', new_fileName), 'wb') do |new_file|
 						new_file.write(fileObject.read)
 					end
+					imageSize = FastImage.size(File.open(Rails.root.to_s + "/public/uploads/items/photos/"+new_fileName))
 					@imagesetParams = @imagesetParams.merge(
 						"photoUrl":"/uploads/items/photos/"+new_fileName,
-						"photoFilePath":"/public/uploads/items/photos/"+new_fileName
+						"photoFilePath":"/public/uploads/items/photos/"+new_fileName,
+						"photoWidth": imageSize[0],
+						"photoHeight": imageSize[1]
 					)
+
 				elsif type == "picture"
 					File.open(Rails.root.join('public', 'uploads', 'items', 'pictures', new_fileName), 'wb') do |new_file|
 						new_file.write(fileObject.read)
 					end
+					imageSize = FastImage.size(File.open(Rails.root.to_s + "/public/uploads/items/pictures/"+new_fileName))
 					@imagesetParams = @imagesetParams.merge(
 						"pictureUrl":"/uploads/items/pictures/"+new_fileName,
-						"pictureFilePath":"/public/uploads/items/pictures/"+new_fileName
+						"pictureFilePath":"/public/uploads/items/pictures/"+new_fileName,
+						"pictureWidth": imageSize[0],
+						"pictureHeight": imageSize[1]
 					)
 				end
 
@@ -53,9 +61,9 @@ class ImagesetsController < ApplicationController
 	def destroy
 		@imagesetId = params[:id]
 		@imageset = Imageset[@imagesetId]
-		File.delete(Rails.root.to_s + @imageset.photoFilePath)
-		File.delete(Rails.root.to_s + @imageset.pictureFilePath)
 		@imageset.delete
+		File.delete(Rails.root.to_s + @imageset.photoFilePath) unless @imageset.photoFilePath == nil
+		File.delete(Rails.root.to_s + @imageset.pictureFilePath) unless @imageset.pictureFilePath == nil
 		respond_to do |format|
 			format.js	if @imageset.delete
 		end

@@ -9,6 +9,7 @@ require "redis"
 require "ohm"
 require "json/minify"
 require "digest/crc32"
+require 'fastimage'
 
 Ohm.redis = Redic.new("redis://127.0.0.1:3100/1")
 

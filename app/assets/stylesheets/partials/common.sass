@@ -106,19 +106,18 @@ dialog.mdl-dialog
 					.imagesets-slider-for
 						.imageset
 							display: flex
-							height: 50vh
+							height: 50vmin
 							img
 								width: 50%
-							a
-								margin-left: -47px
-								margin-bottom: 5px
 							@media screen and (max-width: 1024px)
-								flex-direction: column
-								.imageset
-									height: auto
-									img
-										width: 100%
+								//height: ?
+								.photo
+									width: 100%
+								.picture
+									display: none
 					.imagesets-slider-nav
+						@media screen and (max-width: 1024px)
+							display: none
 						.slick-track
 							display: flex
 							img
@@ -130,6 +129,13 @@ dialog.mdl-dialog
 						justify-content: flex-start
 					.mdl-tabs__panel
 						padding: 24px
+
+.fancybox-slid
+	img
+		position: fixed
+		top: 0
+		left: 0
+		margin: 0
 
 .mdl-layout__header
 	//font-family: "Futuris" !important

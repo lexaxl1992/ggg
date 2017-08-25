@@ -1,10 +1,27 @@
 class ItemsController < ApplicationController
-  def show
-    @item = Item[params[:id]]
-    respond_to do |format|
+	def show
+		@item = Item[params[:id]]
+		@galleryData = []
+		@item.imagesets.each do |imageset|
+			unless imageset.photoUrl == nil
+				@galleryData.push({
+					"src": imageset.photoUrl,
+					"w": imageset.photoWidth,
+					"h": imageset.photoHeight
+				})
+			end
+			unless imageset.pictureUrl == nil
+				@galleryData.push({
+					"src": imageset.pictureUrl,
+					"w": imageset.pictureWidth,
+					"h": imageset.pictureHeight
+				})
+			end
+		end
+		respond_to do |format|
 			format.js
 		end
-  end
+	end
 
 	def new
 		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..1000).to_s)
@@ -28,10 +45,10 @@ class ItemsController < ApplicationController
 		unless item_params[:thumbnail] == nil
 			new_fileName = Digest::CRC32.hexdigest(item_params[:name])+".png"
 			uploaded_file = item_params[:thumbnail]
-	    File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
-	      file.write(uploaded_file.read)
-	    end
-	    # и запись пути к ней в базу данных
+			File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
+				file.write(uploaded_file.read)
+			end
+			# и запись пути к ней в базу данных
 			lambda = item_params.merge({"thumbnail": "/uploads/items/thumbs/"+new_fileName})
 		end
 
@@ -60,10 +77,10 @@ class ItemsController < ApplicationController
 		unless item_params[:thumbnail] == nil
 			new_fileName = Digest::CRC32.hexdigest(params[:itemId])+".png"
 			uploaded_file = item_params[:thumbnail]
-	    File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
-	      file.write(uploaded_file.read)
-	    end
-	    # и запись пути к ней в базу данных
+			File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
+				file.write(uploaded_file.read)
+			end
+			# и запись пути к ней в базу данных
 			lambda = item_params.merge({"thumbnail": "/uploads/items/thumbs/"+new_fileName})
 		end
 

@@ -34,6 +34,9 @@ gem 'jquery-turbolinks'
 # ASSETS
 gem 'material_icons'
 gem 'jquery-slick-rails'
+gem 'photoswipe-rails'
+# MISC
+gem 'fastimage'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
