@@ -35,6 +35,8 @@ gem 'jquery-turbolinks'
 gem 'material_icons'
 gem 'jquery-slick-rails'
 gem 'photoswipe-rails'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
 # MISC
 gem 'fastimage'
 

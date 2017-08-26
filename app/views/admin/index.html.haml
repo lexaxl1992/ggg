@@ -55,3 +55,8 @@
 		- classes = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
 		= link_to("Добавить категорию", "/categories/new", "remote": true, "method": "get", "class":"#{classes}")
 
+#about.admin
+	.infoblock-wrapper
+		%p= '"О компании"'
+		= text_area_tag :content, "", :class => "tinymce", :rows => 30, :cols => 100
+		= tinymce

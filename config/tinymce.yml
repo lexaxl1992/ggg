@@ -1,0 +1,9 @@
+toolbar:
+  - styleselect | preview | bold italic | undo redo | image | media | link
+plugins:
+  - image
+  - link
+  - media
+  - preview
+language: 'ru'
+branding: false

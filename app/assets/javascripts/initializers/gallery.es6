@@ -1,19 +1,29 @@
 let open_gallery = (event) => {
-	let windowId = 'show_item_' + event.target.dataset.itemId
-	var pswpElement = document.querySelectorAll('.pswp')[0];
-
-	// define options (if needed)
-	var options = {
+	let options = {
 		"index": 0, // start at first slide
 		"history": false
 	};
 
-	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options)
+	let windowID = 'show_item_' + event.target.dataset.itemId
+	let pswpElement = document.querySelectorAll('.pswp')[0]
+	let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options)
 
-	document.getElementById(windowId).close()
+	document.getElementById(windowID).close()
 	gallery.init()
 
 	gallery.listen('close', function() {
-		document.getElementById(windowId).showModal()
-	})
+		document.getElementById(windowID).showModal()
+	});
+
+	var slideDownloadButton = new Vue({
+		el: '#download-slide',
+		data: {
+			slideID: gallery.currItem.src
+		}
+	});
+
+	gallery.listen('afterChange', function() {
+		slideDownloadButton.slideID = gallery.currItem.src
+	});
+
 }
