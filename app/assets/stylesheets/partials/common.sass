@@ -280,35 +280,46 @@ ul#catalogue
 		padding: 0 0 1px
 	li
 		list-style-type: none
+		display: flex
+		flex-direction: column
+		align-items: center
 		&.active
+			@media screen and (max-width: 1023px)
+				margin: 6px 0
 			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
 		@media screen and (min-width: 1024px)
 			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12)
 		@media screen and (min-width: 1024px)
 			margin: 10px
-		&.active
-			@media screen and (max-width: 1023px)
-				margin: 6px 0
 		.collapsible-header
 			display: none
+			width: 50vw
 			@media screen and (max-width: 1023px)
 				display: flex
+			.title-wrapper
+				box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12)
 		.static-header
 			display: flex
-			//color: #FFF
+			width: 100%
 			@media screen and (max-width: 1023px)
 				display: none
+		&.active, .static-header
+			background-color: #353535
 		.collapsible-header, .static-header
 			align-items: center
 			justify-content: center
 			font-family: 'Futuris'
 			font-size: 28px
+			padding: 0
+			&.active
+				.title-wrapper
+					box-shadow: none
 			.title-wrapper
 				padding: 2px 0
 				min-width: 280px
 				width: 50vw
 				border-radius: 2px
-				margin: 8px
+				margin: 8px 0
 				background-color: #2b2b2b
 				display: flex
 				justify-content: center
@@ -325,6 +336,7 @@ ul#catalogue
 					background-color: transparent
 		.collapsible-body
 			padding: 0 !important
+			width: 100%
 			@media screen and (min-width: 1024px)
 				display: block !important
 			.itemSlider
