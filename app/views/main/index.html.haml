@@ -8,7 +8,7 @@
 					.adaptive_header.collapsible-header
 						.title-wrapper
 							%i.custom-icons{"style":"background-image: url(\"#{category.icon}\")"}
-							= category.label
+							%span= category.label
 
 					%section.collapsible-body.mdl-color--grey-850
 						- if category.items.size > 0
