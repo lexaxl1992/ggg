@@ -53,10 +53,12 @@
 
 	.add_category
 		- classes = "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-		= link_to("Добавить категорию", "/categories/new", "remote": true, "method": "get", "class":"#{classes}")
+		= link_to("Добавить категорию", "/categories/new", "remote": true, "method":"get", "class":"#{classes}")
 
 #about.admin
 	.infoblock-wrapper
-		%p= '"О компании"'
-		= text_area_tag :content, "", :class => "tinymce", :rows => 30, :cols => 100
-		= tinymce
+		%h5= "Инфоблок"
+		= form_with("url":"/about_block/1", "method":"patch") do |f|
+			= f.text_area :html, "class":"tinymce", "rows": 30, "cols": 100, "value": @about_block.html
+			= tinymce
+			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")

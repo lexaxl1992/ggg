@@ -1,3 +1,3 @@
 class AboutBlock < Ohm::Model
-	attribute  :markup
+	attribute  :html
 end
