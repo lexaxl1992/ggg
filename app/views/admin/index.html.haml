@@ -59,6 +59,6 @@
 	.infoblock-wrapper
 		%h5= "Инфоблок"
 		= form_with("url":"/about_block/1", "method":"patch") do |f|
-			= f.text_area :html, "class":"tinymce", "rows": 30, "cols": 100, "value": @about_block.html unless @about_block.nil?
+			= f.text_area :html, "class":"tinymce", "rows": 30, "cols": 100, "value": @about_block.html
 			= tinymce
 			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
