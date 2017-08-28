@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
 		lambda = params[:category].merge({"index": Digest::CRC32.hexdigest(params[:category][:label])})
 
 		# Если был передан файл иконки,
-		unless lambda[:icon] == nil
+		unless lambda[:icon].nil?
 			category_params = lambda
 			uploaded_file = category_params[:icon]
 	    File.open(Rails.root.join('public', 'uploads', 'categories', category_params[:index]+".png"), 'wb') do |file|
@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
 		lambda = params[:category]
 
 		# Если был передан файл иконки,
-		unless lambda[:icon] == nil
+		unless lambda[:icon].nil?
 			category_params = lambda
 			uploaded_file = category_params[:icon]
 	    File.open(Rails.root.join('public', 'uploads', 'categories', @category.index+".png"), 'wb') do |file|

@@ -4,7 +4,7 @@ class ImagesetsController < ApplicationController
 	end
 
 	def create
-		unless params[:files] == nil
+		unless params[:files].nil?
 			@imagesetParams = {}
 			params[:files].each_pair do |type, fileObject|
 				case fileObject.content_type
@@ -62,8 +62,8 @@ class ImagesetsController < ApplicationController
 		@imagesetId = params[:id]
 		@imageset = Imageset[@imagesetId]
 		@imageset.delete
-		File.delete(Rails.root.to_s + @imageset.photoFilePath) unless @imageset.photoFilePath == nil
-		File.delete(Rails.root.to_s + @imageset.pictureFilePath) unless @imageset.pictureFilePath == nil
+		File.delete(Rails.root.to_s + @imageset.photoFilePath) unless @imageset.photoFilePath.nil?
+		File.delete(Rails.root.to_s + @imageset.pictureFilePath) unless @imageset.pictureFilePath.nil?
 		respond_to do |format|
 			format.js	if @imageset.delete
 		end

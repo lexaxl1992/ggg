@@ -5,7 +5,7 @@ class AboutBlockController < ApplicationController
   end
 
   def create
-    AboutBlock.create("html":"empty") #unless AboutBlock[1].nil?
+    AboutBlock.create("html":"empty") if AboutBlock[1].nil?
   end
 
   def update

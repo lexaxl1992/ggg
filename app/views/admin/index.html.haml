@@ -19,7 +19,7 @@
 							- category.items.each do |item|
 								%figure{"class":"#{item_classes}", "id":"item_#{item.id}"}
 									%a{"href":"/items/#{item.id}", "data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
-										- unless item.thumbnail == nil
+										- unless item.thumbnail.nil?
 											%img.owl-lazy{"data-src":"#{item.thumbnail}"}
 										- else
 											= image_tag("no_thumbnail.png")
@@ -59,6 +59,6 @@
 	.infoblock-wrapper
 		%h5= "Инфоблок"
 		= form_with("url":"/about_block/1", "method":"patch") do |f|
-			= f.text_area :html, "class":"tinymce", "rows": 30, "cols": 100, "value": @about_block.html
+			= f.text_area :html, "class":"tinymce", "rows": 30, "cols": 100, "value": @about_block.html unless @about_block.nil?
 			= tinymce
 			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")

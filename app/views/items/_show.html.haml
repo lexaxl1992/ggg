@@ -14,13 +14,13 @@
 				.imagesets-slider-for
 					- @item.imagesets.each do |imageset|
 						.imageset
-							- unless imageset.photoUrl == nil
+							- unless imageset.photoUrl.nil?
 								= image_tag(imageset.photoUrl, "class":"photo", "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)")
-							- unless imageset.pictureUrl == nil
+							- unless imageset.pictureUrl.nil?
 								= image_tag(imageset.pictureUrl, "class":"picture", "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)")
 				.imagesets-slider-nav
 					- @item.imagesets.each do |imageset|
-						- unless imageset.photoUrl == nil
+						- unless imageset.photoUrl.nil?
 							= image_tag(imageset.photoUrl)
 						- else
 							= image_tag(imageset.pictureUrl)

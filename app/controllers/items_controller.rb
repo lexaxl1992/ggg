@@ -3,14 +3,14 @@ class ItemsController < ApplicationController
 		@item = Item[params[:id]]
 		@galleryData = []
 		@item.imagesets.each do |imageset|
-			unless imageset.photoUrl == nil
+			unless imageset.photoUrl.nil?
 				@galleryData.push({
 					"src": imageset.photoUrl,
 					"w": imageset.photoWidth,
 					"h": imageset.photoHeight
 				})
 			end
-			unless imageset.pictureUrl == nil
+			unless imageset.pictureUrl.nil?
 				@galleryData.push({
 					"src": imageset.pictureUrl,
 					"w": imageset.pictureWidth,
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
 		lambda = params[:item]
 		item_params = lambda
 		# Сохранение загруженной миниатюры
-		unless item_params[:thumbnail] == nil
+		unless item_params[:thumbnail].nil?
 			new_fileName = Digest::CRC32.hexdigest(item_params[:name])+".png"
 			uploaded_file = item_params[:thumbnail]
 			File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
 		@item = Item.create(lambda)
 		@item.update(category: Category[params[:categoryId]])
 
-		unless params[:imagesets] == nil
+		unless params[:imagesets].nil?
 			params[:imagesets].each do |imageset_id|
 				Imageset[imageset_id].update(item: @item)
 			end
@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
 		lambda = params[:item]
 		item_params = lambda
 		# Сохранение загруженной миниатюры
-		unless item_params[:thumbnail] == nil
+		unless item_params[:thumbnail].nil?
 			new_fileName = Digest::CRC32.hexdigest(params[:itemId])+".png"
 			uploaded_file = item_params[:thumbnail]
 			File.open(Rails.root.join('public', 'uploads', 'items', 'thumbs', new_fileName), 'wb') do |file|
@@ -87,7 +87,7 @@ class ItemsController < ApplicationController
 		@item = Item[params[:itemId]]
 		@item.update(lambda)
 
-		unless params[:imagesets] == nil
+		unless params[:imagesets].nil?
 			params[:imagesets].each do |imageset_id|
 				Imageset[imageset_id].update(item: @item)
 			end
