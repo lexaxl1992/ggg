@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 	def show
 		@item = Item[params[:id]]
 		@galleryData = []
-		@item.imagesets.each do |imageset|
+		for imageset in @item.imagesets
 			unless imageset.photoUrl.nil?
 				@galleryData.push({
 					"src": imageset.photoUrl,
@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
 		@item.update(category: Category[params[:categoryId]])
 
 		unless params[:imagesets].nil?
-			params[:imagesets].each do |imageset_id|
+			for imageset_id in params[:imagesets]
 				Imageset[imageset_id].update(item: @item)
 			end
 		end
@@ -88,7 +88,7 @@ class ItemsController < ApplicationController
 		@item.update(lambda)
 
 		unless params[:imagesets].nil?
-			params[:imagesets].each do |imageset_id|
+			for imageset_id in params[:imagesets]
 				Imageset[imageset_id].update(item: @item)
 			end
 		end

@@ -43,7 +43,7 @@
 						#catalogueMenu
 							%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-								- $categories.to_a.each do |category|
+								- for category in $categories.to_a
 									- if category.visibility == "1"
 										%a.mdl-menu__item.scrollLink{"id":"to_#{category.index}"}= category.label
 						%a#to_about.scrollLink{"class":"#{classes}"}= "О компании"
@@ -53,7 +53,7 @@
 						#catalogueMenu
 							%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-								- $categories.to_a.each do |category|
+								- for category in $categories.to_a
 									- if category.visibility == "1"
 										%a.mdl-menu__item{href:"/##{category.index}", "data-turbolinks":"false"}= category.label
 						= link_to("О компании", "/#about","class":"#{classes}","data-turbolinks":"false")

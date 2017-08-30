@@ -5,7 +5,7 @@
 		%h4= "Прикрепленные пары изображений"
 		.entity-list
 			- if @item.imagesets.size > 0
-				- @item.imagesets.each do |imageset|
+				- for imageset in @item.imagesets
 					%div{"id":"imgset_#{imageset.id}"}
 						- lambda = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 						.buttons-wrapper
@@ -45,7 +45,7 @@
 
 	= form_with("scope":"item", "url":item_path, "method":"patch", "class":"item_form") do |form|
 		- if @item.imagesets.size > 0
-			- @item.imagesets.each do |imageset|
+			- for imageset in @item.imagesets
 				= hidden_field_tag("imagesets[]", imageset.id, "id":"for_imgset_"+imageset.id)
 		.mdl-dialog__content
 			= hidden_field_tag("itemId", @item.id)

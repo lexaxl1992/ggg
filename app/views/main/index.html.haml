@@ -1,9 +1,8 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
 	- if $categories.size > 0
+		- for category in $categories
 
-		- $categories.each do |category|
 			- if to_bool(category.visibility)
-
 				%li{"id":"#{category.index}"}
 					.adaptive_header.collapsible-header
 						.title-wrapper
@@ -14,7 +13,7 @@
 						- if category.items.size > 0
 							- item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
 							.owl-carousel.owl-theme.show_items
-								- category.items.each do |item|
+								- for item in category.items
 									%figure{"class":"#{item_classes}","id":"item_#{item.id}"}
 										%a{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
 											- unless item.thumbnail.nil?

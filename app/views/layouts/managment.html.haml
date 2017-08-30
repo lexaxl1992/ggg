@@ -27,7 +27,7 @@
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-							- $categories.to_a.each do |category|
+							- for category in $categories.to_a
 								%a.mdl-menu__item{href:"/admin/##{category.index}", "data-turbolinks":"false"}= category.label
 					= link_to "Выход", "/", class:"mdl-button mdl-js-button mdl-js-ripple-effect"
 
