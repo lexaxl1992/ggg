@@ -11,7 +11,7 @@
 						%span= category.label
 						%span= "(Категория спрятана)" unless to_bool(category.visibility)
 						
-				%section.collapsible-body.mdl-color--grey-850
+				%section.collapsible-body.mdl-color--grey-800
 					- if category.items.size > 0
 						- item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
 						.owl-carousel.owl-theme.show_items

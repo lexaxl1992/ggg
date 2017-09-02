@@ -9,15 +9,12 @@ a.mdl-button--fab.material-icons
 	justify-content: center
 	align-items: center
 
-.mdl-color--grey-850
-	background-color: rgb(53, 53, 53) !important
-
 .mdl-tabs__tab, input
 	outline: none
 
 .owl-dots
 	display: block !important
-	padding-top: 8px
+	margin: 20px 0 12px
 
 .mdl-textfield
 	width: 100%
@@ -309,8 +306,8 @@ ul#catalogue
 			width: 100%
 			@media screen and (max-width: 1023px)
 				display: none
-		&.active, .static-header
-			background-color: #353535
+		&.active, .static-header, .collapsible-header.active
+			background-color: rgb(66,66,66) !important
 		.collapsible-header, .static-header
 			align-items: center
 			justify-content: center
@@ -362,26 +359,25 @@ ul#catalogue
 			flex-direction: column
 			align-items: center
 			border-radius: 2px
-			padding: 0
-			margin:  10px
-			width: 188px
+			margin: 0
+			width: 210px
 			@media screen and (width: 320px)
-				width: 134px
+				width: 131px
 			img
 				border-radius: 2px
-				width: 188px
-				height: 164px
+				width: 210px
+				height: 160px
 				@media screen and (width: 320px)
-					width: 134px
-					height: 127px
+					width: 131px
+					height: 100px
 			figcaption
 				display: inherit
 				flex-direction: inherit
 				justify-content: space-around
-				height: 96px
-				width: 84%
+				height: 90px
+				width: 86%
 				@media screen and (min-width: 320px) and (max-width: 400px)
-					height: 80px
+					height: 60px
 				span
 					color: #FFF
 					&.name
