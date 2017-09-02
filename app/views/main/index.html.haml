@@ -14,16 +14,17 @@
 							- item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
 							.owl-carousel.owl-theme.show_items
 								- for item in category.items
-									%figure{"class":"#{item_classes}","id":"item_#{item.id}"}
-										%a{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
-											- unless item.thumbnail.nil?
-												%img.owl-lazy{"data-src":"#{item.thumbnail}"}
-											- else
-												= image_tag("no_thumbnail.png")
-										%figcaption
-											%span.name= item.name
-											- if item.price.size > 0
-												%span.price= item.price.to_s + " ₽"
+									.item_wrapper{"style":"padding:2px"}
+										%figure{"class":"#{item_classes}","id":"item_#{item.id}"}
+											%a{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
+												- unless item.thumbnail.nil?
+													%img.owl-lazy{"data-src":"#{item.thumbnail}"}
+												- else
+													= image_tag("no_thumbnail.png")
+											%figcaption
+												%span.name= item.name
+												- if item.price.size > 0
+													%span.price= item.price.to_s + " ₽"
 
 						- else
 							%article.no_items

@@ -1,6 +1,6 @@
 # Adminpanel controller
 class AdminController < ApplicationController
-  http_basic_authenticate_with name: 'admin', password: '1234'
+  http_basic_authenticate_with name: 'admin', password: 'f2fd272c'
 
   def index
     @about_block = AboutBlock[1]
