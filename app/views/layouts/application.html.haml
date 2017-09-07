@@ -29,7 +29,7 @@
 						= image_tag("logo.png")
 				%span.mdl-layout-title
 					%h4
-						%a{href:"tel:+7#{PhoneNumber[1].string[2..-1]}"}
+						%a{href:"tel:+7#{PhoneNumber[1].string[1..-1]}"}
 							%i.material-icons= "call"
 							= PhoneNumber[1].string unless PhoneNumber[1].nil?
 					%small
