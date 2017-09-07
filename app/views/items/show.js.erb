@@ -5,7 +5,13 @@ dialog.innerHTML = "<%= j render 'show'%>"
 document.body.insertBefore(dialog, document.body.firstElementChild)
 dialogPolyfill.registerDialog(dialog)
 componentHandler.upgradeDom()
-dialog.showModal()
+
+if (document.documentElement.clientWidth > 1024){
+	dialog.showModal()
+} else {
+	dialog.show()
+}
+
 
  $('.imagesets-slider-for').slick({
 	slidesToShow: 1,
