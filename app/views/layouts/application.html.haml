@@ -31,7 +31,7 @@
 					%h4
 						%a{ href:"tel:+79181451090" }
 							%i.material-icons= "call"
-							= PhoneNumber[1].string
+							= PhoneNumber[1].string unless PhoneNumber[1].nil?
 					%small
 						%i.material-icons= "location_on"
 						Краснодар
