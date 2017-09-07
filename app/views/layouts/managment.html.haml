@@ -17,10 +17,20 @@
 		%header.mdl-layout__header
 			.mdl-layout__header-row
 				%a.logo{href:"/admin"}
-					= image_tag("logo.png")
+					= image_tag("logo-admin.png")
 				%span.mdl-layout-title
-					%small
-						РЕЖИМ АДМИНИСТРИРОВАНИЯ
+					- unless PhoneNumber[1].nil?
+						= form_with("url":"/phone_number/1", "method":"patch") do |form|
+							.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+								= form.text_field(:phone_number, "class":"mdl-textfield__input", "value": PhoneNumber[1].string)
+								%label.mdl-textfield__label{"for":"phone_number"}= "Номер телефона"
+							= submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
+					- else
+						= form_with("url":"/phone_number", "method":"post") do |form|
+							.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+								= form.text_field(:phone_number, "class":"mdl-textfield__input")
+								%label.mdl-textfield__label{"for":"phone_number"}= "Номер телефона"
+							= submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
 				.mdl-layout-spacer
 
 				%nav.mdl-navigation.mdl-layout--large-screen-only

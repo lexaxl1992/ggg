@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/constructor', to: 'main#constructor'
   get '/admin', to: 'admin#index'
   resources :about_block
+  resources :phone_number
   resources :categories
   resources :items
   resources :imagesets
