@@ -9,7 +9,7 @@
 //= require photoswipe
 //= require_tree ./initializers
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbolinks:load', function() {
 	componentHandler.upgradeDom(); init_sliders(); init_accordion();
 	init_smoothScroll(); init_modalPolyfills(); bind_ajaxReports();
 })
