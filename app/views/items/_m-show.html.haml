@@ -15,16 +15,10 @@
                     - for imageset in @item.imagesets
                         .imageset
                             - unless imageset.photoUrl.nil?
-                                = image_tag(imageset.photoUrl, "class":"photo", "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
-                            - unless imageset.pictureUrl.nil?
-                                = image_tag(imageset.pictureUrl, "class":"picture", "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
-                .imagesets-slider-nav
-                    - for imageset in @item.imagesets
+                                = image_tag(imageset.photoUrl, "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
                         .imageset
-                            - unless imageset.photoUrl.nil?
-                                = image_tag(imageset.photoUrl)
                             - unless imageset.pictureUrl.nil?
-                                = image_tag(imageset.pictureUrl)
+                                = image_tag(imageset.pictureUrl, "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
 
         %section.main
             .mdl-tabs.mdl-js-tabs

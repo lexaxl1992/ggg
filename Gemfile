@@ -34,7 +34,7 @@ gem 'turbolinks', '~> 5'
 # ASSETS
 gem 'jquery-slick-rails'
 gem 'material_icons'
-gem 'photoswipe-rails'
+gem 'photoswipe-rails', "git":"https://github.com/katedutch/photoswipe-rails.git", "branch":"patch-1"
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 # MISC
