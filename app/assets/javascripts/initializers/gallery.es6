@@ -6,11 +6,11 @@ function bind_gallery() {
         "history": false
     };
 
-    let windowID, pswpElement = document.querySelectorAll('.pswp')[0], gallery_items, slideURL;
+    let windowID, pswpElement = document.querySelectorAll('.pswp')[0], gallery_items;
     let slideDownloadButton = new Vue({
         el: '#download-slide',
         data: {
-            slideURL: slideURL
+            slideURL: 'none'
         }
     });
 
@@ -22,7 +22,7 @@ function bind_gallery() {
             let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, gallery_items, options);
             document.getElementById(windowID).close();
             gallery.init();
-            slideURL = gallery.currItem.src;
+            slideDownloadButton.slideURL = gallery.currItem.src;
 
             gallery.listen('close', () => {
                 if (document.documentElement.clientWidth > 1024) {
@@ -33,7 +33,7 @@ function bind_gallery() {
             });
 
             gallery.listen('afterChange', () => {
-                slideDownloadButton.slideID = gallery.currItem.src;
+                slideDownloadButton.slideURL = gallery.currItem.src;
             });
         }
     });
