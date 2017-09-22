@@ -1,29 +1,41 @@
-let open_gallery = (event) => {
-	let options = {
-		"index": 0, // start at first slide
-		"history": false
-	};
+// jshint esversion: 6
 
-	let windowID = 'show_item_' + event.target.dataset.itemId
-	let pswpElement = document.querySelectorAll('.pswp')[0]
-	let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options)
+function bind_gallery() {
+    let options = {
+        "index": 0, // start at first slide
+        "history": false
+    };
 
-	document.getElementById(windowID).close()
-	gallery.init()
+    let windowID, pswpElement = document.querySelectorAll('.pswp')[0], gallery_items, slideURL;
+    let slideDownloadButton = new Vue({
+        el: '#download-slide',
+        data: {
+            slideURL: slideURL
+        }
+    });
 
-	gallery.listen('close', function() {
-		document.getElementById(windowID).showModal()
-	});
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('open--gallery')) {
+            let itemID = event.target.dataset.itemId;
+            windowID = 'show_item_' + itemID;
+            gallery_items = JSON.parse(document.getElementById('slider_' + itemID).dataset.json);
+            let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, gallery_items, options);
+            document.getElementById(windowID).close();
+            gallery.init();
+            slideURL = gallery.currItem.src;
 
-	var slideDownloadButton = new Vue({
-		el: '#download-slide',
-		data: {
-			slideID: gallery.currItem.src
-		}
-	});
+            gallery.listen('close', () => {
+                if (document.documentElement.clientWidth > 1024) {
+                    document.getElementById(windowID).showModal();
+                } else {
+                    document.getElementById(windowID).show();
+                }
+            });
 
-	gallery.listen('afterChange', function() {
-		slideDownloadButton.slideID = gallery.currItem.src
-	});
+            gallery.listen('afterChange', () => {
+                slideDownloadButton.slideID = gallery.currItem.src;
+            });
+        }
+    });
 
 }

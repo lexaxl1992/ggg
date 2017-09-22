@@ -13,11 +13,11 @@
             %section.gallery{"data-json": @galleryData.to_json}
                 .imagesets-slider-for
                     - for imageset in @item.imagesets
-                        .imageset
-                            - unless imageset.photoUrl.nil?
+                        - unless imageset.photoUrl.nil?
+                            .imageset
                                 = image_tag(imageset.photoUrl, "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
-                        .imageset
-                            - unless imageset.pictureUrl.nil?
+                        - unless imageset.pictureUrl.nil?
+                            .imageset
                                 = image_tag(imageset.pictureUrl, "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
 
         %section.main

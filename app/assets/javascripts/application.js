@@ -11,7 +11,7 @@
 
 document.addEventListener('turbolinks:load', function() {
 	componentHandler.upgradeDom(); init_sliders(); init_accordion();
-	init_smoothScroll(); init_modalPolyfills(); bind_ajaxReports();
+	init_smoothScroll(); init_modalPolyfills(); bind_gallery(); bind_ajaxReports();
 	bind_fadeIn();
 });
 //aload()
