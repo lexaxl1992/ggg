@@ -15,10 +15,10 @@
                     - for imageset in @item.imagesets
                         - unless imageset.photoUrl.nil?
                             .imageset
-                                = image_tag(imageset.photoUrl, "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
+                                = image_tag(imageset.photoUrl)
                         - unless imageset.pictureUrl.nil?
                             .imageset
-                                = image_tag(imageset.pictureUrl, "data-item-id":"#{@item.id}", "onclick":"open_gallery(event)", "title":"Кликните для полноэкранного просмотра")
+                                = image_tag(imageset.pictureUrl)
 
         %section.main
             .mdl-tabs.mdl-js-tabs
