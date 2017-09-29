@@ -18,7 +18,7 @@
 										%figure{"class":"#{item_classes}","id":"item_#{item.id}"}
 											%a{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
 												- unless item.thumbnail.nil?
-													%img.owl-lazy{"data-src":"#{item.thumbnail}"}
+													%img.owl-lazy{"src":"/assets/slick/ajax-loader.gif","data-src":"#{item.thumbnail}"}
 												- else
 													= image_tag("no_thumbnail.png")
 											%figcaption
