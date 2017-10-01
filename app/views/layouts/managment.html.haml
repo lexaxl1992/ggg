@@ -42,7 +42,7 @@
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
 							- for category in $categories.to_a
 								%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
-					%a#to_about.scrollLink{"class":"#{classes}"}= "О компании"
+					%a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
 					= link_to "Выход", "/", class:"#{classes}"
 
 				%button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
