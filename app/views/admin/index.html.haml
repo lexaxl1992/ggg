@@ -20,7 +20,7 @@
 									%figure{"class":"#{item_classes}", "id":"item_#{item.id}"}
 										%a{"href":"/items/#{item.id}", "data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
 											- unless item.thumbnail.nil?
-												%img{"data-aload":"#{item.thumbnail}"}
+												%img{"src":"/assets/carousel/spinner.gif","data-aload":"#{item.thumbnail}"}
 											- else
 												= image_tag("no_thumbnail.png")
 										.buttons-wrapper
