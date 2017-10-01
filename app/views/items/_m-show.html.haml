@@ -1,24 +1,32 @@
 .dialog-wrapper
     - circleButton = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
-    .mdl-dialog__actions.close
+    .mt-dialog_title.mdl-shadow--2dp
+        = image_tag("/assets/logo-min--orange.svg")
+        %h4= @item.name
         %a{"class":"#{circleButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
 
-    .my-dialog__title
-        = image_tag("/assets/logo-min--orange.svg")
-        %h3= @item.name
-        %spacer
-    .mdl-dialog__content
+    .mdl-dialog__content.mt-dialog_content
         - if @item.imagesets.size > 0
-            %section.gallery{"data-json": @galleryData.to_json}
+            %section.gallery{"id":"slider_#{@item.id}","data-json": @galleryData.to_json}
                 .imagesets-slider-for
                     - for imageset in @item.imagesets
-                        - unless imageset.photoUrl.nil?
+                        .imageset
+                            - unless imageset.photoUrl.nil?
+                                = image_tag(imageset.photoUrl, "class":"photo")
+                                %button{"class":"open--gallery", "data-item-id":"#{@item.id}", "title":"Кликните для полноэкранного просмотра"}
+                            - unless imageset.pictureUrl.nil?
+                                = image_tag(imageset.pictureUrl, "class":"picture")
+                                %button{"class":"open--gallery", "data-item-id":"#{@item.id}", "title":"Кликните для полноэкранного просмотра"}
+
+                - if @item.imagesets.size > 1
+                    .imagesets-slider-nav
+                        - for imageset in @item.imagesets
                             .imageset
-                                = image_tag(imageset.photoUrl)
-                        - unless imageset.pictureUrl.nil?
-                            .imageset
-                                = image_tag(imageset.pictureUrl)
+                                - unless imageset.photoUrl.nil?
+                                    = image_tag(imageset.photoUrl)
+                                - unless imageset.pictureUrl.nil?
+                                    = image_tag(imageset.pictureUrl)
 
         %section.main
             .mdl-tabs.mdl-js-tabs

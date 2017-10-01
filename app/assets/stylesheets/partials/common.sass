@@ -60,46 +60,42 @@ dialog.mdl-dialog
 			padding: 0 12px
 		input.mdl-textfield__input, textarea
 			color: #000
-		.my-dialog__title
+		.mt-dialog_content
+			margin-top: 56px
+		.mt-dialog_title
+			position: absolute
+			z-index: 9
+			padding: 0
+			left: 0
+			top: 0
+			width: 100%
+			height: 56px
 			display: flex
+			justify-content: space-between
 			align-items: center
-			margin: 56px 0 0
-			padding: 0 24px
-			word-wrap: break-word
-			font-family: 'Roboto-Light' !important
-			h3
+			background-color: #ffffff
+			img
+				$wh: 48px
+				width: $wh
+				height: $wh
+			h4
 				margin: 0
-				width: 100%
-				text-align: center
-				font-family: inherit
-			spacer
-				width: 99px !important
-				height: auto
-			img, spacer
+				font-family: 'Roboto-Light' !important
+			.mdl-button
+				font-size: 22px
+				background: #FFFFFF
+				color: #000000
+				box-shadow: none
+			.mdl-button, img
+				@media screen and (min-width: 800px)
+					margin: 6px
 				@media screen and (max-width: 800px)
-					display: none
-		.dialog-component, .mdl-dialog__content
-			background-color: #FFFFFF
-			margin: 24px 0
+					margin: 6px
+		.dialog-component
+			background-color: #ffffff
+			margin: 12px 0 // 24px 0
 		.mdl-dialog__actions
 			background-color: transparent
-			&.close
-				position: absolute
-				z-index: 9
-				padding: 0
-				right: 0
-				top: 0
-				height: 56px
-				.mdl-button
-					font-size: 22px
-					background: #FFFFFF
-					color: #000000
-					box-shadow: none
-					@media screen and (min-width: 800px)
-						margin: 8px 20px 0 0
-					@media screen and (max-width: 800px)
-						margin: 8px 8px 0 0
-
 		.mdl-dialog__content
 			color: #000000
 			@media screen and (max-width: 800px)
@@ -110,10 +106,25 @@ dialog.mdl-dialog
 				display: flex
 				&.gallery
 					flex-direction: column
-					justify-content: space-around
-					.slick-track
-						display: flex
-						align-items: center
+					//justify-content: space-around
+					.imagesets-slider-nav
+						margin: 0 0 10px !important
+						@media screen and (max-width: 1024px)
+							display: none
+						.slick-track
+							display: flex
+							align-items: center
+							margin: 0
+						.slick-slide
+							margin: 0 10px
+							.imageset
+								display: flex !important
+								align-items: center
+								border-radius: 2px
+								img
+									width: 50%
+									height: 100%
+									flex: 1
 					.imagesets-slider-for
 						.imageset
 							width: 50%
@@ -131,21 +142,6 @@ dialog.mdl-dialog
 									width: 100%
 								.picture
 									display: none
-					.imagesets-slider-nav
-						@media screen and (max-width: 1024px)
-							display: none
-						.slick-track
-							display: flex
-							.imageset
-								display: flex !important
-								align-items: center
-								margin: 0 3px 0
-								border: 1px solid #f60
-								border-radius: 2px
-								img
-									width: 50%
-									height: 100%
-									flex: 1
 				&.main
 					flex-direction: column
 					.mdl-tabs__tab-bar

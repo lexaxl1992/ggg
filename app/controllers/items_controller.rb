@@ -24,14 +24,14 @@ class ItemsController < ApplicationController
 	end
 
 	def new
-		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..1000).to_s)
+		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..10000).to_s)
 		respond_to do |format|
 			format.js
 		end
 	end
 
 	def edit
-		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..1000).to_s)
+		@windowId = "Ox"+Digest::CRC32.hexdigest(Random.rand(1..10000).to_s)
 		@item = Item[params[:id]]
 		respond_to do |format|
 			format.js
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		lambda = params[:item]
+		lambda = params[:item].merge({"name": params[:item][:name].mb_chars.upcase})
 		item_params = lambda
 		# Сохранение загруженной миниатюры
 		unless item_params[:thumbnail].nil?
@@ -71,7 +71,7 @@ class ItemsController < ApplicationController
 	end
 
 	def update
-		lambda = params[:item]
+		lambda = params[:item].merge({"name": params[:item][:name].mb_chars.upcase})
 		item_params = lambda
 		# Сохранение загруженной миниатюры
 		unless item_params[:thumbnail].nil?

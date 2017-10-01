@@ -1,7 +1,7 @@
 .dialog-wrapper
 	%h3.my-dialog__title= "Добавление товара"
 
-	.add_files.dialog-component
+	.add_files.dialog-component.mt-dialog_content
 		%h4= "Прикреплённые пары изображений"
 		.entity-list
 		= form_with("scope":"files", "url":imagesets_path) do |form|
