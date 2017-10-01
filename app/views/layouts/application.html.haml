@@ -7,12 +7,12 @@
 	%meta{"name":"turbolinks-cache-control", "content":"no-cache"}
 	%meta{"name":"viewport", "content":"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
 	= favicon_link_tag "/favicon.ico", rel:"shortcut icon"
-	= stylesheet_link_tag			"application",media:"all", "data-turbolinks-track":"reload"
-	= javascript_include_tag	 "vue.min","data-turbolinks-track":"reload"
-	= javascript_include_tag	 "aload.min","data-turbolinks-track":"reload"
-	= javascript_include_tag	 "application","data-turbolinks-track":"reload"
-	= javascript_include_tag	 "owl-fork","data-turbolinks-track":"reload"
-	= javascript_include_tag	 "smooth-scroll.min","data-turbolinks-track":"reload"
+	= stylesheet_link_tag	"application",media:"all", "data-turbolinks-track":"reload"
+	= javascript_include_tag	"vue.min","data-turbolinks-track":"reload"
+	= javascript_include_tag	"aload.min","data-turbolinks-track":"reload"
+	= javascript_include_tag	"application","data-turbolinks-track":"reload"
+	= javascript_include_tag	"owl-fork","data-turbolinks-track":"reload"
+	= javascript_include_tag	"smooth-scroll.min","data-turbolinks-track":"reload"
 
 %body#event_handler
 	- unless params[:action] == "constructor"
@@ -37,17 +37,17 @@
 						%i.material-icons= "location_on"
 						Краснодар
 				.mdl-layout-spacer
-				- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
-				%nav.mdl-navigation.mdl-layout--large-screen-only
 
+				- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
+				%nav.mdl-layout--large-screen-only.mdl-navigation
 					- if [params[:controller], params[:action]] == ["main", "index"]
 						#catalogueMenu
 							%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
 								- for category in $categories.to_a
 									- if category.visibility == "1"
-										%a.mdl-menu__item.scrollLink{"id":"to_#{category.index}"}= category.label
-						%a#to_about.scrollLink{"class":"#{classes}"}= "О компании"
+										%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
+						%a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
 						= link_to("3D-конструктор","/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false")
 
 					- else
@@ -60,7 +60,7 @@
 						= link_to("О компании", "/#about","class":"#{classes}","data-turbolinks":"false")
 						= link_to("3D-конструктор", "/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false")
 
-				%button#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon.mdl-layout--small-screen-only
+				%button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
 					%i.material-icons= "more_vert"
 				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
 					= link_to("3D-конструктор", "/constructor/#prodboard-container", "class":"mdl-menu__item","data-turbolinks":"false")

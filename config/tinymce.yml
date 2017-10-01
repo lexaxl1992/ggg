@@ -1,5 +1,5 @@
 toolbar:
-  - styleselect | preview | bold italic | undo redo | image | media | link
+  - preview | bold italic | undo redo | image | media | link
 plugins:
   - image
   - link
