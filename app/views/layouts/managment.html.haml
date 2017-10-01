@@ -18,7 +18,7 @@
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 		%header.mdl-layout__header
 			.mdl-layout__header-row
-				%a.logo{href:"/admin"}
+				%a.scrollLink#to_slider.logo
 					= image_tag("logo-admin.png")
 				%span.mdl-layout-title
 					- unless PhoneNumber[1].nil?

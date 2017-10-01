@@ -23,7 +23,7 @@
 		%header.mdl-layout__header{class:"#{@header_class unless @header_class.nil?}"}
 			.mdl-layout__header-row
 				- unless params[:action] == 'constructor'
-					%a#to_slider.logo.scrollLink
+					%a.scrollLink#to_slider.logo
 						= image_tag("logo.png")
 				- else
 					%a.logo{href:"/"}
