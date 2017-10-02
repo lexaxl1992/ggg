@@ -1,3 +1,3 @@
 class PhoneNumber < Ohm::Model
-	attribute  :string
+  attribute :string
 end

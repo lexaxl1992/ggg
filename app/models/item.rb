@@ -1,11 +1,11 @@
 class Item < Ohm::Model
-	attribute  :name
-	attribute  :thumbnail #"/uploads/items/thumbs/imgname"
-	attribute  :price
-	collection :imagesets, :Imageset
-	attribute  :modularity
-	attribute  :description
-	collection :pictures, :Picture
+  attribute :name
+  attribute :thumbnail
+  attribute :price
+  attribute :modularity
+  attribute :description
+  attribute :position
+  collection :imagesets, :Imageset
 
-	reference  :category, :Category
+  reference :category, :Category
 end
