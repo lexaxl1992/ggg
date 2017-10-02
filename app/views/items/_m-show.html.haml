@@ -21,15 +21,6 @@
                                 %button{"class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра"}
                                     open
 
-                - if @item.imagesets.size > 1
-                    .imagesets-slider-nav
-                        - for imageset in @item.imagesets
-                            .imageset
-                                - unless imageset.photoUrl.nil?
-                                    = image_tag(imageset.photoUrl)
-                                - unless imageset.pictureUrl.nil?
-                                    = image_tag(imageset.pictureUrl)
-
         %section.main
             .mdl-tabs.mdl-js-tabs
                 .mdl-tabs__tab-bar
