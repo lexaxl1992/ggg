@@ -14,10 +14,10 @@
                         .imageset
                             - unless imageset.photoUrl.nil?
                                 = image_tag(imageset.photoUrl, "class":"photo")
-                                %button{"class":"open--gallery", "data-item-id":"#{@item.id}", "title":"Кликните для полноэкранного просмотра"}
+                                %button{"class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра"}
                             - unless imageset.pictureUrl.nil?
                                 = image_tag(imageset.pictureUrl, "class":"picture")
-                                %button{"class":"open--gallery", "data-item-id":"#{@item.id}", "title":"Кликните для полноэкранного просмотра"}
+                                %button{"class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра"}
 
                 - if @item.imagesets.size > 1
                     .imagesets-slider-nav

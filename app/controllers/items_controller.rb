@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
 	def show
 		@item = Item[params[:id]]
 		@galleryData = []
@@ -7,14 +8,16 @@ class ItemsController < ApplicationController
 				@galleryData.push({
 					"src": imageset.photoUrl,
 					"w": imageset.photoWidth,
-					"h": imageset.photoHeight
+					"h": imageset.photoHeight,
+					"title": imageset.photoCaption,
 				})
 			end
 			unless imageset.pictureUrl.nil?
 				@galleryData.push({
 					"src": imageset.pictureUrl,
 					"w": imageset.pictureWidth,
-					"h": imageset.pictureHeight
+					"h": imageset.pictureHeight,
+					"title": imageset.pictureCaption,
 				})
 			end
 		end
@@ -56,8 +59,18 @@ class ItemsController < ApplicationController
 		@item.update(category: Category[params[:categoryId]])
 
 		unless params[:imagesets].nil?
+			uid = 1
 			for imageset_id in params[:imagesets]
-				Imageset[imageset_id].update(item: @item)
+				imageset = Imageset[imageset_id]
+				imageset.update(item: @item)
+				unless imageset.photoUrl.nil?
+					imageset.update(photoUid: uid)
+					uid += 1
+				end
+				unless imageset.pictureUrl.nil?
+					imageset.update(pictudeUid: uid)
+					uid += 1
+				end
 			end
 		end
 
@@ -88,8 +101,18 @@ class ItemsController < ApplicationController
 		@item.update(lambda)
 
 		unless params[:imagesets].nil?
+			uid = 1
 			for imageset_id in params[:imagesets]
-				Imageset[imageset_id].update(item: @item)
+				imageset = Imageset[imageset_id]
+				imageset.update(item: @item)
+				unless imageset.photoUrl.nil?
+					imageset.update(photoUid: uid)
+					uid += 1
+				end
+				unless imageset.pictureUrl.nil?
+					imageset.update(pictureUid: uid)
+					uid += 1
+				end
 			end
 		end
 
@@ -115,4 +138,5 @@ class ItemsController < ApplicationController
 			end
 		end
 	end
+
 end

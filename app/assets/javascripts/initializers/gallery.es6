@@ -2,7 +2,6 @@
 
 function bind_gallery() {
     let options = {
-        "index": 0, // start at first slide
         "history": false
     };
 
@@ -19,6 +18,8 @@ function bind_gallery() {
             let itemID = event.target.dataset.itemId;
             windowID = 'show_item_' + itemID;
             gallery_items = JSON.parse(document.getElementById('slider_' + itemID).dataset.json);
+            options.index = parseInt(event.target.dataset.imageId, 10);
+            console.log(options);
             let gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, gallery_items, options);
             document.getElementById(windowID).close();
             gallery.init();
