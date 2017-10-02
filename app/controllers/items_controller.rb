@@ -59,7 +59,7 @@ class ItemsController < ApplicationController
 		@item.update(category: Category[params[:categoryId]])
 
 		unless params[:imagesets].nil?
-			uid = 1
+			uid = 0
 			for imageset_id in params[:imagesets]
 				imageset = Imageset[imageset_id]
 				imageset.update(item: @item)
@@ -101,7 +101,7 @@ class ItemsController < ApplicationController
 		@item.update(lambda)
 
 		unless params[:imagesets].nil?
-			uid = 1
+			uid = 0
 			for imageset_id in params[:imagesets]
 				imageset = Imageset[imageset_id]
 				imageset.update(item: @item)
