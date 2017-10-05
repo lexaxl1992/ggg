@@ -63,6 +63,13 @@ dialog.mdl-dialog
 			padding: 0 12px
 		input.mdl-textfield__input, textarea
 			color: #000
+		.slick-prev, .slick-next
+			@media screen and (min-width: 1025px)
+				top: 140px !important
+			@media screen and (min-width: 700px) and (max-width: 1024)
+				top: 200px !important
+			@media screen and (max-width: 700px)
+				top: 140px !important
 		.mt-dialog_content
 			margin-top: 56px
 		.mt-dialog_title
@@ -224,13 +231,13 @@ dialog.mdl-dialog
 	.mdl-navigation
 		padding: 0 30px 0 0 !important
 		button, a.mdl-button
-			color: #FFF
+			color: #ffffff
 			font-size: 17px
 			cursor: default
 			&.mdl-button--hover.is-activated
 				border-bottom-left-radius: 0
 				border-bottom-right-radius: 0
-				background-color: #3A3A3A
+				background-color: #3a3a3a
 		.mdl-menu__outline
 			margin-left: 0
 			border-top-left-radius: 0
@@ -243,12 +250,8 @@ dialog.mdl-dialog
 .slick-prev,.slick-next
 	z-index: 9
 	position: absolute
-	@media screen and (min-width: 1025px)
-		top: 140px !important
-	@media screen and (min-width: 701px) and (max-width: 1024)
-		top: 200px !important
-	@media screen and (max-width: 700px)
-		top: 140px !important
+	@media screen and (max-width: 1024px)
+		top: 46%
 	width: 45px
 	height: 45px
 	overflow: hidden
@@ -260,7 +263,7 @@ dialog.mdl-dialog
 		display: none
 .slick-prev
 	left: 0
-	background: url('/assets/carousel/left.png') no-repeat center center #FF6600 !important
+	background: url('/assets/carousel/left.png') no-repeat center center #ff6600 !important
 .slick-next
 	right: 0
 	background: url('/assets/carousel/right.png') no-repeat center center #FF6600 !important
