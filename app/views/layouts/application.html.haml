@@ -48,7 +48,7 @@
 									- if category.visibility == "1"
 										%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
 						%a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
-						= link_to("3D конструктор","/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false")
+						= link_to("3D конструктор", "/constructor/#prodboard-container", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
 
 					- else
 						#catalogueMenu
@@ -56,9 +56,9 @@
 							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
 								- for category in $categories.to_a
 									- if category.visibility == "1"
-										%a.mdl-menu__item{href:"/##{category.index}", "data-turbolinks":"false"}= category.label
-						= link_to("О компании", "/#about","class":"#{classes}","data-turbolinks":"false")
-						= link_to("3D конструктор", "/constructor/#prodboard-container","class":"#{classes}","data-turbolinks":"false")
+										%a.mdl-menu__item{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
+						= link_to("О компании", "/#about", "class":"#{classes}", "data-turbolinks":"false")
+						= link_to("3D конструктор", "/constructor/#prodboard-container", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
 
 				%button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
 					%i.material-icons= "more_vert"
