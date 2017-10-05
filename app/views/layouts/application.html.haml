@@ -63,7 +63,9 @@
 				%button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
 					%i.material-icons= "more_vert"
 				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
-					= link_to("3D конструктор", "/constructor/#prodboard-container", "class":"mdl-menu__item","data-turbolinks":"false")
+					- for category in $categories.to_a
+						- if category.visibility == "1"
+							%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
 					= link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")
 
 		%main.mdl-layout__content
