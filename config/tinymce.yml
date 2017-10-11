@@ -1,9 +1,10 @@
 toolbar:
-  - preview | bold italic | undo redo | image | media | link
+  - code | preview | bold italic | undo redo | image | media | link
 plugins:
   - image
   - link
   - media
   - preview
+  - code
 language: 'ru'
 branding: false
