@@ -33,7 +33,7 @@
         %section.main
             .mdl-tabs.mdl-js-tabs
                 .mdl-tabs__tab-bar
-                    %a.mdl-tabs__tab.is-active{"href":"#itemInfo"}= "Характеристики товара"
+                    %a.mdl-tabs__tab.is-active{"href":"#itemInfo"}= "Характеристики"
                     %a.mdl-tabs__tab{"href":"#itemEmpty"}= "Отзывы"
                 #itemInfo.mdl-tabs__panel.is-active
                     %p= "Тип: модульный" if to_bool(@item.modularity)
