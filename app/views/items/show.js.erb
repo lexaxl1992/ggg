@@ -31,12 +31,4 @@ if (document.documentElement.clientWidth > 1024) {
     dialog.innerHTML = "<%= j render 'm-show'%>";
     componentHandler.upgradeDom();
     dialog.show();
-    setTimeout(function () {
-        $('.imagesets-slider-for').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            adaptiveHeight: true,
-            arrows: true,
-        });
-    }, 200);
 };

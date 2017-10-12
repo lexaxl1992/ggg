@@ -60,7 +60,7 @@ dialog.mdl-dialog
 		background-color: #FFFFFF
 		overflow-y: auto
 		@media screen and (max-width: 800px)
-			padding: 0 12px
+			padding: 0 18px
 		input.mdl-textfield__input, textarea
 			color: #000
 		.slick-prev, .slick-next
@@ -111,7 +111,7 @@ dialog.mdl-dialog
 			@media screen and (max-width: 800px)
 				display: flex
 				flex-direction: column
-				padding: 12px
+				padding: 0
 			section
 				display: flex
 				&.gallery
@@ -154,6 +154,15 @@ dialog.mdl-dialog
 									width: 100%
 								.picture
 									display: none
+				&.m-gallery
+					flex-wrap: wrap
+					align-items: center
+					img
+						flex: 1
+						$margin: 1
+						width: calc(50% - #{$margin + 1}px)
+						height: 100%
+						margin: #{$margin}px
 				&.main
 					flex-direction: column
 					.mdl-tabs__tab-bar

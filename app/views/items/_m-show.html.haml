@@ -8,18 +8,12 @@
 
     .mdl-dialog__content.mt-dialog_content
         - if @item.imagesets.size > 0
-            %section.gallery{"id":"slider_#{@item.id}","data-json": @galleryData.to_json}
-                .imagesets-slider-for
-                    - for imageset in @item.imagesets
-                        .imageset
-                            - unless imageset.photoUrl.nil?
-                                = image_tag(imageset.photoUrl, "class":"photo")
-                                %button{"class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра"}
-                                    open
-                            - unless imageset.pictureUrl.nil?
-                                = image_tag(imageset.pictureUrl, "class":"picture")
-                                %button{"class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра"}
-                                    open
+            %section.m-gallery{"id":"gallery_#{@item.id}","data-json": @galleryData.to_json}
+                - for imageset in @item.imagesets
+                    - unless imageset.photoUrl.nil?
+                        = image_tag(imageset.photoUrl, "class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра")
+                    - unless imageset.pictureUrl.nil?
+                        = image_tag(imageset.pictureUrl, "class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра")                            
 
         %section.main
             .mdl-tabs.mdl-js-tabs

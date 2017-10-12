@@ -8,7 +8,7 @@
 
     .mdl-dialog__content.mt-dialog_content
         - if @item.imagesets.size > 0
-            %section.gallery{"id":"slider_#{@item.id}","data-json": @galleryData.to_json}
+            %section.gallery{"id":"gallery_#{@item.id}","data-json": @galleryData.to_json}
                 .imagesets-slider-for
                     - for imageset in @item.imagesets
                         .imageset
