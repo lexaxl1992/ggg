@@ -159,11 +159,26 @@ dialog.mdl-dialog
 					align-items: center
 					margin-top: 12px
 					img
-						flex: 1
 						$margin: 1
-						width: calc(50% - #{$margin + 1}px)
 						height: 100%
 						margin: #{$margin}px
+						cursor: pointer
+						@media screen and (max-width: 400px)
+							$pieces: 3
+							flex: $pieces
+							width: calc(#{100 / $pieces}% - #{$margin * 2}px)
+						@media screen and (min-width: 400px) and (max-width: 600px)
+							$pieces: 4
+							flex: $pieces
+							width: calc(#{100 / $pieces}% - #{$margin * 2}px)
+						@media screen and (min-width: 600px) and (max-width: 800px)
+							$pieces: 6
+							flex: $pieces
+							width: calc(#{100 / $pieces}% - #{$margin * 2}px)
+						@media screen and (min-width: 800px)
+							$pieces: 8
+							flex: $pieces
+							width: calc(#{100 / $pieces}% - #{$margin * 2}px)
 				&.main
 					flex-direction: column
 					.mdl-tabs__tab-bar

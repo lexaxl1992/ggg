@@ -4,7 +4,7 @@ dialog.id = '<%= "show_item_" + @item.id %>';
 document.body.insertBefore(dialog, document.body.firstElementChild);
 dialogPolyfill.registerDialog(dialog);
 
-if (document.documentElement.clientWidth > 1024) {
+if (document.documentElement.clientWidth > 800) {
     dialog.innerHTML = "<%= j render 'show'%>";
     componentHandler.upgradeDom();
     dialog.showModal();
