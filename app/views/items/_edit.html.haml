@@ -5,22 +5,11 @@
 		%h4= "Прикрепленные пары изображений"
 		.entity-list
 			- if @item.imagesets.size > 0
-				- for imageset in @item.imagesets
-					%div{"id":"imgset_#{imageset.id}"}
-						- lambda = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
-						.buttons-wrapper
-							= link_to("delete", "/imagesets/#{imageset.id}", "title":"Удалить изоражение или пару", "method":"delete",
-								"remote":true, "class":"#{lambda}", "data-confirm": "Вы уверены?", "data-params":"windowId=#{@windowId}")
-						- unless imageset.photoUrl.nil?
-							= image_tag(imageset.photoUrl)
-						- else
-							%p= "Нет фото"
-						- unless imageset.pictureUrl.nil?
-							= image_tag(imageset.pictureUrl)
-						- else
-							%p= "Нет картинки"
+				- for @imageset in @item.imagesets
+					%div{"id":"imgset_#{@imageset.id}"}
+						= render 'imagesets/show'
 
-		= form_with("scope":"files", "url":imagesets_path) do |form|
+		= form_with("scope":"objects", "url": imagesets_path) do |form|
 			.input_wrapper
 				%label= "Новое фото"
 				.file_input_div
@@ -31,6 +20,10 @@
 					.file_input_text_div.mdl-textfield.mdl-js-textfield
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
+				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= form.text_field(:photo_caption, "class":"mdl-textfield__input")
+					%label.mdl-textfield__label{"for":"photo_caption"}= "Подпись"
+
 				%label= "Новая картинка"
 				.file_input_div
 					.file_input
@@ -40,6 +33,10 @@
 					.file_input_text_div.mdl-textfield.mdl-js-textfield
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
+				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+					= form.text_field(:picture_caption, "class":"mdl-textfield__input")
+					%label.mdl-textfield__label{"for":"picture_caption"}= "Подпись"
+
 				= hidden_field_tag("windowId", "#{@windowId}")
 			= submit_tag("file_upload загрузить", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
 

@@ -10,6 +10,6 @@ imgset.id = '<%= j "imgset_"+@imageset.id %>'
 
 itemForm.insertBefore(modelId, itemForm.firstChild)
 modal.getElementsByClassName('entity-list')[0].appendChild(imgset)
-imgset.innerHTML = '<%= j render "create" %>'
+imgset.innerHTML = '<%= j render "show" %>'
 document.getElementsByName('files[photo]')[0].value = ""
 document.getElementsByName('files[picture]')[0].value = ""

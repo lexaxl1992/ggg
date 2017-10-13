@@ -1,5 +1,4 @@
 function bind_gallery() {
-    'use strict';
 
     var options = {
         "history": false
