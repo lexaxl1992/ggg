@@ -465,15 +465,8 @@ ul#catalogue
 		width: 100%
 		height: 100%
 		background-color: #ffffff
-		@media screen and (max-width: 366px)
-			padding: 12px
-		@media screen and (min-width: 366px) and (max-width: 1024px)
-			padding: 24px
-		@media screen and (min-width: 1024px)
-			padding: 48px
-			margin: 10px
-			border-radius: 2px
 		iframe
+			// видео с youtube
 			@media screen and (min-width: 500px) and (max-width: 620px)
 				width: 92%
 			@media screen and (min-width: 366px) and (max-width: 500px)
@@ -485,8 +478,14 @@ ul#catalogue
 		img
 			width: 90%
 			height: auto
-		h1, h2, h3, h4, p, li
+		h1, h2, h3, h4, h5, h6, p, li
 			color: #212121 !important
+			@media screen and (max-width: 366px)
+				margin: 12px
+			@media screen and (min-width: 366px) and (max-width: 1024px)
+				margin: 24px
+			@media screen and (min-width: 1024px)
+				margin: 48px
 
 footer
 	background-color: transparent !important

@@ -1,7 +1,9 @@
+- btn_class = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 .buttons-wrapper
+	= link_to("edit", "/items/#{item.id}/edit", "title":"Редактировать подпись к фото",
+		"remote": true, "method":"get", "class":"#{button_class}", "data-params":"windowId=#{@windowId}")
 	= link_to("delete", "/imagesets/#{@imageset.id}", "title":"Удалить холст", "method":"delete",
-		"remote":true, "class":"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons",
-		"data-confirm": "Вы уверены?", "data-params":"windowId=#{@windowId}")
+		"remote": true, "class":"#{btn_class}","data-confirm": "Вы уверены?", "data-params":"windowId=#{@windowId}")
 - unless @imageset.photoUrl.nil?
 	= image_tag(@imageset.photoUrl, "title": @imageset.photoCaption)
 - else

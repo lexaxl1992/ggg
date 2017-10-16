@@ -57,6 +57,23 @@ class ImagesetsController < ApplicationController
 		end
 	end
 
+	def update
+		@imagesetId = params[:id]
+		@imageset = Imageset[@imagesetId]
+		unless params[:data].nil?
+			params[:data].each_pair do |type, text|
+				@imageset.update('#{type}Caption': text)
+			end
+		end
+
+		respond_to do |format|
+			if @imageset.save
+				format.js
+			else
+				format.js {render "error"}
+		end
+	end
+
 	def destroy
 		@imagesetId = params[:id]
 		@imageset = Imageset[@imagesetId]
@@ -67,4 +84,5 @@ class ImagesetsController < ApplicationController
 			format.js	if @imageset.delete
 		end
 	end
+
 end
