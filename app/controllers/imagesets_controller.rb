@@ -71,6 +71,7 @@ class ImagesetsController < ApplicationController
 				format.js
 			else
 				format.js {render "error"}
+			end
 		end
 	end
 
