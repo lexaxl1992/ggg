@@ -3,6 +3,12 @@ class ImagesetsController < ApplicationController
 		@imageset = Imageset[params[:id]]
 	end
 
+	def edit
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	def create
 		unless params[:objects].nil?
 			@imagesetParams = {}
@@ -69,8 +75,6 @@ class ImagesetsController < ApplicationController
 		respond_to do |format|
 			if @imageset.save
 				format.js
-			else
-				format.js {render "error"}
 			end
 		end
 	end
