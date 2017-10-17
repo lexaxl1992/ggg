@@ -4,6 +4,16 @@ class ImagesetsController < ApplicationController
 	end
 
 	def edit
+		@imagesetId = params[:id]
+		@imageset = Imageset[@imagesetId]
+		@current_value = ""
+		case params[:caption_to]
+			when "photo"
+				@current_value = @imageset.photoCaption unless @imageset.photoCaption.nil?
+			when "picture"
+				@current_value = @imageset.pictureCaption unless @imageset.pictureCaption.nil?
+		end
+		
 		respond_to do |format|
 			format.js
 		end
@@ -68,7 +78,7 @@ class ImagesetsController < ApplicationController
 		@imageset = Imageset[@imagesetId]
 		unless params[:data].nil?
 			params[:data].each_pair do |type, text|
-				@imageset.update('#{type}Caption': text)
+				@imageset.update("#{type}": text)
 			end
 		end
 

@@ -1,0 +1,4 @@
+var new_value = prompt("Введите новую подпись к изображению:", "<%= j @current_value %>");
+document.getElementById('<%= j params[:caption_to] + "_form_caption_" + @imagesetId %>').value = new_value;
+document.getElementById('<%= j params[:caption_to] + "_preview_" + @imagesetId %>').title = new_value;
+Rails.fire(document.getElementById('<%= j params[:caption_to] + "_form_" + @imagesetId %>'), 'submit');
