@@ -1,15 +1,15 @@
-var modelId = document.createElement('input')
-modelId.value = '<%= j @imageset.id %>'
-modelId.id = '<%= j "for_imgset_"+@imageset.id %>'
-modelId.setAttribute('name', 'imagesets[]')
-modelId.setAttribute('type', 'hidden')
-var modal = document.getElementById('<%= j params[:windowId] %>')
-var itemForm = modal.getElementsByTagName('form')[1]
-var imgset = document.createElement('div')
-imgset.id = '<%= j "imgset_"+@imageset.id %>'
+var modelId = document.createElement('input');
+modelId.value = '<%= j @imageset.id %>';
+modelId.id = '<%= j "for_imgset_"+@imageset.id %>';
+modelId.setAttribute('name', 'imagesets[]');
+modelId.setAttribute('type', 'hidden');
+var modal = document.getElementById('<%= j params[:windowId] %>');
+var itemForm = modal.getElementsByTagName('form')[1];
+var imgset = document.createElement('div');
+imgset.id = '<%= j "imgset_"+@imageset.id %>';
 
-itemForm.insertBefore(modelId, itemForm.firstChild)
-modal.getElementsByClassName('entity-list')[0].appendChild(imgset)
-imgset.innerHTML = '<%= j render "show" %>'
-document.getElementsByName('files[photo]')[0].value = ""
-document.getElementsByName('files[picture]')[0].value = ""
+itemForm.insertBefore(modelId, itemForm.firstChild);
+modal.getElementsByClassName('entity-list')[0].appendChild(imgset);
+imgset.innerHTML = '<%= j render "show" %>';
+document.getElementsByName('objects[photo]')[0].value = "";
+document.getElementsByName('objects[picture]')[0].value = "";

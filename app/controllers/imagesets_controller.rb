@@ -20,7 +20,7 @@ class ImagesetsController < ApplicationController
 	end
 
 	def create
-		unless params[:objects].nil?
+		unless params[:objects].nil? or params[:objects].values.join.length == 0
 			@imagesetParams = {}
 			params[:objects].each_pair do |type, object|
 				unless object.is_a? String
