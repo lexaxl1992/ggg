@@ -145,17 +145,16 @@ dialog.mdl-dialog
 								width: 50%
 								height: 100%
 								flex: 1
+								cursor: pointer
 							.buttons-wrapper
+								display: flex
 								position: absolute
-								align-self: flex-end
-								width: 15%
+								align-self: flex-start
 								.mdl-button
-									background-color: rgba(0, 0, 0, 0.45)
-							.open--gallery
-								color: #ffffff
-								background-color: #ff6600
-								align-self: flex-end
-								z-index: 99
+									background-color: rgba(0, 0, 0, 0.30)
+									color: #ffffff
+									z-index: 99
+									margin: 10px
 							@media screen and (max-width: 800px)
 								.photo
 									width: 100%

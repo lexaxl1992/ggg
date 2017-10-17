@@ -13,18 +13,10 @@
                 .imagesets-slider-for
                     - for imageset in @item.imagesets
                         .imageset
-                            .buttons-wrapper
-                                - unless imageset.photoUrl.nil?
-                                    %button{"class":"#{circle_button} open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра"}
-                                        fullscreen
-                                - unless imageset.pictureUrl.nil?
-                                    %button{"class":"#{circle_button} open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра"}
-                                        fullscreen
-
                             - unless imageset.photoUrl.nil?
-                                = image_tag(imageset.photoUrl, "class":"photo")
+                                = image_tag(imageset.photoUrl, "class":"photo open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра")
                             - unless imageset.pictureUrl.nil?
-                                = image_tag(imageset.pictureUrl, "class":"picture")
+                                = image_tag(imageset.pictureUrl, "class":"picture open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра")
 
 
                 - if @item.imagesets.size > 1
