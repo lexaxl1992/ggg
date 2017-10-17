@@ -1,25 +1,31 @@
 .dialog-wrapper
-    - circleButton = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+    - circle_button = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
     .mt-dialog_title.mdl-shadow--2dp
         = image_tag("/assets/logo-min--orange.svg")
         %h4= @item.name
-        %a{"class":"#{circleButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
+        %a{"class":"#{circle_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
 
     .mdl-dialog__content.mt-dialog_content
+
         - if @item.imagesets.size > 0
             %section.gallery{"id":"gallery_#{@item.id}","data-json": @galleryData.to_json}
                 .imagesets-slider-for
                     - for imageset in @item.imagesets
                         .imageset
+                            .buttons-wrapper
+                                - unless imageset.photoUrl.nil?
+                                    %button{"class":"#{circle_button} open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра"}
+                                        fullscreen
+                                - unless imageset.pictureUrl.nil?
+                                    %button{"class":"#{circle_button} open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра"}
+                                        fullscreen
+
                             - unless imageset.photoUrl.nil?
                                 = image_tag(imageset.photoUrl, "class":"photo")
-                                %button{"class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра"}
-                                    open
                             - unless imageset.pictureUrl.nil?
                                 = image_tag(imageset.pictureUrl, "class":"picture")
-                                %button{"class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра"}
-                                    open
+
 
                 - if @item.imagesets.size > 1
                     .imagesets-slider-nav
@@ -29,6 +35,7 @@
                                     = image_tag(imageset.photoUrl)
                                 - unless imageset.pictureUrl.nil?
                                     = image_tag(imageset.pictureUrl)
+
 
         %section.main
             .mdl-tabs.mdl-js-tabs
