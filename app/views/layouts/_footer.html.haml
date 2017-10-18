@@ -1,17 +1,16 @@
 %footer.mdl-mega-footer
     .mdl-mega-footer__middle-section
+
         .mdl-mega-footer__drop-down-section
-            %input.mdl-mega-footer__heading-checkbox{:type => "checkbox"}
-                %h1.mdl-mega-footer__heading Features
-                %ul.mdl-mega-footer__link-list
-                    %li
-                        %a{:href => "#"} About
-                    %li
-                        %a{:href => "#"} Terms
-                    %li
-                        %a{:href => "#"} Partners
-                    %li
-                        %a{:href => "#"} Updates
+            %h1.mdl-mega-footer__heading О нас
+            %ul.mdl-mega-footer__link-list
+                %li
+                    %a{"href":"#"} Оплата и доставка
+                %li
+                    %a{"href":"#"} Связаться с нами
+                %li
+                    %a{"href":"#"} Товары со скидкой
+
         .mdl-mega-footer__drop-down-section
             %h1.mdl-mega-footer__heading Ассортимент
             %ul.mdl-mega-footer__link-list
@@ -19,19 +18,11 @@
                     - if category.visibility == "1"
                         %li
                             %a.scrollLink{"id":"to_#{category.index}", "style":"cursor:pointer;"}= category.label
+
         .mdl-mega-footer__drop-down-section
-            %h1.mdl-mega-footer__heading Technology
-            %ul.mdl-mega-footer__link-list
-                %li
-                    %a{:href => "#"} How it works
-                %li
-                    %a{:href => "#"} Patterns
-                %li
-                    %a{:href => "#"} Usage
-                %li
-                    %a{:href => "#"} Products
-                %li
-                    %a{:href => "#"} Contracts
+            %a{"href":"/constructor/#prodboard-container", "style":"text-decoration:none"}
+                %h1.mdl-mega-footer__heading{"style":"color:greenyellow"} 3D Конструктор
+
         .mdl-mega-footer__bottom-section
             .mdl-logo ДЮК Мебель
             %ul.mdl-mega-footer__link-list
