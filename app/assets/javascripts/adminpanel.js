@@ -16,11 +16,11 @@ document.addEventListener('turbolinks:load', function () {
             switch(event.target.text) {
                 case 'arrow_back':
                 case 'arrow_upward':
-                movable.parentNode.insertBefore(movable, movable.previousElementSibling);                
+                    movable.parentNode.insertBefore(movable, movable.previousElementSibling);
                     break;
                 case 'arrow_forward':
                 case 'arrow_downward':
-                movable.parentNode.insertBefore(movable, movable.nextElementSibling);                
+                    movable.parentNode.insertBefore(movable, movable.nextElementSibling.nextElementSibling);
                     break;
             }
 
