@@ -18,15 +18,11 @@
 	= javascript_include_tag	"smooth-scroll.min","data-turbolinks-track":"reload"
 
 %body#event_handler
-	- unless params[:action] == "constructor"
-		- @layout_class = "mdl-layout--fixed-header"
-	-else
-		- @header_class = "mdl-layout__header--scroll"
-	.mainLayout.mdl-layout.mdl-js-layout{class:"#{@layout_class unless @layout_class.nil?}"}
-		%header.mdl-layout__header{class:"#{@header_class unless @header_class.nil?}"}
+	.mainLayout.mdl-layout.mdl-js-layout{"class":"mdl-layout--fixed-header"}
+		%header.mdl-layout__header{"class":"#{'mdl-layout__header--scroll' if params[:action] == 'constructor'}"}
 			.mdl-layout__header-row
-				- unless params[:action] == 'constructor'
-					%a.scrollLink#to_slider.logo
+				- if [params[:controller], params[:action]] == ["main", "index"]
+					%a.scrollLink#to_page_top.logo
 						= image_tag("logo.png")
 				- else
 					%a.logo{href:"/"}
@@ -43,35 +39,34 @@
 
 				- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
 				%nav.mdl-layout--large-screen-only.mdl-navigation
-					- if [params[:controller], params[:action]] == ["main", "index"]
-						#catalogueMenu
-							%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
-							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-								- for category in $categories.to_a
-									- if category.visibility == "1"
+					#catalogueMenu
+						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
+							- for category in $categories.to_a
+								- if category.visibility == "1"
+									- if [params[:controller], params[:action]] == ["main", "index"]
 										%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
+									- else
+										%a.mdl-menu__item{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
+					- if [params[:controller], params[:action]] == ["main", "index"]
 						%a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
 						= link_to("3D конструктор", "/constructor/#prodboard-container", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
-
 					- else
-						#catalogueMenu
-							%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
-							%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-								- for category in $categories.to_a
-									- if category.visibility == "1"
-										%a.mdl-menu__item{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
 						= link_to("О компании", "/#about", "class":"#{classes}", "data-turbolinks":"false")
 						= link_to("3D конструктор", "/constructor/#prodboard-container", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
 
 				%button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
 					%i.material-icons= "more_vert"
 				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
-					- for category in $categories.to_a
-						- if category.visibility == "1"
-							%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
-					= link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")
+					- if [params[:controller], params[:action]] == ["main", "index"]
+						%a.scrollLink.mdl-menu__item#to_catalogue= "Каталог"
+						%a.scrollLink.mdl-menu__item#to_about О компании
+					- else
+						= link_to("Каталог", "/#catalogue", "class":"mdl-menu__item", "data-turbolinks":"false")
+						= link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")
 
 		%main.mdl-layout__content
+			#page_top
 			- unless params[:action] == "constructor"
 				#slider.mdl-shadow--2dp
 					= image_tag("carousel/1.jpg")

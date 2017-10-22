@@ -18,7 +18,7 @@
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
 		%header.mdl-layout__header
 			.mdl-layout__header-row
-				%a.scrollLink#to_slider.logo
+				%a.scrollLink#to_page_top.logo
 					= image_tag("logo-admin.png")
 				%span.mdl-layout-title
 					- unless PhoneNumber[1].nil?
@@ -51,6 +51,7 @@
 					= link_to "Выход", "/", class:"mdl-button mdl-js-button mdl-js-ripple-effect"
 
 		%main.mdl-layout__content
+			#page_top
 			#slider.mdl-shadow--2dp
 				= image_tag("carousel/1.jpg")
 				= image_tag("carousel/2.jpg")

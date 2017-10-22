@@ -327,7 +327,7 @@ ul#catalogue
 	padding: 0 0 6px
 	.mdl-button
 		color: #FFF
-	.no_categories, article.no_items, .add_category
+	.no_categories, article.no_items, .long_buttons
 		display: flex
 		flex-direction: column
 		align-items: center
@@ -337,8 +337,6 @@ ul#catalogue
 			text-align: center
 		.mdl-button
 			margin-bottom: 64px
-	.add_category .mdl-button
-		margin: 32px 0
 	@media screen and (min-width: 1024px)
 		padding: 0 0 1px
 	li
@@ -408,9 +406,6 @@ ul#catalogue
 				margin-bottom: 70px
 				.slick-dots
 					margin-bottom: 0px !important
-	article.no_items
-		&.false
-			display: none
 
 .owl-carousel.show_items
 	.owl-item
@@ -461,7 +456,7 @@ ul#catalogue
 
 #about
 	position: relative
-	min-height: 300px
+	min-height: 150px
 	display: flex
 	background-color: #212121
 	color: #000000
@@ -490,7 +485,7 @@ ul#catalogue
 				width: 100% !important
 				height: auto !important
 		h1, h2, h3, h4, h5, h6, p, li
-			color: #212121 !important
+			color: #212121
 			@media screen and (max-width: 366px)
 				margin: 12px
 			@media screen and (min-width: 366px) and (max-width: 1024px)

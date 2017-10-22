@@ -1,6 +1,6 @@
 - btn_class = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
-.buttons-wrapper
 
+.buttons-wrapper
 	- unless @imageset.photoUrl.nil?
 		= link_to("edit", "/imagesets/#{@imageset.id}/edit", "title":"Редактировать подпись к фото",
 			"remote": true, "method":"get", "class":"#{btn_class}", "data-params":"windowId=#{@windowId};caption_to=photo")

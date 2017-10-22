@@ -5,7 +5,6 @@ if (document.getElementById('<%= j @categoryIndex %>').getElementsByClassName('o
 } else {
 	var carouselFrame = document.getElementById('<%= j @categoryIndex %>').getElementsByClassName('owl-carousel')[0]
 	carouselFrame.remove()
-	document.getElementById('<%= j @categoryIndex %>').getElementsByClassName('no_items')[0].classList.remove('false')
 }
 
 $('.owl-carousel').owlCarousel({
