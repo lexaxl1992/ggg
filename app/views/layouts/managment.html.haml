@@ -5,14 +5,15 @@
 	%meta{name:"turbolinks-cache-control", content:"no-cache"}
 	%meta{name:"viewport", content:"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
 	= favicon_link_tag "/favicon.ico", rel:"shortcut icon"
-	= stylesheet_link_tag	"application", "media":"all", "data-turbolinks-track":"reload"
-	= javascript_include_tag	 "vue.min", "data-turbolinks-track":"reload"
-	= javascript_include_tag	 "aload.min", "data-turbolinks-track":"reload"
-	= javascript_include_tag	 "application", "data-turbolinks-track":"reload"
-	= javascript_include_tag	 "owl-fork", "data-turbolinks-track":"reload"
-	= javascript_include_tag	"smooth-scroll.min","data-turbolinks-track":"reload"
+	= stylesheet_link_tag "application", "media":"all", "data-turbolinks-track":"reload"
+	= javascript_include_tag "vue.min", "data-turbolinks-track":"reload"
+	= javascript_include_tag "aload.min", "data-turbolinks-track":"reload"
+	= javascript_include_tag "application", "data-turbolinks-track":"reload"
+	= javascript_include_tag "owl-fork", "data-turbolinks-track":"reload"
+	= javascript_include_tag "smooth-scroll.min","data-turbolinks-track":"reload"
 	= tinymce_assets
-	= stylesheet_link_tag	"admin_mode", "media":"all", "data-turbolinks-track":"reload"
+	= stylesheet_link_tag "adminpanel", "media":"all", "data-turbolinks-track":"reload"
+	= javascript_include_tag "adminpanel", "data-turbolinks-track":"reload"
 
 %body#event_handler
 	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
@@ -40,7 +41,7 @@
 					#catalogueMenu
 						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
 						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-							- for category in $categories.to_a
+							- $categories.sort_by(:position).to_a.each do |category|
 								%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
 					%a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
 					= link_to "Выход", "/", class:"#{classes}"

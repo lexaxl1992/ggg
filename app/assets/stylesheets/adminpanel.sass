@@ -94,6 +94,7 @@
 .buttons-wrapper
 	display: flex
 	justify-content: center
+	flex-wrap: wrap
 	.mdl-button
 		color: #FFF
 		margin: 10px
@@ -103,12 +104,18 @@
 
 .item .buttons-wrapper
 	position: absolute
-	top: 24%
-	@media screen and (width: 320px)
-		top: 21%
+	top: 10%
+	width: 210px
+	@media screen and (max-width: 720px)
+		width: 131px
+		top: 0
 	.mdl-button
-		background-color: rgba(0, 0, 0, 0.35)
-		margin: 0 18px
+		background-color: rgba(0, 0, 0, 0.40)
+		@media screen and (max-width: 720px)
+			margin: 10px
+			height: 32px
+			min-width: 32px
+			width: 32px
 
 .long_buttons .mdl-button
 	margin: 32px 0

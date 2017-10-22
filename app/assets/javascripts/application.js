@@ -7,9 +7,9 @@
 //= require ./materialize/jquery.easing.1.3
 //= require ./materialize/collapsible
 //= require photoswipe
-//= require_tree ./initializers
+//= require_tree ./init
 
-document.addEventListener('turbolinks:load', function() {
+document.addEventListener('turbolinks:load', function () {
 	componentHandler.upgradeDom(); init_sliders(); init_accordion();
 	init_smoothScroll(); init_modalPolyfills(); bind_gallery(); bind_ajaxReports();
 	bind_fadeIn(); aload();

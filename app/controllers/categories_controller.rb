@@ -80,8 +80,4 @@ class CategoriesController < ApplicationController
       end
     end
   end
-
-  def update_order
-    sd
-  end
 end

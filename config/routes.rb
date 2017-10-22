@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :about_block
   resources :phone_number
   resources :categories
+  post '/items_order', to: 'items#update_order'
   resources :items
   resources :imagesets
 end

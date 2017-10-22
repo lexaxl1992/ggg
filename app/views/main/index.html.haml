@@ -1,6 +1,6 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
 	- if $categories.size > 0
-		- for category in $categories
+		- $categories.sort_by(:position).each do |category|
 
 			- if to_bool(category.visibility)
 				%li{"id":"#{category.index}"}
@@ -13,10 +13,10 @@
 						- if category.items.size > 0
 							- item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
 							.owl-carousel.owl-theme.show_items
-								- for item in category.items
+								- category.items.sort_by(:position).each do |item|
 									.item_wrapper{"style":"padding:2px"}
 										%figure{"class":"#{item_classes}","id":"item_#{item.id}"}
-											%a{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
+											%a.mdl-shadow--2dp{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
 												- unless item.thumbnail.nil?
 													%img{"src":"/assets/carousel/spinner.gif","data-aload":"#{item.thumbnail}"}
 												- else
