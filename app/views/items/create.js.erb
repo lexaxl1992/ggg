@@ -1,48 +1,48 @@
-document.getElementById('<%= j params[:windowId] %>').remove()
-var new_item = document.createElement('figure')
-new_item.id = '<%= j "item_"+@item.id %>'
-new_item.className = 'item mdl-shadow--2dp mdl-color--grey-900 call_dialog'
+document.getElementById('<%= j params[:window_id] %>').remove();
+var new_item = document.createElement('div');
+new_item.className = 'item_wrapper';
+new_item.style= 'padding:2px';
 
 if (document.getElementById('<%= j @item.category.index %>').getElementsByClassName('owl-carousel').length > 0) {
-	$('.owl-carousel').owlCarousel('destroy')
-	document.getElementById('<%= j @item.category.index %>').getElementsByClassName('owl-carousel')[0].appendChild(new_item)
-	new_item.innerHTML = '<%= j render "create" %>'
+    $('.owl-carousel').owlCarousel('destroy');
+    document.getElementById('<%= j @item.category.index %>').getElementsByClassName('owl-carousel')[0].appendChild(new_item);
+    new_item.innerHTML = '<%= j render "create" %>';
 } else {
-	var carouselFrame = document.createElement('div')
-	carouselFrame.id = '<%= j @item.category.index %>'
-	carouselFrame.className = 'owl-carousel owl-theme show_items'
-	var categoryFrame = document.getElementById('<%= j @item.category.index %>').getElementsByTagName('section')[0]
-	categoryFrame.insertBefore(carouselFrame, categoryFrame.firstChild)
-	carouselFrame.appendChild(new_item)
-	new_item.innerHTML = '<%= j render "create" %>'
-	document.getElementById('<%= j @item.category.index %>').getElementsByClassName('no_items')[0].classList.add('false')
+    var carouselFrame = document.createElement('div');
+    carouselFrame.id = '<%= j @item.category.index %>';
+    carouselFrame.className = 'owl-carousel owl-theme show_items';
+    var categoryFrame = document.getElementById('<%= j @item.category.index %>').getElementsByTagName('section')[0];
+    categoryFrame.insertBefore(carouselFrame, categoryFrame.firstChild);
+    carouselFrame.appendChild(new_item);
+    new_item.innerHTML = '<%= j render "create" %>';
+    document.getElementById('<%= j @item.category.index %>').getElementsByClassName('no_items')[0].classList.add('false');
 }
 
 $('.owl-carousel').owlCarousel({
-	lazyLoad: true,
-	margin: 0,
-	nav: true,
-	dots: true,
-	autoHeight: true,
-	responsiveClass: true,
-	responsive:{
-		0: {
-			items: 1
-		},
-		320: {
-			items: 2
-		},
-		640: {
-			items: 3
-		},
-		920: {
-			items: 4
-		},
-		1280: {
-			items: 5
-		},
-		1440: {
-			items: 6
-		}
-	}
-})
+    lazyLoad: true,
+    margin: 0,
+    nav: true,
+    dots: true,
+    autoHeight: true,
+    responsiveClass: true,
+    responsive:{
+        0: {
+            items: 1
+        },
+        320: {
+            items: 2
+        },
+        640: {
+            items: 3
+        },
+        920: {
+            items: 4
+        },
+        1280: {
+            items: 5
+        },
+        1440: {
+            items: 6
+        }
+    }
+});

@@ -1,15 +1,18 @@
+- item_classes = 'item mdl-shadow--2dp mdl-color--grey-900 call_dialog'
 - admin_button = "mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
-%a{"href":"/items/#{@item.id}", "data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
-	- unless @item.thumbnail.nil?
-		= image_tag(@item.thumbnail)
-	- else
-		= image_tag("no_thumbnail.png")
-.buttons-wrapper
-	= link_to("delete", "/items/#{@item.id}", "title":"Удалить товар", "remote":true, "method":"delete", "class":"#{admin_button}",
-						"data-confirm": "Вы уверены, что хотите удалить товар \"#{@item.name}\"?", "data-params":"category_id=#{@item.category.id}")
-	= link_to("edit", "/items/#{@item.id}/edit", "title":"Редактировать товар",
-						"remote":true, "method":"get", "class":"#{admin_button}")
-%figcaption
-	%span.name= @item.name
-	- if @item.price.size > 0
-		%span.price= @item.price.to_s + " ₽"
+
+%figure{"class":"#{item_classes}","id":"item_#{@item.id}"}
+	%a{"href":"/items/#{@item.id}", "data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
+		- unless @item.thumbnail.nil?
+			= image_tag(@item.thumbnail)
+		- else
+			= image_tag("no_thumbnail.png")
+	.buttons-wrapper
+		= link_to("delete", "/items/#{@item.id}", "title":"Удалить товар", "remote":true, "method":"delete", "class":"#{admin_button}",
+							"data-confirm": "Вы уверены, что хотите удалить товар \"#{@item.name}\"?", "data-params":"category_id=#{@item.category.id}")
+		= link_to("edit", "/items/#{@item.id}/edit", "title":"Редактировать товар",
+							"remote":true, "method":"get", "class":"#{admin_button}")
+	%figcaption
+		%span.name= @item.name
+		- if @item.price.size > 0
+			%span.price= @item.price.to_s + " ₽"

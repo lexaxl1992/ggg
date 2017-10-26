@@ -1,2 +1,4 @@
-document.getElementById('<%= j "imgset_"+@imagesetId %>').remove()
-document.getElementById('<%= j "for_imgset_"+@imagesetId %>').remove()
+document.getElementById('<%= j "imgset_"+@imagesetId %>').remove();
+if (document.getElementById('<%= j "for_imgset_"+@imagesetId %>') != null) {
+    document.getElementById('<%= j "for_imgset_"+@imagesetId %>').remove();
+}

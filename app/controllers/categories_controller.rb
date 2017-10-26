@@ -17,22 +17,20 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    lambda = params[:category].merge(
+    props = params[:category].merge(
       "index": Digest::CRC32.hexdigest(params[:category][:label])
     )
-
-    unless lambda[:icon].nil?
-      props = lambda
+    if props[:icon]
       uploaded_file = props[:icon]
       File.open(Rails.root.join('public', 'uploads', 'categories', props[:index] + '.png'),'wb') do |file|
         file.write(uploaded_file.read)
       end
-      lambda = props.merge(
+      props.merge!(
         "icon": '/uploads/categories /' + props[:index] + '.png'
       )
     end
 
-    @category = Category.create(lambda)
+    @category = Category.create(props)
 
     respond_to do |format|
       if @category.save
@@ -45,20 +43,17 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category[params[:categoryId]]
-    lambda = params[:category]
-
-    unless lambda[:icon].nil?
-      props = lambda
+    props = params[:category]
+    if props[:icon]
       uploaded_file = props[:icon]
       File.open(Rails.root.join('public', 'uploads', 'categories', @category.index + '.png'), 'wb') do |file|
         file.write(uploaded_file.read)
       end
-      lambda = props.merge(
+      props.merge!(
         "icon": '/uploads/categories/' + @category.index + '.png'
       )
     end
-
-    @category.update(lambda)
+    @category.update(props)
     respond_to do |format|
       if @category.save
         format.js
@@ -71,6 +66,14 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category[params[:id]]
     @category_index = @category.index
+    @category.items.each do |item|
+      item.imagesets.each do |imageset|
+        File.delete(Rails.root.to_s + imageset.photoFilePath) if imageset.photoFilePath
+        File.delete(Rails.root.to_s + imageset.pictureFilePath) if imageset.pictureFilePath
+        imageset.delete
+      end
+      item.delete
+    end
     @category.delete
     respond_to do |format|
       if @category.delete

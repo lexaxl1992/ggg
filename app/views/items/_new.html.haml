@@ -32,7 +32,8 @@
 					= form.text_field(:picture_caption, "class":"mdl-textfield__input")
 					%label.mdl-textfield__label{"for":"picture_caption"}= "Подпись"
 
-				= hidden_field_tag("windowId", "#{@windowId}")
+				= hidden_field_tag("item_id", "new")
+				= hidden_field_tag("window_id", "#{@window_id}")
 			= submit_tag("file_upload загрузить", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
 
 	= form_with("scope":"item", "url":items_path, "class":"item_form") do |form|
@@ -66,6 +67,6 @@
 				%label.mdl-textfield__label{"for":"description"}= "Описание"
 
 		.mdl-dialog__actions
-			= hidden_field_tag("windowId", "#{@windowId}")
+			= hidden_field_tag("window_id", "#{@window_id}")
 			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
 			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

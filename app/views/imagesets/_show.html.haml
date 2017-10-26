@@ -3,16 +3,16 @@
 .buttons-wrapper
 	- unless @imageset.photoUrl.nil?
 		= link_to("edit", "/imagesets/#{@imageset.id}/edit", "title":"Редактировать подпись к фото",
-			"remote": true, "method":"get", "class":"#{btn_class}", "data-params":"windowId=#{@windowId};caption_to=photo")
+			"remote": true, "method":"get", "class":"#{btn_class}", "data-params":"window_id=#{@window_id};caption_to=photo")
 		= form_with("url":"/imagesets/#{@imageset.id}", "method":"patch", "id":"photo_form_"+@imageset.id) do |form|
 			= hidden_field_tag("data[photoCaption]", @imageset.photoCaption, "id":"photo_form_caption_"+@imageset.id)
 	
 	= link_to("delete", "/imagesets/#{@imageset.id}", "title":"Удалить холст", "method":"delete",
-		"remote": true, "class":"#{btn_class}","data-confirm": "Вы уверены?", "data-params":"windowId=#{@windowId}")
+		"remote": true, "class":"#{btn_class}","data-confirm": "Вы уверены?", "data-params":"window_id=#{@window_id}")
 
 	- unless @imageset.pictureUrl.nil?
 		= link_to("edit", "/imagesets/#{@imageset.id}/edit", "title":"Редактировать подпись к картинке",
-			"remote": true, "method":"get", "class":"#{btn_class}", "data-params":"windowId=#{@windowId};caption_to=picture")
+			"remote": true, "method":"get", "class":"#{btn_class}", "data-params":"window_id=#{@window_id};caption_to=picture")
 		= form_with("url":"/imagesets/#{@imageset.id}", "method":"patch", "id":"picture_form_"+@imageset.id) do |form|
 			= hidden_field_tag("data[pictureCaption]", @imageset.pictureCaption, "id":"picture_form_caption_"+@imageset.id)
 

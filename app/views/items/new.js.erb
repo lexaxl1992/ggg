@@ -1,9 +1,9 @@
-var dialog = document.createElement('dialog')
-dialog.className = "mdl-dialog adminDialog"
-dialog.id = '<%= j @windowId %>'
-dialog.innerHTML = "<%= j render 'new'%>"
-document.body.appendChild(dialog)
-dialogPolyfill.registerDialog(dialog)
-componentHandler.upgradeDom()
-init_fileInput()
-dialog.showModal()
+var dialog = document.createElement('dialog');
+dialog.className = "mdl-dialog adminDialog";
+dialog.id = '<%= j @window_id %>';
+dialog.innerHTML = "<%= j render 'new'%>";
+document.body.appendChild(dialog);
+dialogPolyfill.registerDialog(dialog);
+componentHandler.upgradeDom();
+init_fileInput();
+dialog.showModal();
