@@ -4,11 +4,8 @@ class AboutBlockController < ApplicationController
     @about_block = AboutBlock[1]
   end
 
-  def create
-    AboutBlock.create("html":"empty") if AboutBlock[1].nil?
-  end
-
   def update
+    AboutBlock.create("html": '') if AboutBlock[1].nil?
     @about_block = AboutBlock[1]
     @about_block.update("html": params[:html])
   end
