@@ -1,78 +1,88 @@
 !!! 5
 %head
-	%title ДЮК Мебель
-	%meta{"name":"keywords", "content":"мебель, купить мебель краснодар, купить шкаф краснодар, купить кухню краснодар, купить спальню краснодар, классические спальни, купить диван краснодар, купить гостиную краснодар, диваны и кресла краснодар, купить стул краснодар, купить стол, классическая мебель, мебель для гостиниц, мебель для зала, мебель для спальни, кухонный гарнитур, дешёвые кухни, кухни, спальни, столы и стулья, мебель для номеров, мебель для гостиниц, элитная мебель, элитные кухни, элитные столы, стулья, элитные спальни, столы на заказ, отличие мдф от дерева, как выбрать кухню, как выбрать спальню, интерьер"}
-	%meta{"name":"description", "content":"Большой выбор мебели по доступным ценам. Сайт оснащён 3D конструктором, на котором Вы сами можете собрать комнату своей мечты."}
-	%meta{"name":"yandex-verification","content":"0ef1c2050e4c7d40"}
-	:javascript
-		(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter46285401 = new Ya.Metrika({ id:46285401, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");
-	= csrf_meta_tags
-	%meta{"name":"turbolinks-cache-control", "content":"no-cache"}
-	%meta{"name":"viewport", "content":"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
-	= favicon_link_tag "/favicon.ico", rel:"shortcut icon"
-	= stylesheet_link_tag "application",media:"all", "data-turbolinks-track":"reload"
-	= javascript_include_tag "vue.min","data-turbolinks-track":"reload"
-	= javascript_include_tag "aload.min","data-turbolinks-track":"reload"
-	= javascript_include_tag "application","data-turbolinks-track":"reload"
-	= javascript_include_tag "owl-fork","data-turbolinks-track":"reload"
-	= javascript_include_tag "smooth-scroll.min","data-turbolinks-track":"reload"
+  %title ДЮК Мебель
+  %meta{"name":"keywords", "content":"мебель, купить мебель краснодар, купить шкаф краснодар, купить кухню краснодар, купить спальню краснодар, классические спальни, купить диван краснодар, купить гостиную краснодар, диваны и кресла краснодар, купить стул краснодар, купить стол, классическая мебель, мебель для гостиниц, мебель для зала, мебель для спальни, кухонный гарнитур, дешёвые кухни, кухни, спальни, столы и стулья, мебель для номеров, мебель для гостиниц, элитная мебель, элитные кухни, элитные столы, стулья, элитные спальни, столы на заказ, отличие мдф от дерева, как выбрать кухню, как выбрать спальню, интерьер"}
+  %meta{"name":"description", "content":"Большой выбор мебели по доступным ценам. Сайт оснащён 3D конструктором, на котором Вы сами можете собрать комнату своей мечты."}
+  %meta{"name":"yandex-verification","content":"0ef1c2050e4c7d40"}
+  - if Rails.env == 'production'
+    :javascript
+      (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter46285401 = new Ya.Metrika({ id:46285401, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");
+  = csrf_meta_tags
+  %meta{"name":"turbolinks-cache-control", "content":"no-cache"}
+  %meta{"name":"viewport", "content":"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
+  = favicon_link_tag "/favicon.ico", rel:"shortcut icon"
+  = stylesheet_link_tag "application",media:"all", "data-turbolinks-track":"reload"
+  = javascript_include_tag "vue.min","data-turbolinks-track":"reload"
+  = javascript_include_tag "aload.min","data-turbolinks-track":"reload"
+  = javascript_include_tag "application","data-turbolinks-track":"reload"
+  = javascript_include_tag "owl-fork","data-turbolinks-track":"reload"
+  = javascript_include_tag "smooth-scroll.min","data-turbolinks-track":"reload"
 
 %body#event_handler
-	.mainLayout.mdl-layout.mdl-js-layout{"class":"mdl-layout--fixed-header"}
-		%header.mdl-layout__header{"class":"#{'mdl-layout__header--scroll' if params[:action] == 'constructor'}"}
-			.mdl-layout__header-row
-				- if [params[:controller], params[:action]] == ["main", "index"]
-					%a.scrollLink#to_page_top.logo
-						= image_tag("logo.png")
-				- else
-					%a.logo{href:"/"}
-						= image_tag("logo.png")
-				%span.mdl-layout-title
-					%h4
-						%a{href:"tel:+7#{PhoneNumber[1].string[1..-1]}"}
-							%i.material-icons= "call"
-							= PhoneNumber[1].string unless PhoneNumber[1].nil?
-					%small
-						%i.material-icons= "location_on"
-						Краснодар
-				.mdl-layout-spacer
+  .mainLayout.mdl-layout.mdl-js-layout{"class":"mdl-layout--fixed-header"}
+    %header.mdl-layout__header{"class":"#{'mdl-layout__header--scroll' if params[:action] == 'constructor'}"}
+      .mdl-layout__header-row
+        - if [params[:controller], params[:action]] == ["main", "index"]
+          %a.scrollLink#to_page_top.logo
+            = image_tag("logo.png")
+        - else
+          %a.logo{href:"/"}
+            = image_tag("logo.png")
+        %span.mdl-layout-title
+          %h4
+            %a{href:"tel:+7#{PhoneNumber[1].string[1..-1]}"}
+              %i.material-icons= "call"
+              = PhoneNumber[1].string unless PhoneNumber[1].nil?
+          %small
+            %i.material-icons= "location_on"
+            Краснодар
+        .mdl-layout-spacer
 
-				- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
-				%nav.mdl-layout--large-screen-only.mdl-navigation
-					#catalogueMenu
-						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
-						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-							- $categories.sort_by(:position).to_a.each do |category|
-								- if category.visibility == "1"
-									- if [params[:controller], params[:action]] == ["main", "index"]
-										%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
-									- else
-										%a.mdl-menu__item{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
-					- if [params[:controller], params[:action]] == ["main", "index"]
-						%a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
-						= link_to("3D конструктор", "/constructor/#prodboard-container", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
-					- else
-						= link_to("О компании", "/#about", "class":"#{classes}", "data-turbolinks":"false")
-						= link_to("3D конструктор", "/constructor/#prodboard-container", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
+        - classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
+        %nav.mdl-layout--large-screen-only.mdl-navigation
+          #catalogueMenu
+            %a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+            %ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
+              - Category.all.sort_by(:position).to_a.each do |category|
+                - if category.visibility == "1"
+                  - if [params[:controller], params[:action]] == ["main", "index"]
+                    %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
+                  - else
+                    %a.mdl-menu__item{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
+          - if [params[:controller], params[:action]] == ["main", "index"]
+            %a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
+            = link_to("3D конструктор", "/constructor", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
+          - else
+            = link_to("О компании", "/#about", "class":"#{classes}", "data-turbolinks":"false")
+            = link_to("3D конструктор", "/constructor", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
 
-				%button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
-					%i.material-icons= "more_vert"
-				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
-					- if [params[:controller], params[:action]] == ["main", "index"]
-						%a.scrollLink.mdl-menu__item#to_catalogue= "Каталог"
-						%a.scrollLink.mdl-menu__item#to_about О компании
-					- else
-						= link_to("Каталог", "/#catalogue", "class":"mdl-menu__item", "data-turbolinks":"false")
-						= link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")
+        %button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
+          %i.material-icons= "more_vert"
+        %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
+          - if [params[:controller], params[:action]] == ["main", "index"]
+            %a.scrollLink.mdl-menu__item#to_catalogue= "Каталог"
+            %a.scrollLink.mdl-menu__item#to_about= "О компании"
+          - else
+            = link_to("Каталог", "/#catalogue", "class":"mdl-menu__item", "data-turbolinks":"false")
+            = link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")
 
-		%main.mdl-layout__content
-			#page_top
-			- unless params[:action] == "constructor"
-				#slider.mdl-shadow--2dp
-					= image_tag("carousel/1.jpg")
-					= image_tag("carousel/2.jpg")
-					= image_tag("carousel/3.jpg")
-			= yield
-			= render 'layouts/footer'
+    %main.mdl-layout__content
+      #page_top
+      - unless params[:action] == "constructor"
+        #slider.mdl-shadow--2dp
+          = image_tag("carousel/1.jpg")
+          = image_tag("carousel/2.jpg")
+          = image_tag("carousel/3.jpg")
+      = yield
+      = render 'layouts/footer'
 
-	= render 'layouts/gallery'
+  = render 'layouts/gallery'
+
+  :javascript
+    (function(){ var widget_id = 'E6WkSU43t7';var d=document;var w=window;function l(){
+    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+    s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0];
+    ss.parentNode.insertBefore(s, ss);}
+    if(d.readyState=='complete'){l();}
+    else{if(w.attachEvent){w.attachEvent('onload',l);}
+    else{w.addEventListener('load',l,false);}}})();

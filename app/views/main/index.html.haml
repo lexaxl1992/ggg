@@ -1,40 +1,40 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
-	- if $categories.size > 0
-		- $categories.sort_by(:position).each do |category|
+  - if $categories.size > 0
+    - $categories.sort_by(:position).each do |category|
 
-			- if to_bool(category.visibility)
-				%li{"id":"#{category.index}"}
-					.adaptive_header.collapsible-header
-						.title-wrapper
-							%i.custom-icons{"style":"background-image: url(\"#{category.icon}\")"}
-							%span= category.label
+      - if to_bool(category.visibility)
+        %li{"id":"#{category.index}"}
+          .adaptive_header.collapsible-header
+            .title-wrapper
+              %i.custom-icons{"style":"background-image: url(\"#{category.icon}\")"}
+              %span= category.label
 
-					%section.collapsible-body.mdl-color--grey-800
-						- if category.items.size > 0
-							- item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
-							.owl-carousel.owl-theme.show_items
-								- category.items.sort_by(:position).each do |item|
-									.item_wrapper{"style":"padding:2px"}
-										%figure{"class":"#{item_classes}","id":"item_#{item.id}"}
-											%a.mdl-shadow--2dp{"href":"/items/#{item.id}","data-remote":"true", "data-method":"get", "title":"Нажмите для подробной информации"}
-												- unless item.thumbnail.nil?
-													%img{"src":"/assets/carousel/spinner.gif","data-aload":"#{item.thumbnail}"}
-												- else
-													= image_tag("no_thumbnail.png")
-											%figcaption
-												%span.name= item.name
-												- if item.price.size > 0
-													%span.price= item.price.to_s + " ₽"
+          %section.collapsible-body.mdl-color--grey-800
+            - if category.items.size > 0
+              - item_classes = "item mdl-shadow--2dp mdl-color--grey-900 call_dialog"
+              .owl-carousel.owl-theme.show_items
+                - category.items.sort_by(:position).each do |item|
+                  .item_wrapper{"style":"padding:2px"}
+                    %figure{"class":"#{item_classes}","id":"item_#{item.id}"}
+                      %a.mdl-shadow--2dp{"href":"/items/#{item.id}","data-remote":"true", "title":"Нажмите для подробной информации"}
+                        - unless item.thumbnail.nil?
+                          %img{"src":"/assets/carousel/spinner.gif","data-aload":"#{item.thumbnail}"}
+                        - else
+                          = image_tag("no_thumbnail.png")
+                      %figcaption
+                        %span.name= item.name
+                        - if item.price.size > 0
+                          %span.price= item.price.to_s + " ₽"
 
-						- else
-							%article.no_items
-								%h4= "Нет в наличии"
+            - else
+              %article.no_items
+                %h4= "Нет в наличии"
 
-	- else
-		.no_categories
-			%h4= "База данных категорий пуста"
+  - else
+    .no_categories
+      %h4= "База данных категорий пуста"
 
 #about
-	- #about.null_opacity
-	.infoblock-wrapper
-		! #{@about_block.html}
+  - #about.null_opacity
+  .infoblock-wrapper
+    ! #{Infoblock[1].html if Infoblock[1]}

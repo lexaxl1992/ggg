@@ -1,63 +1,63 @@
 !!! 5
 %head
-	%title ДЮК Мебель
-	= csrf_meta_tags
-	%meta{name:"turbolinks-cache-control", content:"no-cache"}
-	%meta{name:"viewport", content:"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
-	= favicon_link_tag "/favicon.ico", rel:"shortcut icon"
-	= stylesheet_link_tag "application", "media":"all", "data-turbolinks-track":"reload"
-	= javascript_include_tag "vue.min", "data-turbolinks-track":"reload"
-	= javascript_include_tag "aload.min", "data-turbolinks-track":"reload"
-	= javascript_include_tag "application", "data-turbolinks-track":"reload"
-	= javascript_include_tag "owl-fork", "data-turbolinks-track":"reload"
-	= javascript_include_tag "smooth-scroll.min","data-turbolinks-track":"reload"
-	= tinymce_assets
-	= stylesheet_link_tag "adminpanel", "media":"all", "data-turbolinks-track":"reload"
-	= javascript_include_tag "adminpanel", "data-turbolinks-track":"reload"
+  %title ДЮК Мебель
+  = csrf_meta_tags
+  %meta{name:"turbolinks-cache-control", content:"no-cache"}
+  %meta{name:"viewport", content:"width=device-width, initial-scale=1.0, minimum-scale=1.0"}
+  = favicon_link_tag "/favicon.ico", rel:"shortcut icon"
+  = stylesheet_link_tag "application", "media":"all", "data-turbolinks-track":"reload"
+  = javascript_include_tag "vue.min", "data-turbolinks-track":"reload"
+  = javascript_include_tag "aload.min", "data-turbolinks-track":"reload"
+  = javascript_include_tag "application", "data-turbolinks-track":"reload"
+  = javascript_include_tag "owl-fork", "data-turbolinks-track":"reload"
+  = javascript_include_tag "smooth-scroll.min","data-turbolinks-track":"reload"
+  = tinymce_assets
+  = stylesheet_link_tag "adminpanel", "media":"all", "data-turbolinks-track":"reload"
+  = javascript_include_tag "adminpanel", "data-turbolinks-track":"reload"
 
 %body#event_handler
-	.mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
-		%header.mdl-layout__header
-			.mdl-layout__header-row
-				%a.scrollLink#to_page_top.logo
-					= image_tag("logo-admin.png")
-				%span.mdl-layout-title
-					- unless PhoneNumber[1].nil?
-						= form_with("url":"/phone_number/1", "method":"patch") do |form|
-							.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-								= form.text_field(:phone_number, "class":"mdl-textfield__input", "value": PhoneNumber[1].string)
-								%label.mdl-textfield__label{"for":"phone_number"}= "Номер телефона"
-							= submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
-					- else
-						= form_with("url":"/phone_number", "method":"post") do |form|
-							.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-								= form.text_field(:phone_number, "class":"mdl-textfield__input")
-								%label.mdl-textfield__label{"for":"phone_number"}= "Номер телефона"
-							= submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
-				.mdl-layout-spacer
+  .mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+    %header.mdl-layout__header
+      .mdl-layout__header-row
+        %a.scrollLink#to_page_top.logo
+          = image_tag("logo-admin.png")
+        %span.mdl-layout-title
+          - unless PhoneNumber[1].nil?
+            = form_with("url":"/phone_number/1", "method":"patch") do |form|
+              .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                = form.text_field(:phone_number, "class":"mdl-textfield__input", "value": PhoneNumber[1].string)
+                %label.mdl-textfield__label{"for":"phone_number"}= "Номер телефона"
+              = submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
+          - else
+            = form_with("url":"/phone_number", "method":"post") do |form|
+              .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                = form.text_field(:phone_number, "class":"mdl-textfield__input")
+                %label.mdl-textfield__label{"for":"phone_number"}= "Номер телефона"
+              = submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
+        .mdl-layout-spacer
 
-				- classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
-				%nav.mdl-layout--large-screen-only.mdl-navigation
-					#catalogueMenu
-						%a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
-						%ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-							- $categories.sort_by(:position).to_a.each do |category|
-								%a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
-					%a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
-					= link_to "Выход", "/", class:"#{classes}"
+        - classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
+        %nav.mdl-layout--large-screen-only.mdl-navigation
+          #catalogueMenu
+            %a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+            %ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
+              - Category.all.sort_by(:position).to_a.each do |category|
+                %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
+          %a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
+          = link_to "Выход", "/", class:"#{classes}"
 
-				%button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
-					%i.material-icons more_vert
-				%ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
-					= link_to "Выход", "/", class:"mdl-button mdl-js-button mdl-js-ripple-effect"
+        %button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
+          %i.material-icons more_vert
+        %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
+          = link_to "Выход", "/", class:"mdl-button mdl-js-button mdl-js-ripple-effect"
 
-		%main.mdl-layout__content
-			#page_top
-			#slider.mdl-shadow--2dp
-				= image_tag("carousel/1.jpg")
-				= image_tag("carousel/2.jpg")
-				= image_tag("carousel/3.jpg")
-			= yield
-			= render 'layouts/footer'
+    %main.mdl-layout__content
+      #page_top
+      #slider.mdl-shadow--2dp
+        = image_tag("carousel/1.jpg")
+        = image_tag("carousel/2.jpg")
+        = image_tag("carousel/3.jpg")
+      = yield
+      = render 'layouts/admin_footer'
 
-	= render 'layouts/gallery'
+  = render 'layouts/gallery'

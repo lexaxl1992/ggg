@@ -5,13 +5,13 @@
       %h1.mdl-mega-footer__heading ДЮК Мебель
       %ul.mdl-mega-footer__link-list
         %li
-          %a{"href":"/info/2","data-remote":"true"} О нас
+          = link_to("О нас", "/infoblocks/2/edit", "title":"Редактировать инфоблок", "remote":true)
         %li
-          %a{"href":"/info/3","data-remote":"true"} Оплата и доставка
+          = link_to("Оплата и доставка", "/infoblocks/3/edit", "title":"Редактировать инфоблок", "remote":true)
         %li
-          %a{"href":"/info/4","data-remote":"true"} Связаться с нами
+          = link_to("Связаться с нами", "/infoblocks/4/edit", "title":"Редактировать инфоблок", "remote":true)
         %li
-          %a{"href":"/info/5","data-remote":"true"} Товары со скидкой
+          = link_to("Товары со скидкой", "/infoblocks/5/edit", "title":"Редактировать инфоблок", "remote":true)
 
     .mdl-mega-footer__drop-down-section
       %h1.mdl-mega-footer__heading Ассортимент
@@ -19,14 +19,10 @@
         - Category.all.to_a.each do |category|
           - if category.visibility == "1"
             %li
-              - if [params[:controller], params[:action]] == ["main", "index"]
-                %a.scrollLink{"id":"to_#{category.index}", "style":"cursor:pointer;"}= category.label
-              - else
-                %a{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
-
+              %a.scrollLink{"id":"to_#{category.index}", "style":"cursor:pointer;"}= category.label
 
     .mdl-mega-footer__drop-down-section
-      %a{"href":"/constructor", "style":"text-decoration:none"}
+      %a{"href":"/constructor/#prodboard-container", "style":"text-decoration:none"}
         %h1.mdl-mega-footer__heading{"style":"color:greenyellow"} 3D Конструктор
 
     .mdl-mega-footer__bottom-section

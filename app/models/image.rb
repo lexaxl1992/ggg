@@ -1,6 +1,7 @@
 class Image < Ohm::Model
-  attribute :imageUrl
-  attribute :imageFilePath
-  attribute :imageWidth
-  attribute :imageHeight
+  attribute :url
+  attribute :filepath
+  attribute :width
+  attribute :height
+  attribute :caption
 end

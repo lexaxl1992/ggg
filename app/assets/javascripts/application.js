@@ -10,7 +10,14 @@
 //= require_tree ./init
 
 document.addEventListener('turbolinks:load', function () {
-	componentHandler.upgradeDom(); init_sliders(); init_accordion();
-	init_smoothScroll(); init_modalPolyfills(); bind_gallery(); bind_ajaxReports();
-	bind_fadeIn(); aload();
+    componentHandler.upgradeDom(); init_sliders(); init_accordion();
+    init_smoothScroll(); init_modalPolyfills(); bind_gallery(); bind_ajaxReports();
+    bind_fadeIn(); aload();
 });
+
+function Get(url) {
+    var Httpreq = new XMLHttpRequest();
+    Httpreq.open("GET", url, false);
+    Httpreq.send(null);
+    return JSON.parse(Httpreq.responseText);
+}
