@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/items_order', to: 'items#update_order'
   resources :items
   resources :imagesets
-  get '/info/:id(.:format)', to: 'infoblocks#show'
+  get '/infoblocks/:id', to: 'infoblocks#show'
   patch '/infoblocks/:id(.:format)', to: 'infoblocks#update'
   resources :phone_number
 end

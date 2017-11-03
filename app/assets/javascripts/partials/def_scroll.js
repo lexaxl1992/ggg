@@ -1,4 +1,4 @@
-function init_smoothScroll() {
+function def_scroll() {
     $('.scrollLink').on('click', function (event) {
         $.smoothScroll({
             scrollElement: $('main'),

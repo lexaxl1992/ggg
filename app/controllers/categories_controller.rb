@@ -4,16 +4,12 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    respond_to do |format|
-      format.js
-    end
+    respond_to :js
   end
 
   def edit
     @category = Category[params[:id]]
-    respond_to do |format|
-      format.js
-    end
+    respond_to :js
   end
 
   def create

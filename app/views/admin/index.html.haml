@@ -5,8 +5,8 @@
 
 = form_with("url": items_order_path, "id":"order_form") do |form|
   %ul#catalogue{"data-collapsible":"accordion"}
-    - if $categories.size > 0
-      - $categories.sort_by(:position).each do |category|
+    - if Category.all.size > 0
+      - Category.all.sort_by(:position).each do |category|
 
         %li{"id": category.index}
           = hidden_field_tag("categories_order[]", category.id)
@@ -53,7 +53,7 @@
               = link_to("delete", "/categories/#{category.id}", "title":"Удалить категорию", "remote":true, "method":"delete",
                         "class":"#{edit_category}", "data-confirm": "Вы уверены, что хотите удалить категорию \"#{category.label}\"?")
 
-    - unless $categories.size > 0
+    - unless Category.all.size > 0
       .no_categories
         %h4= "База данных категорий пуста"
 

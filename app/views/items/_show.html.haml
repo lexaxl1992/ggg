@@ -1,47 +1,47 @@
-.dialog-wrapper
-    - circle_button = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+.dialog_wrapper
+  - circle_button = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
-    .mt-dialog_title.mdl-shadow--2dp
-        = image_tag("/assets/logo-min--orange.svg")
-        %h4= @item.name
-        %a{"class":"#{circle_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
+  .mt-dialog_title.mdl-shadow--2dp
+    = image_tag("/assets/logo-min--orange.svg")
+    %h4= @item.name
+    %a{"class":"#{circle_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
 
-    .mdl-dialog__content.mt-dialog_content
+  .mdl-dialog__content.mt-dialog_content
 
-        - if @item.imagesets.size > 0
-            %section.gallery{"id":"gallery_#{@item.id}","data-json": @galleryData.to_json}
-                .imagesets-slider-for
-                    - for imageset in @item.imagesets
-                        .imageset
-                            - unless imageset.photoUrl.nil?
-                                = image_tag(imageset.photoUrl, "class":"photo open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра")
-                            - unless imageset.pictureUrl.nil?
-                                = image_tag(imageset.pictureUrl, "class":"picture open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра")
-
-
-                - if @item.imagesets.size > 1
-                    .imagesets-slider-nav
-                        - for imageset in @item.imagesets
-                            .imageset
-                                - unless imageset.photoUrl.nil?
-                                    = image_tag(imageset.photoUrl)
-                                - unless imageset.pictureUrl.nil?
-                                    = image_tag(imageset.pictureUrl)
+    - if @item.imagesets.size > 0
+      %section.gallery{"id":"gallery_#{@item.id}","data-json": @galleryData.to_json}
+        .imagesets-slider-for
+          - for imageset in @item.imagesets
+            .imageset
+              - unless imageset.photoUrl.nil?
+                = image_tag(imageset.photoUrl, "class":"photo open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра")
+              - unless imageset.pictureUrl.nil?
+                = image_tag(imageset.pictureUrl, "class":"picture open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра")
 
 
-        %section.main
-            .mdl-tabs.mdl-js-tabs
-                .mdl-tabs__tab-bar
-                    %a.mdl-tabs__tab.is-active{"href":"#itemInfo"}= "Характеристики"
-                    %a.mdl-tabs__tab{"href":"#itemEmpty"}= "Отзывы"
-                #itemInfo.mdl-tabs__panel.is-active
-                    %p= "Тип: модульный" if to_bool(@item.modularity)
-                    - if @item.price.size > 0
-                        %p= "Цена: "+@item.price+" рублей"
-                    %p= "Описание:"
-                    - if @item.description.size > 0
-                        %p= @item.description
-                    - else
-                        %p= "Нет описания."
-                #itemEmpty.mdl-tabs__panel
-                    
+        - if @item.imagesets.size > 1
+          .imagesets-slider-nav
+            - for imageset in @item.imagesets
+              .imageset
+                - unless imageset.photoUrl.nil?
+                  = image_tag(imageset.photoUrl)
+                - unless imageset.pictureUrl.nil?
+                  = image_tag(imageset.pictureUrl)
+
+
+    %section.main
+      .mdl-tabs.mdl-js-tabs
+        .mdl-tabs__tab-bar
+          %a.mdl-tabs__tab.is-active{"href":"#itemInfo"}= "Характеристики"
+          %a.mdl-tabs__tab{"href":"#itemEmpty"}= "Отзывы"
+        #itemInfo.mdl-tabs__panel.is-active
+          %p= "Тип: модульный" if to_bool(@item.modularity)
+          - if @item.price.size > 0
+            %p= "Цена: "+@item.price+" рублей"
+          %p= "Описание:"
+          - if @item.description.size > 0
+            %p= @item.description
+          - else
+            %p= "Нет описания."
+        #itemEmpty.mdl-tabs__panel
+          

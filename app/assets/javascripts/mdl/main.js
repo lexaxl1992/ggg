@@ -7,6 +7,7 @@
 //= require ./components/rAF
 //= require ./components/radio
 //= require ./components/ripple
+//= require ./components/snackbar
 //= require ./components/tabs
 //= require ./components/textfield
 //= require ./custom/fileInput

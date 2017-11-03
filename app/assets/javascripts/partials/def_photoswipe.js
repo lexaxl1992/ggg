@@ -1,4 +1,4 @@
-function bind_gallery() {
+function def_photoswipe() {
 
     var options = {
         "history": false

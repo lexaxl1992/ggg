@@ -1,6 +1,6 @@
 %ul#catalogue.mdl-shadow--2dp{"data-collapsible":"accordion"}
-  - if $categories.size > 0
-    - $categories.sort_by(:position).each do |category|
+  - if Category.all.size > 0
+    - Category.all.sort_by(:position).each do |category|
 
       - if to_bool(category.visibility)
         %li{"id":"#{category.index}"}

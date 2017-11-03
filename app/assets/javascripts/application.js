@@ -7,17 +7,9 @@
 //= require ./materialize/jquery.easing.1.3
 //= require ./materialize/collapsible
 //= require photoswipe
-//= require_tree ./init
+//= require_tree ./partials
 
 document.addEventListener('turbolinks:load', function () {
-    componentHandler.upgradeDom(); init_sliders(); init_accordion();
-    init_smoothScroll(); init_modalPolyfills(); bind_gallery(); bind_ajaxReports();
-    bind_fadeIn(); aload();
+    componentHandler.upgradeDom(); def_sliders(); def_accordion();
+    def_scroll(); def_photoswipe(); def_modal(); aload();
 });
-
-function Get(url) {
-    var Httpreq = new XMLHttpRequest();
-    Httpreq.open("GET", url, false);
-    Httpreq.send(null);
-    return JSON.parse(Httpreq.responseText);
-}
