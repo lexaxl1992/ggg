@@ -1,26 +1,26 @@
-.dialog-wrapper
-	%h3.my-dialog__title= "Создание категории"
-	= form_with("scope":"category", "url":categories_path) do |form|
-		.mdl-dialog__content
+.dialog_wrapper
+  %h3.my-dialog__title= "Создание категории"
+  = form_with("scope":"category", "url":categories_path) do |form|
+    .mdl-dialog__content
 
-			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-				= form.text_field(:label, "class":"mdl-textfield__input", "required":true)
-				%label.mdl-textfield__label{"for":"label"}= "Название"
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        = form.text_field(:label, "class":"mdl-textfield__input", "required":true)
+        %label.mdl-textfield__label{"for":"label"}= "Название"
 
-			%label= "Иконка (png, 40 x 40 px)"
-			.file_input_div
-				.file_input
-					%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
-						%i.material-icons= "attach_file"
-						= form.file_field(:icon)
-				.file_input_text_div.mdl-textfield.mdl-js-textfield
-					%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
-					%label.mdl-textfield__label{"for":"file_input_text"}
+      %label= "Иконка (png, 40 x 40 px)"
+      .file_input_div
+        .file_input
+          %label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+            %i.material-icons= "attach_file"
+            = form.file_field(:icon)
+        .file_input_text_div.mdl-textfield.mdl-js-textfield
+          %input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+          %label.mdl-textfield__label{"for":"file_input_text"}
 
-			%label.mdl-checkbox.mdl-js-checkbox{"for":"visibility"}
-				= form.check_box(:visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked":true)
-				%span.mdl-checkbox__label Отображать в каталоге
+      %label.mdl-checkbox.mdl-js-checkbox{"for":"visibility"}
+        = form.check_box(:visibility, "id":"visibility", "class":"mdl-checkbox__input", "checked":true)
+        %span.mdl-checkbox__label Отображать в каталоге
 
-		.mdl-dialog__actions
-			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
-			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"
+    .mdl-dialog__actions
+      = submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
+      %button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"

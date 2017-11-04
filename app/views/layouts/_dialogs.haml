@@ -1,0 +1,14 @@
+- circle_button = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+
+%dialog.mdl-dialog{ "id": "info_window" }
+  .dialog_wrapper
+    .mt-dialog_title.mdl-shadow--2dp
+      = image_tag("/assets/logo-min--orange.svg")
+      %h4
+      %a{ "class": "#{circle_button} close__window" } close
+
+    .mdl-dialog__content.mt-dialog_content{ "id": "info_wrapper" }
+
+#snackbar_container.mdl-js-snackbar.mdl-snackbar.mt-toast
+  .mdl-snackbar__text
+  %button.mdl-snackbar__action{ "style": "display:none" }

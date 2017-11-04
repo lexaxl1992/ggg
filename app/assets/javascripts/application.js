@@ -3,11 +3,10 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require jquery.slick
-//= require ./mdl/main
-//= require ./materialize/jquery.easing.1.3
-//= require ./materialize/collapsible
 //= require photoswipe
-//= require_tree ./partials
+//= require ./mdl_handler
+//= require_tree ./lib
+//= require_tree ./modules
 
 document.addEventListener('turbolinks:load', function () {
     componentHandler.upgradeDom(); def_sliders(); def_accordion();
