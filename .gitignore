@@ -3,9 +3,12 @@ log/*
 tmp/*
 !log/.keep
 !tmp/.keep
+Gemfile.lock
 
 db/*
 !db/.keep
+
+
 public/uploads/*
 !public/uploads/.keep
 !public/uploads/items/.keep
@@ -13,5 +16,3 @@ public/uploads/*
 !public/uploads/items/thumbs/.keep
 !public/uploads/categories/.keep
 !public/uploads/images/.keep
-Gemfile.lock
-public/assets
