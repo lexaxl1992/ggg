@@ -5,13 +5,13 @@
       %h1.mdl-mega-footer__heading ДЮК Мебель
       %ul.mdl-mega-footer__link-list
         %li
-          = link_to("О нас", "/infoblocks/2/edit", "title":"Редактировать инфоблок", "remote":true)
+          %a.open__window{"data-id":"2","data-controller":"infoblocks","data-action":"edit"} О нас
         %li
-          = link_to("Оплата и доставка", "/infoblocks/3/edit", "title":"Редактировать инфоблок", "remote":true)
+          %a.open__window{"data-id":"3","data-controller":"infoblocks","data-action":"edit"} Оплата и доставка
         %li
-          = link_to("Связаться с нами", "/infoblocks/4/edit", "title":"Редактировать инфоблок", "remote":true)
+          %a.open__window{"data-id":"4","data-controller":"infoblocks","data-action":"edit"} Связаться с нами
         %li
-          = link_to("Товары со скидкой", "/infoblocks/5/edit", "title":"Редактировать инфоблок", "remote":true)
+          %a.open__window{"data-id":"5","data-controller":"infoblocks","data-action":"edit"} Товары со скидкой
 
     .mdl-mega-footer__drop-down-section
       %h1.mdl-mega-footer__heading Ассортимент

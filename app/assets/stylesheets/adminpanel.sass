@@ -120,20 +120,35 @@
 .long_buttons .mdl-button
   margin: 32px 0
 
+dialog.admin .dialog_wrapper
+  padding: 0 !important
+  .mt-dialog_content
+    height: calc(100% - 56px)
+    padding: 0 !important
+    .infoblock-wrapper
+      padding: 0 !important
+    .infoblock-wrapper, form, .mce-tinymce, .mce-stack-layout, iframe
+      height: 100%
+    .mce-tinymce
+      border: 0
+    .mce-edit-area
+      height: calc(100% - 109px)
+    
+
 #about.admin
   height: auto
   min-height: 300px
-  .infoblock-wrapper
-    background-color: transparent
-    height: auto
-    margin: 0 !important
-    padding: 0 24px !important
-    h5
-      color: #FFFFFF
-      margin: 24px
-    .mdl-button
-      float: right
-      z-index: 9
+.infoblock-wrapper
+  background-color: transparent
+  height: auto
+  margin: 0 !important
+  padding: 0 24px !important
+  h5
+    color: #FFFFFF
+    margin: 24px
+  .mdl-button
+    float: right
+    z-index: 9
 
 #menu-lower-right
   position: absolute

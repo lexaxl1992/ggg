@@ -66,5 +66,5 @@
     = form_with("url":"/infoblocks/1", "method":"patch") do |f|
       %h5= "Инфоблок"
       = submit_tag("Сохранить", "class":"mdl-button")
-      = f.text_area :html, "class":"tinymce", "rows": 60, "cols": 100, "value": @bottom_infoblock_content
+      = f.text_area :html, "class":"tinymce", "rows": 30, "value": @bottom_infoblock_content
       = tinymce

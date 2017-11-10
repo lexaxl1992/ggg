@@ -79,6 +79,10 @@
   = render 'layouts/gallery'
   = render 'layouts/dialogs'
 
+  #snackbar_container.mdl-js-snackbar.mdl-snackbar.mt-toast
+    .mdl-snackbar__text
+    %button.mdl-snackbar__action{ "style": "display:none" }
+
   :javascript
     (function(){ var widget_id = 'E6WkSU43t7';var d=document;var w=window;function l(){
     var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;

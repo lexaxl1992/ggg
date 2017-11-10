@@ -1,8 +1,0 @@
-var dialog = document.createElement('dialog');
-dialog.className = 'mdl-dialog adminDialog';
-dialog.innerHTML = '<%= j render "edit" %>';
-document.body.appendChild(dialog);
-dialogPolyfill.registerDialog(dialog);
-componentHandler.upgradeDom();
-init_fileInput();
-dialog.showModal();

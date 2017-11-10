@@ -11,12 +11,6 @@ class InfoblocksController < ApplicationController
     end
   end
 
-  def edit
-    @infoblock = Infoblock[params[:id]]
-    Infoblock.create("html": '') if @infoblock.nil?
-    respond_to :js
-  end
-
   def update
     @infoblock = Infoblock[params[:id]]
     @infoblock.update("html": params[:html])
