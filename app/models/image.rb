@@ -4,4 +4,6 @@ class Image < Ohm::Model
   attribute :width
   attribute :height
   attribute :caption
+
+  reference :slider
 end

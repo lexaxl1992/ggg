@@ -118,6 +118,7 @@ class ItemsController < ApplicationController
     @item_id = params[:id]
     @item = Item[@item_id]
     @categoryIndex = @item.category.index
+    File.delete(Rails.root.to_s + "/public#{@item.thumbnail}") if @item.thumbnail
     @item.imagesets.each do |imageset|
       File.delete(Rails.root.to_s + imageset.photoFilePath) if imageset.photoFilePath
       File.delete(Rails.root.to_s + imageset.pictureFilePath) if imageset.pictureFilePath
