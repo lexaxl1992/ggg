@@ -24,7 +24,7 @@ function def_modal() {
                 url = '/' + dataset.controller + '/' + dataset.id,
                 data = get_data(url);
 
-            if (data.ok === true) { fill_window(data, dataset.controller, dataset.action); }
+            if (data.ok === true) { fill_window(data, dataset.controller, dataset.id, dataset.action); }
             else { show_error(404); }
         }
 
@@ -39,7 +39,7 @@ function def_modal() {
     });
 
 
-    function fill_window(data, controller, action) {
+    function fill_window(data, controller, id, action) {
         switch(controller) {
         case 'infoblocks':
             if (action == 'show') {
@@ -48,6 +48,8 @@ function def_modal() {
                 info_window.showModal();
             } else if (action == 'edit') {
                 edit_info_window.getElementsByTagName('h4')[0].innerText = 'Редактирование блока "' + data.header + '"';
+                edit_info_window.getElementsByTagName('form')[0].action = '/' + controller + '/' + id;
+                console.log('/' + controller + '/' + id);
                 edit_info_window.getElementsByTagName('iframe')[0].contentDocument.body.innerHTML = data.html;
                 edit_info_window.showModal();
             }
