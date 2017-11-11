@@ -1,33 +1,32 @@
 .dialog_wrapper
-    - circleButton = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+  - circleButton = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
-    .mt-dialog_title.mdl-shadow--2dp
-        = image_tag("/assets/logo-min--orange.svg")
-        %h4= @item.name
-        %a{"class":"#{circleButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
+  .mt-dialog_title.mdl-shadow--2dp
+    = image_tag("/assets/logo-min--orange.svg")
+    %h4= @item.name
+    %a{"class":"#{circleButton}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
 
-    .mdl-dialog__content.mt-dialog_content
-        - if @item.imagesets.size > 0
-            %section.m-gallery{"id":"gallery_#{@item.id}","data-json": @galleryData.to_json}
-                - for imageset in @item.imagesets
-                    - unless imageset.photoUrl.nil?
-                        = image_tag(imageset.photoUrl, "class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра")
-                    - unless imageset.pictureUrl.nil?
-                        = image_tag(imageset.pictureUrl, "class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра")                            
+  .mdl-dialog__content.mt-dialog_content
+    - if @item.imagesets.size > 0
+      %section.m-gallery{"id":"gallery_#{@item.id}","data-json": @galleryData.to_json}
+        - for imageset in @item.imagesets
+          - unless imageset.photoUrl.nil?
+            = image_tag(imageset.photoUrl, "class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.photoUid, "title":"Кликните для полноэкранного просмотра")
+          - unless imageset.pictureUrl.nil?
+            = image_tag(imageset.pictureUrl, "class":"open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра")                            
 
-        %section.main
-            .mdl-tabs.mdl-js-tabs
-                .mdl-tabs__tab-bar
-                    %a.mdl-tabs__tab.is-active{"href":"#itemInfo"}= "Характеристики"
-                    %a.mdl-tabs__tab{"href":"#itemEmpty"}= "Отзывы"
-                #itemInfo.mdl-tabs__panel.is-active
-                    %p= "Тип: модульный" if to_bool(@item.modularity)
-                    - if @item.price.size > 0
-                        %p= "Цена: "+@item.price+" рублей"
-                    %p= "Описание:"
-                    - if @item.description.size > 0
-                        %p= @item.description
-                    - else
-                        %p= "Нет описания."
-                #itemEmpty.mdl-tabs__panel
-                    Модуль отзывов стоит 1000р, делается 4-7 дней.
+    %section.main
+      .mdl-tabs.mdl-js-tabs
+        .mdl-tabs__tab-bar
+          %a.mdl-tabs__tab.is-active{"href":"#item_info"}= "Описание"
+          %a.mdl-tabs__tab{"href":"#item_empty"}= "Характеристики"
+        #item_info.mdl-tabs__panel.is-active
+          - if @item.description.size > 0
+            %p= "Описание:"
+            %p= @item.description
+          - else
+            %p= "Нет описания."
+          #item_empty.mdl-tabs__panel
+          %p= "Тип: модульный" if to_bool(@item.modularity)
+          - if @item.price.size > 0
+            %p= "Цена: "+@item.price+" рублей"
