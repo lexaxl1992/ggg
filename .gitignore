@@ -8,12 +8,17 @@ Gemfile.lock
 db/*
 !db/.keep
 
+!public/assets
 public/assets/*
-!public/assets/.keep
+!public/uploads
 public/uploads/*
-!public/uploads/.keep
-!public/uploads/items/.keep
-!public/uploads/items/images/.keep
-!public/uploads/items/thumbs/.keep
-!public/uploads/categories/.keep
-!public/uploads/images/.keep
+!public/uploads/items
+public/uploads/items/*
+!public/uploads/items/images
+public/uploads/items/images/*
+!public/uploads/items/thumbs
+public/uploads/items/thumbs/*
+!public/uploads/categories
+public/uploads/categories/*
+!public/uploads/images
+public/uploads/images/*
