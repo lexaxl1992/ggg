@@ -43,7 +43,7 @@
           #catalogueMenu
             %a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
             %ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-              - Category.all.sort_by(:position).to_a.each do |category|
+              - Category.all.sort_by(:position).each do |category|
                 - if category.visibility == "1"
                   - if [params[:controller], params[:action]] == ["main", "index"]
                     %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
@@ -68,11 +68,12 @@
 
     %main.mdl-layout__content
       #page_top
-      - unless params[:action] == "constructor"
-        #slider.mdl-shadow--2dp
-          = image_tag("carousel/1.jpg")
-          = image_tag("carousel/2.jpg")
-          = image_tag("carousel/3.jpg")
+      - if Slider[1]
+        - unless params[:action] == "constructor"
+          #slider.mdl-shadow--2dp
+            - Slider[1].images.each do |image|
+              = image_tag(image.url, "data-id": image.id)
+
       = yield
       = render 'layouts/footer'
 

@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
   root 'main#index'
-  get '/constructor', to: 'main#constructor'
-  get '/admin', to: 'admin#index'
+
   resources :categories
-  post '/items_order', to: 'items#update_order'
   resources :items
   resources :imagesets
+  resources :phone_number
+
+  get '/constructor', to: 'main#constructor'
+  get '/admin', to: 'admin#index'
+
+  post '/items_order', to: 'items#update_order'
+
+  post '/images', to: 'images#create'
+  post '/images/:id(.:format)', to: 'images#update'
+  delete '/images/:id(.:format)', to: 'images#destroy'
+
   get '/infoblocks/:id', to: 'infoblocks#show'
   patch '/infoblocks/:id(.:format)', to: 'infoblocks#update'
-  resources :phone_number
 end

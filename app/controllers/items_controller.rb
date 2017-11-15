@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
       props[:thumbnail] = '/uploads/items/thumbs/' + new_fileName
     end
     @item = Item.create(props)
-    @item.update(category: Category[params[:categoryId]])
+    @item.update(category_id: params[:categoryId])
     if params[:imagesets]
       uid = 0
       params[:imagesets].each do |imageset_id|

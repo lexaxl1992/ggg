@@ -29,3 +29,7 @@ document.addEventListener('turbolinks:load', function () {
         }
     });
 });
+
+function change_id() {
+    event.target.href = '/images/' + document.getElementsByClassName('slick-current')[0].getElementsByTagName('img')[0].dataset.id
+}

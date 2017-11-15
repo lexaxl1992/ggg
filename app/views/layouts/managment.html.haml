@@ -15,6 +15,9 @@
   = stylesheet_link_tag "adminpanel", "media":"all", "data-turbolinks-track":"reload"
   = javascript_include_tag "adminpanel", "data-turbolinks-track":"reload"
 
+- mdl_button = "mdl-button mdl-js-button"
+- edit_slider = "mdl-button--raised open__window crutch"
+
 %body#event_handler
   .mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
     %header.mdl-layout__header
@@ -36,15 +39,14 @@
               = submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
         .mdl-layout-spacer
 
-        - classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
         %nav.mdl-layout--large-screen-only.mdl-navigation
           #catalogueMenu
             %a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
             %ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
-              - Category.all.sort_by(:position).to_a.each do |category|
+              - Category.all.sort_by(:position).each do |category|
                 %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
-          %a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
-          = link_to "Выход", "/", class:"#{classes}"
+          %a.scrollLink#to_about{"class":"#{mdl_button}"}= "О компании"
+          = link_to "Выход", "/", class:"#{mdl_button}"
 
         %button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
           %i.material-icons more_vert
@@ -53,10 +55,21 @@
 
     %main.mdl-layout__content
       #page_top
-      #slider.mdl-shadow--2dp
-        = image_tag("carousel/1.jpg")
-        = image_tag("carousel/2.jpg")
-        = image_tag("carousel/3.jpg")
+      - if Slider[1]
+        - unless params[:action] == "constructor"
+          #slider.mdl-shadow--2dp
+            - Slider[1].images.each do |image|
+              = image_tag(image.url, "data-id": image.id)
+
+      %h5{"style":"text-align:center"}= "Управление слайдами баннера"
+      .edit__slider
+        %a{"class":"#{mdl_button} #{edit_slider}","data-controller":"images","data-action":"new"}= "Добавить новый"
+        - if Slider[1].images.size > 0
+          %a{"class":"#{mdl_button} #{edit_slider}","data-controller":"images","data-action":"edit"}= "Заменить текущий"
+          = link_to("Удалить текущий","","remote":true,"method":"delete","class":"#{mdl_button} mdl-button--raised",
+            "data-confirm":"Вы уверены, что хотите удалить текущий слайд?","onclick":"change_id()")
+      %hr
+
       = yield
       = render 'layouts/admin_footer'
 
@@ -66,4 +79,4 @@
 
   #snackbar_container.mdl-js-snackbar.mdl-snackbar.mt-toast
     .mdl-snackbar__text
-    %button.mdl-snackbar__action{ "style": "display:none" }
+    %button.mdl-snackbar__action{"style": "display:none"}

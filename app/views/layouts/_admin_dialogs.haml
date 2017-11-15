@@ -1,15 +1,37 @@
 - circle_button = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
 
-%dialog.mdl-dialog.admin{ "id": "edit_info_window" }
+%dialog.mdl-dialog.admin{"id":"main_slider__editor"}
   .dialog_wrapper
     .mt-dialog_title.mdl-shadow--2dp
       = image_tag("/assets/logo-min--orange.svg")
       %h4
-      %a{ "class": "#{circle_button} close__window" } close
+      %a{"class":"#{circle_button} close__window"} close
+
+    .mdl-dialog__content.mt-dialog_content
+      = form_with("url":"", "method":"post") do |form|
+        = hidden_field_tag("slider_id", "1")
+        .input_wrapper
+          .file_input_div
+            .file_input
+              %label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+                %i.material-icons= "attach_file"
+                = form.file_field(:file)
+            .file_input_text_div.mdl-textfield.mdl-js-textfield
+              %input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+              %label.mdl-textfield__label{"for":"file_input_text"}
+        = submit_tag("file_upload загрузить", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
+
+
+%dialog.mdl-dialog.admin{"id":"infoblock__editor"}
+  .dialog_wrapper
+    .mt-dialog_title.mdl-shadow--2dp
+      = image_tag("/assets/logo-min--orange.svg")
+      %h4
+      %a{"class":"#{circle_button} close__window"} close
 
     .mdl-dialog__content.mt-dialog_content
       .infoblock-wrapper
         = form_with("url":"", "method":"patch") do |f|
           = submit_tag("Сохранить", "class":"mdl-button")
-          = f.text_area :html, "class":"tinymce", "rows": 100, "cols": 100
+          = f.text_area :html, "class":"tinymce", "rows":100, "cols":100
           = tinymce
