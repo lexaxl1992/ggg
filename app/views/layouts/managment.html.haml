@@ -57,6 +57,8 @@
         %button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
           %i.material-icons more_vert
         %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
+          - Category.all.sort_by(:position).each do |category|
+            %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
           = link_to("Выход", "/", "class":"#{mdl_button} mdl-menu__item")
 
 
