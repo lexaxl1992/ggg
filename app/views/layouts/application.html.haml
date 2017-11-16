@@ -18,8 +18,11 @@
   = javascript_include_tag "owl-fork","data-turbolinks-track":"reload"
   = javascript_include_tag "smooth-scroll.min","data-turbolinks-track":"reload"
 
+
 %body#event_handler
   .mainLayout.mdl-layout.mdl-js-layout{"class":"mdl-layout--fixed-header"}
+
+
     %header.mdl-layout__header{"class":"#{'mdl-layout__header--scroll' if params[:action] == 'constructor'}"}
       .mdl-layout__header-row
         - if [params[:controller], params[:action]] == ["main", "index"]
@@ -28,6 +31,8 @@
         - else
           %a.logo{href:"/"}
             = image_tag("logo.png")
+
+
         %span.mdl-layout-title
           %h4
             %a{href:"tel:+7#{PhoneNumber[1].string[1..-1]}"}
@@ -38,10 +43,12 @@
             Краснодар
         .mdl-layout-spacer
 
+
         - classes = "mdl-button mdl-js-button mdl-js-ripple-effect"
         %nav.mdl-layout--large-screen-only.mdl-navigation
           #catalogueMenu
             %a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
+
             %ul#catalogueList.mdl-menu.mdl-menu--lower-right.mdl-js-menu{for:"catalogueButton"}
               - Category.all.sort_by(:position).each do |category|
                 - if category.visibility == "1"
@@ -49,22 +56,30 @@
                     %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
                   - else
                     %a.mdl-menu__item{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
+
           - if [params[:controller], params[:action]] == ["main", "index"]
             %a.scrollLink#to_about{"class":"#{classes}"}= "О компании"
-            = link_to("3D конструктор", "/constructor", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
           - else
             = link_to("О компании", "/#about", "class":"#{classes}", "data-turbolinks":"false")
-            = link_to("3D конструктор", "/constructor", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
+          = link_to("3D конструктор", "/constructor", "class":"#{classes}", "data-turbolinks":"false", "style":"color:greenyellow")
+
 
         %button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
           %i.material-icons= "more_vert"
+
         %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
           - if [params[:controller], params[:action]] == ["main", "index"]
-            %a.scrollLink.mdl-menu__item#to_catalogue= "Каталог"
             %a.scrollLink.mdl-menu__item#to_about= "О компании"
+            - Category.all.sort_by(:position).each do |category|
+              - if category.visibility == "1"
+                %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
           - else
-            = link_to("Каталог", "/#catalogue", "class":"mdl-menu__item", "data-turbolinks":"false")
-            = link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")
+            = link_to("О компании", "/#about", "class":"mdl-menu__item", "data-turbolinks":"false")          
+            - Category.all.sort_by(:position).each do |category|
+              - if category.visibility == "1"
+                - if [params[:controller], params[:action]] == ["main", "index"]
+                  %a.mdl-menu__item{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
+
 
     %main.mdl-layout__content
       #page_top
@@ -76,6 +91,7 @@
 
       = yield
       = render 'layouts/footer'
+
 
   = render 'layouts/gallery'
   = render 'layouts/dialogs'

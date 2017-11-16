@@ -1,6 +1,7 @@
 %footer.mdl-mega-footer
   .mdl-mega-footer__middle-section
 
+
     .mdl-mega-footer__drop-down-section
       %h1.mdl-mega-footer__heading ДЮК Мебель
       %ul.mdl-mega-footer__link-list
@@ -12,6 +13,7 @@
           %a.open__window{"data-id":"4","data-controller":"infoblocks","data-action":"show"} Связаться с нами
         %li
           %a.open__window{"data-id":"5","data-controller":"infoblocks","data-action":"show"} Товары со скидкой
+
 
     .mdl-mega-footer__drop-down-section
       %h1.mdl-mega-footer__heading Ассортимент
@@ -25,7 +27,7 @@
                 %a{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
 
 
-    .mdl-mega-footer__drop-down-section
+    .mdl-mega-footer__drop-down-section.mdl-layout--large-screen-only
       %a{"href":"/constructor", "style":"text-decoration:none"}
         %h1.mdl-mega-footer__heading{"style":"color:greenyellow"} 3D Конструктор
 

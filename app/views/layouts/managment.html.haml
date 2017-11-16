@@ -20,10 +20,14 @@
 
 %body#event_handler
   .mainLayout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+
+
     %header.mdl-layout__header
       .mdl-layout__header-row
         %a.scrollLink#to_page_top.logo
           = image_tag("logo-admin.png")
+
+
         %span.mdl-layout-title
           - unless PhoneNumber[1].nil?
             = form_with("url":"/phone_number/1", "method":"patch") do |form|
@@ -39,6 +43,7 @@
               = submit_tag("save", "class":"material-icons mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored")
         .mdl-layout-spacer
 
+
         %nav.mdl-layout--large-screen-only.mdl-navigation
           #catalogueMenu
             %a#catalogueButton.mdl-button.mdl-js-button.mdl-button--hover= "Ассортимент"
@@ -46,12 +51,14 @@
               - Category.all.sort_by(:position).each do |category|
                 %a.scrollLink.mdl-menu__item{"id":"to_#{category.index}"}= category.label
           %a.scrollLink#to_about{"class":"#{mdl_button}"}= "О компании"
-          = link_to "Выход", "/", class:"#{mdl_button}"
+          = link_to("Выход", "/", "class":"#{mdl_button}")
+
 
         %button.mdl-layout--small-screen-only#menu-lower-right.mdl-button.mdl-js-button.mdl-button--icon
           %i.material-icons more_vert
         %ul.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{for:"menu-lower-right"}
-          = link_to "Выход", "/", class:"mdl-button mdl-js-button mdl-js-ripple-effect"
+          = link_to("Выход", "/", "class":"#{mdl_button} mdl-menu__item")
+
 
     %main.mdl-layout__content
       #page_top
