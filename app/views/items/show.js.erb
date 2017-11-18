@@ -12,6 +12,7 @@ if (document.documentElement.clientWidth > 800) {
         $('.imagesets-slider-for').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
+            touchThreshold: 3,
             adaptiveHeight: true,
             arrows: true,
             asNavFor: '.imagesets-slider-nav',
@@ -21,6 +22,7 @@ if (document.documentElement.clientWidth > 800) {
     $('.imagesets-slider-nav').slick({
         slidesToShow: 5,
         slidesToScroll: 1,
+        touchThreshold: 3,
         arrows: false,
         asNavFor: '.imagesets-slider-for',
         infinite: true,

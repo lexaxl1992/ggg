@@ -6,7 +6,7 @@ function def_sliders() {
         dots: true,
         autoHeight: true,
         responsiveClass: true,
-        touchThreshold: 2,
+        touchThreshold: 3,
         responsive:{
             0: {
                 items: 1
