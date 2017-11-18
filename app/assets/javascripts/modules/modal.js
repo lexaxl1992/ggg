@@ -29,7 +29,7 @@ function def_modal() {
 
                 if (data.ok === true) {
                     fill_window(data, dataset.controller, dataset.id, dataset.action);
-                } else { show_error(404); }
+                } else { show_alert(404); }
             }
         } else if (classlist.contains('remove__slide')) {
             // nothing
@@ -75,7 +75,7 @@ function def_modal() {
             break;
 
         default:
-            show_error(404);
+            show_alert(404);
             break;
         }
     }

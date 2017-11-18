@@ -1,20 +1,23 @@
-function show_error(code) {
+function show_alert(code, custom_msg) {
     'use strict';
 
     var
         snackbar_container = document.getElementById('snackbar_container'),
-        error_text;
+        msg;
 
     switch (code) {
     case 404:
-        error_text = {message: 'Ошибка: страница не найдена.'};
+        msg = 'Ошибка: страница не найдена.';
+        break;
+    case 0:
+        msg = custom_msg;
         break;
     default:
-        error_text = {message: 'Произошла непредвиденная ошибка.'};
+        msg = 'Произошла непредвиденная ошибка.';
         break;
     }
 
-    snackbar_container.MaterialSnackbar.showSnackbar(error_text);
+    snackbar_container.MaterialSnackbar.showSnackbar({message: msg});
 }
 
-document.addEventListener('ajax:error', show_error);
+document.addEventListener('ajax:error', show_alert);

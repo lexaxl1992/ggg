@@ -19,7 +19,7 @@ class ImagesetsController < ApplicationController
   end
 
   def create
-    if params[:objects] || !params[:objects].values.join.empty?
+    if params[:objects][:photo] && params[:objects][:picture]
       @imageset_props = {}
       @imageset_props[:item_id] = params[:item_id] if params[:item_id]
       params[:objects].each_pair do |type, object|

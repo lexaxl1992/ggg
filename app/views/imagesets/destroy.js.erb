@@ -1,4 +1,5 @@
-document.getElementById('<%= j "imgset_"+@imagesetId %>').remove();
+var imgset = document.getElementById('<%= j "imgset_"+@imagesetId %>')
+imgset.parentNode.removeChild(imgset);
 if (document.getElementById('<%= j "for_imgset_"+@imagesetId %>') != null) {
     document.getElementById('<%= j "for_imgset_"+@imagesetId %>').remove();
 }
