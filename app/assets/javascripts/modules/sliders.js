@@ -1,5 +1,8 @@
 function def_sliders() {
-    $("#slider").slick({dots: true});
+    $("#slider").slick({
+        dots: true,
+        adaptiveHeight: true
+    });
     $('.owl-carousel').owlCarousel({
         margin: 0,
         nav: true,
