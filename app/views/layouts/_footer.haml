@@ -22,7 +22,7 @@
           - if category.visibility == "1"
             %li
               - if [params[:controller], params[:action]] == ["main", "index"]
-                %a.scrollLink{"id":"to_#{category.index}", "style":"cursor:pointer;"}= category.label
+                %a.scrollLink{"id":"to_#{category.index}"}= category.label
               - else
                 %a{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
 

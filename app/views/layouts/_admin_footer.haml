@@ -21,7 +21,7 @@
         - Category.all.to_a.each do |category|
           - if category.visibility == "1"
             %li
-              %a.scrollLink{"id":"to_#{category.index}", "style":"cursor:pointer;"}= category.label
+              %a.scrollLink{"id":"to_#{category.index}"}= category.label
 
 
     .mdl-mega-footer__drop-down-section.mdl-layout--large-screen-only
