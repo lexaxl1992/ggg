@@ -18,7 +18,7 @@
             - if category.items.size > 0
               .owl-carousel.owl-theme.show_items
                 - for @item in category.items.sort_by(:position)
-                  .item_wrapper{"style":"padding:2px"}
+                  .item_wrapper
                     = render 'items/item'
 
             - unless category.items.size > 0
