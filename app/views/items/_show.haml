@@ -32,15 +32,17 @@
     %section.main
       .mdl-tabs.mdl-js-tabs
         .mdl-tabs__tab-bar
-          %a.mdl-tabs__tab.is-active{"href":"#item_info"}= "Описание"
-          %a.mdl-tabs__tab{"href":"#item_empty"}= "Характеристики"
-        #item_info.mdl-tabs__panel.is-active
+          %a.mdl-tabs__tab.is-active{"href":"#item_characteristics"}= "Характеристики"
+          %a.mdl-tabs__tab{"href":"#item_description"}= "Описание"
+
+        #item_characteristics.mdl-tabs__panel.is-active
+          %p= "Тип: модульный" if to_bool(@item.modularity)
+          - if @item.price.size > 0
+            %p= "Цена: "+@item.price+" рублей"
+
+        #item_description.mdl-tabs__panel
           - if @item.description.size > 0
             %p= "Описание:"
             %p= @item.description
           - else
             %p= "Нет описания."
-        #item_empty.mdl-tabs__panel
-          %p= "Тип: модульный" if to_bool(@item.modularity)
-          - if @item.price.size > 0
-            %p= "Цена: "+@item.price+" рублей"
