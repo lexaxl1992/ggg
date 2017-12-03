@@ -27,13 +27,14 @@
                 %a{"href":"/##{category.index}", "data-turbolinks":"false"}= category.label
 
 
-    .mdl-mega-footer__drop-down-section.mdl-layout--large-screen-only
-      %a{"href":"/constructor", "style":"text-decoration:none"}
-        %h1.mdl-mega-footer__heading{"style":"color:greenyellow"} 3D Конструктор
-
-    .mdl-mega-footer__bottom-section
+    .mdl-mega-footer__drop-down-section
+      %h1.mdl-mega-footer__heading
       %ul.mdl-mega-footer__link-list
         %li
           %a.scrollLink#to_page_top Наверх
         %li
           %a{"href":"/"} Главная страница
+        %li
+          %a{"href":"/constructor", "style":"color:greenyellow"} 3D Конструктор 
+        %li{"stye":"margin-top:32px"}
+          = mail_to('webdev@dont-thread-on.me', 'Заказать такой же сайт', subject:'Заказ сайта', target:'_blank')
