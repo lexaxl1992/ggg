@@ -19,7 +19,7 @@
                 %img{"data-lazy": imageset.pictureUrl, "class":"picture open--gallery", "data-item-id": @item.id, "data-image-id": imageset.pictureUid, "title":"Кликните для полноэкранного просмотра", "alt":"Загрузка..."}
 
 
-        - if @item.imagesets.size > 1
+        - if @item.imagesets.size > 100
           .imagesets-slider-nav
             - for imageset in @item.imagesets
               .imageset
