@@ -1,7 +1,8 @@
 function def_sliders() {
     $("#slider").slick({
         dots: true,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        lazyLoad: 'progressive'
     });
     $('.owl-carousel').owlCarousel({
         margin: 0,

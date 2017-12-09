@@ -16,9 +16,10 @@ if (document.documentElement.clientWidth > 800) {
             adaptiveHeight: true,
             arrows: true,
             asNavFor: '.imagesets-slider-nav',
-            infinite: true
+            infinite: true,
+            lazyLoad: 'progressive'
         });
-    }, 1000);
+    }, 100);
     $('.imagesets-slider-nav').slick({
         slidesToShow: 5,
         slidesToScroll: 1,
@@ -26,7 +27,8 @@ if (document.documentElement.clientWidth > 800) {
         arrows: false,
         asNavFor: '.imagesets-slider-for',
         infinite: true,
-        focusOnSelect: true
+        focusOnSelect: true,
+        lazyLoad: 'progressive'
     });
 
 } else {
