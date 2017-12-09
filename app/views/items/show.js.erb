@@ -8,18 +8,16 @@ if (document.documentElement.clientWidth > 800) {
     dialog.innerHTML = "<%= j render 'show'%>";
     componentHandler.upgradeDom();
     dialog.showModal();
-    setTimeout(function () {
-        $('.imagesets-slider-for').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            touchThreshold: 3,
-            adaptiveHeight: true,
-            arrows: true,
-            asNavFor: '.imagesets-slider-nav',
-            infinite: true,
-            lazyLoad: 'ondemand'
-        });
-    }, 1);
+    $('.imagesets-slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        touchThreshold: 3,
+        adaptiveHeight: true,
+        arrows: true,
+        asNavFor: '.imagesets-slider-nav',
+        infinite: true,
+        lazyLoad: 'progressive'
+    });
     $('.imagesets-slider-nav').slick({
         slidesToShow: 5,
         slidesToScroll: 1,
@@ -27,8 +25,8 @@ if (document.documentElement.clientWidth > 800) {
         arrows: false,
         asNavFor: '.imagesets-slider-for',
         infinite: true,
-        focusOnSelect: true,
-        lazyLoad: 'progressive'
+        focusOnSelect: true/*,
+        lazyLoad: 'progressive'*/
     });
 
 } else {
