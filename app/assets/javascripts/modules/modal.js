@@ -14,8 +14,13 @@ function def_modal() {
     }
 
     document.addEventListener('click', function (event) {
+        var target = event.target;
+
+        if (target.parentNode.classList.contains('open__window')) {
+            target = target.parentNode;
+        }
+
         var
-            target = event.target,
             classlist = target.classList,
             dataset = target.dataset;
 

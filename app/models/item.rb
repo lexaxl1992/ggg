@@ -5,7 +5,10 @@ class Item < Ohm::Model
   attribute :modularity
   attribute :description
   attribute :position
+
   collection :imagesets, :Imageset
+  collection :specs, Spec
+  collection :specvalues, :Specvalue
 
   reference :category, :Category
 end
