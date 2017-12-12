@@ -84,7 +84,7 @@
         - unless params[:action] == "constructor"
           #slider.mdl-shadow--2dp
             - Slider[1].images.each do |image|
-              %img{"data-lazy":image.url, "data-id": image.id}
+              %img{"src": image.url, "data-id": image.id}
 
       = yield
       = render 'layouts/footer'
