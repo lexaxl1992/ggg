@@ -14,19 +14,9 @@ if (document.documentElement.clientWidth > 800) {
         touchThreshold: 3,
         adaptiveHeight: true,
         arrows: true,
-        //asNavFor: '.imagesets-slider-nav',
         infinite: true,
         lazyLoad: 'progressive'
-    });/*
-    $('.imagesets-slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        touchThreshold: 3,
-        arrows: false,
-        asNavFor: '.imagesets-slider-for',
-        infinite: true,
-        focusOnSelect: true
-    });*/
+    });
 
 } else {
     dialog.innerHTML = "<%= j render 'm-show'%>";
