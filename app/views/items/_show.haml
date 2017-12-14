@@ -26,9 +26,7 @@
           %a.mdl-tabs__tab{"href":"#item_description"}= "Описание"
 
         #item_characteristics.mdl-tabs__panel.is-active
-          %p= "Тип: модульный" if to_bool(@item.modularity)
-          - if @item.price.size > 0
-            %p= "Цена: "+@item.price+" рублей"
+          = render 'specs/show'
 
         #item_description.mdl-tabs__panel
           - if @item.description.size > 0

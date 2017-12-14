@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   post '/images/:id(.:format)', to: 'images#update'
   delete '/images/:id(.:format)', to: 'images#destroy'
 
+  post '/specs', to: 'specs#create'
+  patch '/specs/:id(.:format)', to: 'specs#update'
+  delete '/specs/:id(.:format)', to: 'specs#destroy'
+
   get '/infoblocks/:id', to: 'infoblocks#show'
   patch '/infoblocks/:id(.:format)', to: 'infoblocks#update'
 end

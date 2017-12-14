@@ -1,0 +1,18 @@
+%table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+  %tbody
+    - if @item.price.size > 0
+      %tr
+        %th.mdl-data-table__cell--non-numeric Цена
+        %td= "#{@item.price} рублей"
+    - if to_bool(@item.modularity)
+      %tr
+        %th.mdl-data-table__cell--non-numeric Тип
+        %td Модульный
+    %tr
+      %th.mdl-data-table__cell--non-numeric Что-то ещё
+      %td Пример
+
+    - @item.specs.each do |spec|
+      %tr
+        %th.mdl-data-table__cell--non-numeric= spec.name
+        %td= spec.text
