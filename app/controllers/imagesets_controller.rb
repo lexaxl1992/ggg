@@ -19,34 +19,32 @@ class ImagesetsController < ApplicationController
   end
 
   def create
-    if params[:objects][:photo] && params[:objects][:picture]
+    unless params[:files].nil?
       @imageset_props = {}
       @imageset_props[:item_id] = params[:item_id] if params[:item_id]
-      params[:objects].each_pair do |type, object|
-        unless object.is_a? String
-          case object.content_type
-          when 'image/jpeg'
-            file_extension = '.jpg'
-          when 'image/png'
-            file_extension = '.png'
-          when 'image/gif'
-            file_extension = '.gif'
-          else
-            file_extension = '.undefined'
-          end
-          new_filename = Digest::CRC32.hexdigest(Random.rand(1..10_000).to_s) + file_extension
-          File.open(Rails.root.join('public', 'uploads', 'items', type + 's', new_filename), 'wb') do |new_file|
-            new_file.write(object.read)
-          end
-          imageSize = FastImage.size(File.open(Rails.root.to_s + '/public/uploads/items/' + type + 's/' + new_filename))
-          @imageset_props.merge!(
-            "#{type}Url": '/uploads/items/' + type + 's/' + new_filename,
-            "#{type}FilePath": '/public/uploads/items/' + type + 's/' + new_filename,
-            "#{type}Width": imageSize[0],
-            "#{type}Height": imageSize[1],
-            "#{type}Caption": params[:objects]["#{type}_caption".to_sym]
-          )
+      params[:files].each_pair do |type, object|
+        case object.content_type
+        when 'image/jpeg'
+          file_extension = '.jpg'
+        when 'image/png'
+          file_extension = '.png'
+        when 'image/gif'
+          file_extension = '.gif'
+        else
+          file_extension = '.undefined'
         end
+        new_filename = Digest::CRC32.hexdigest(Random.rand(1..10_000).to_s) + file_extension
+        File.open(Rails.root.join('public', 'uploads', 'items', type + 's', new_filename), 'wb') do |new_file|
+          new_file.write(object.read)
+        end
+        image_size = FastImage.size(File.open(Rails.root.to_s + '/public/uploads/items/' + type + 's/' + new_filename))
+        @imageset_props.merge!(
+          "#{type}Url": '/uploads/items/' + type + 's/' + new_filename,
+          "#{type}FilePath": '/public/uploads/items/' + type + 's/' + new_filename,
+          "#{type}Width": image_size[0],
+          "#{type}Height": image_size[1],
+          "#{type}Caption": params[:captions][type.to_sym]
+        )
       end
       @imageset = Imageset.create(@imageset_props) unless @imageset_props.nil?
       @window_id = params[:window_id]

@@ -9,7 +9,7 @@
 					%div{"id":"imgset_#{@imageset.id}"}
 						= render 'imagesets/show'
 
-		= form_with("scope":"objects", "url": imagesets_path) do |form|
+		= form_with("scope":"files", "url": imagesets_path, "id":"new__imageset") do |form|
 			.input_wrapper
 				%label= "Новое фото"
 				.file_input_div
@@ -21,7 +21,7 @@
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					= form.text_field(:photo_caption, "class":"mdl-textfield__input")
+					= text_field_tag("captions[photo]", nil, "class":"mdl-textfield__input")
 					%label.mdl-textfield__label{"for":"photo_caption"}= "Подпись"
 
 				%label= "Новая картинка"
@@ -34,7 +34,7 @@
 						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
 						%label.mdl-textfield__label{"for":"file_input_text"}
 				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					= form.text_field(:picture_caption, "class":"mdl-textfield__input")
+					= text_field_tag("captions[picture]", nil, "class":"mdl-textfield__input")
 					%label.mdl-textfield__label{"for":"picture_caption"}= "Подпись"
 
 				= hidden_field_tag("item_id", "#{@item_id}")

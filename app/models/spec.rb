@@ -1,5 +1,6 @@
 class Spec < Ohm::Model
   attribute :name
+  attribute :value
 
-  collection :items, :Item
+  reference :item, :Item
 end

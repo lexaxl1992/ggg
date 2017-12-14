@@ -7,8 +7,7 @@ class Item < Ohm::Model
   attribute :position
 
   collection :imagesets, :Imageset
-  collection :specs, Spec
-  collection :specvalues, :Specvalue
+  collection :specs, :Spec
 
   reference :category, :Category
 end
