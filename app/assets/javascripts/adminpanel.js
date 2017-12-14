@@ -28,8 +28,8 @@ document.addEventListener('turbolinks:load', function () {
             Rails.fire(document.getElementById('order_form'), 'submit');
         }
     });
-    //tinymce.remove();
-    //tinymce.init();
+    tinymce.remove();
+    tinymce.init();
 });
 
 function change_id() {
