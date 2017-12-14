@@ -16,22 +16,18 @@
     width: auto
     float: right
 
+
 .adminDialog
-  max-width: 800px !important
   .dialog_wrapper
     @media screen and (max-width: 800px)
-      .my-dialog__title, .dialog-component, .mdl-dialog__content
+      .dialog-component, .mdl-dialog__content
         margin: 12px 0 !important
-    @media screen and (min-width: 800px)
-      .my-dialog__title, .dialog-component
-        margin: 24px 0 !important
-    .my-dialog__title
-      background-color: #ffffff
-      justify-content: center !important
     .mdl-dialog__actions
       padding: 0 0 24px
       @media screen and (max-width: 800px)
         padding: 0 0 12px
+    .mdl-tabs__tab-bar
+      justify-content: space-evenly
     .add_files
       display: flex
       flex-direction: column
@@ -44,9 +40,6 @@
         flex-direction: column
         align-items: center
         margin-top: 24px
-        input.mdl-button--raised
-          width: auto
-          height: 48px
       .entity-list
         width: 100%
         height: auto
@@ -95,6 +88,11 @@
       margin-left: 0
       margin-right: 0
 
+.input_wrapper
+  display: flex
+  width: 100%
+  justify-content: space-around
+  flex-wrap: wrap
 .file_input_div
   display: flex
   align-items: center
@@ -120,20 +118,23 @@
     align-items: center
     justify-content: center
 
-.item .buttons-wrapper
-  position: absolute
-  top: 10%
-  width: 210px
-  @media screen and (max-width: 720px)
-    width: 131px
-    top: 0
-  .mdl-button
-    background-color: rgba(0, 0, 0, 0.40)
+.item
+  &:hover
+    transform: none !important
+  .buttons-wrapper
+    position: absolute
+    top: 10%
+    width: 210px
     @media screen and (max-width: 720px)
-      margin: 10px
-      height: 32px
-      min-width: 32px
-      width: 32px
+      width: 131px
+      top: 0
+    .mdl-button
+      background-color: rgba(0, 0, 0, 0.40)
+      @media screen and (max-width: 720px)
+        margin: 10px
+        height: 32px
+        min-width: 32px
+        width: 32px
 
 .long_buttons .mdl-button
   margin: 32px 0
@@ -174,3 +175,12 @@ dialog.admin .dialog_wrapper
 
 iframe
   color: #212121
+
+#new__imageset
+  width: 100%
+
+#edit_specs
+  .mdl-dialog__content
+    display: flex
+    flex-direction: column
+    align-items: center

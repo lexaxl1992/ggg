@@ -1,77 +1,115 @@
+- circle_button = "mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab material-icons"
+
 .dialog_wrapper
-	%h3.my-dialog__title= "Редактирование товара"
+  .mt-dialog_title.mdl-shadow--2dp
+    = image_tag("/assets/logo-min--orange.svg")
+    %h4= "Редактирование товара"
+    %a{"class":"#{circle_button}", "onclick":"this.parentNode.parentNode.parentNode.remove()"}= "close"
 
-	.add_files.dialog-component
-		%h4= "Прикрепленные пары изображений"
-		.entity-list
-			- if @item.imagesets.size > 0
-				- for @imageset in @item.imagesets
-					%div{"id":"imgset_#{@imageset.id}"}
-						= render 'imagesets/show'
 
-		= form_with("scope":"files", "url": imagesets_path, "id":"new__imageset") do |form|
-			.input_wrapper
-				%label= "Новое фото"
-				.file_input_div
-					.file_input
-						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
-							%i.material-icons= "attach_file"
-							= form.file_field(:photo)
-					.file_input_text_div.mdl-textfield.mdl-js-textfield
-						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
-						%label.mdl-textfield__label{"for":"file_input_text"}
-				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					= text_field_tag("captions[photo]", nil, "class":"mdl-textfield__input")
-					%label.mdl-textfield__label{"for":"photo_caption"}= "Подпись"
+  .add_files.dialog-component.mt-dialog_content
+    %h4= "Прикрепленные пары изображений"
+    .entity-list
+      - if @item.imagesets.size > 0
+        - for @imageset in @item.imagesets
+          %div{"id":"imgset_#{@imageset.id}"}
+            = render 'imagesets/show'
 
-				%label= "Новая картинка"
-				.file_input_div
-					.file_input
-						%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
-							%i.material-icons= "attach_file"
-							= form.file_field(:picture)
-					.file_input_text_div.mdl-textfield.mdl-js-textfield
-						%input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
-						%label.mdl-textfield__label{"for":"file_input_text"}
-				.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-					= text_field_tag("captions[picture]", nil, "class":"mdl-textfield__input")
-					%label.mdl-textfield__label{"for":"picture_caption"}= "Подпись"
 
-				= hidden_field_tag("item_id", "#{@item_id}")
-				= hidden_field_tag("window_id", "#{@window_id}")
-			= submit_tag("file_upload загрузить", "class":"material-icons mdl-button mdl-js-button mdl-button--raised mdl-button--accent")
+    = form_with("scope":"files", "url": imagesets_path, "id":"new__imageset") do |form|
+      %h6= "Новая пара"
+      .input_wrapper
 
-	= form_with("scope":"item", "url":item_path, "method":"patch", "class":"item_form") do |form|
-		.mdl-dialog__content
-			= hidden_field_tag("itemId", @item.id)
+        .input_block
+          %label= "Фото"
+          .file_input_div
+            .file_input
+              %label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+                %i.material-icons= "attach_file"
+                = form.file_field(:photo)
+            .file_input_text_div.mdl-textfield.mdl-js-textfield
+              %input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+              %label.mdl-textfield__label{"for":"file_input_text"}
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            = text_field_tag("captions[photo]", nil, "class":"mdl-textfield__input")
+            %label.mdl-textfield__label{"for":"photo_caption"}= "Подпись"
 
-			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-				= form.text_field(:name, "class":"mdl-textfield__input", "value": @item.name)
-				%label.mdl-textfield__label{"for":"name"}= "Название"
+        .input_block
+          %label= "Картинка"
+          .file_input_div
+            .file_input
+              %label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+                %i.material-icons= "attach_file"
+                = form.file_field(:picture)
+            .file_input_text_div.mdl-textfield.mdl-js-textfield
+              %input.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+              %label.mdl-textfield__label{"for":"file_input_text"}
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            = text_field_tag("captions[picture]", nil, "class":"mdl-textfield__input")
+            %label.mdl-textfield__label{"for":"picture_caption"}= "Подпись"
 
-			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-				= form.text_field(:price, "class":"mdl-textfield__input", "value": @item.price)
-				%label.mdl-textfield__label{"for":"price"}= "Цена"
+        = hidden_field_tag("item_id", "#{@item_id}")
+        = hidden_field_tag("window_id", "#{@window_id}")
+      = submit_tag("Добавить", "class":"mdl-button mdl-button--raised mdl-button--accent")
 
-			%label= "Миниатюрное изображение (png, 188 x 178 px)"
-			.file_input_div
-				.file_input
-					%label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
-						%i.material-icons= "attach_file"
-						= form.file_field(:thumbnail, "id":"file_input_file")
-				.file_input_text_div.mdl-textfield.mdl-js-textfield
-					%input#file_input_text.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
-					%label.mdl-textfield__label{"for":"file_input_text"}
 
-			%label.mdl-checkbox.mdl-js-checkbox{"for":"modularity_#{@window_id}"}
-				= form.check_box(:modularity, "id":"modularity_#{@window_id}", "class":"mdl-checkbox__input", "checked": to_bool(@item.modularity))
-				%span.mdl-checkbox__label= "Модульность"
+  .mdl-tabs.mdl-js-tabs
+    .mdl-tabs__tab-bar
+      %a.mdl-tabs__tab.is-active{"href":"#edit_main"}= "Основное"
+      %a.mdl-tabs__tab{"href":"#edit_specs"}= "Характеристики"
 
-			.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-				= form.text_area(:description, "class":"mdl-textfield__input", "rows":6, "value": @item.description)
-				%label.mdl-textfield__label{"for":"description"}= "Описание"
 
-		.mdl-dialog__actions
-			= hidden_field_tag("window_id", "#{@window_id}")
-			= submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
-			%button.mdl-button{"onclick":"this.parentNode.parentNode.parentNode.parentNode.remove()", "type":"button"}= "Отменить"
+    #edit_main.mdl-tabs__panel.is-active
+      = form_with("scope":"item", "url":item_path, "method":"patch", "class":"item_form") do |form|
+        .mdl-dialog__content
+          = hidden_field_tag("itemId", @item.id)
+
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            = form.text_field(:name, "class":"mdl-textfield__input", "value": @item.name)
+            %label.mdl-textfield__label{"for":"name"}= "Название"
+
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            = form.text_field(:price, "class":"mdl-textfield__input", "value": @item.price)
+            %label.mdl-textfield__label{"for":"price"}= "Цена"
+
+          %label.mdl-checkbox.mdl-js-checkbox{"for":"modularity_#{@window_id}"}
+            = form.check_box(:modularity, "id":"modularity_#{@window_id}", "class":"mdl-checkbox__input", "checked": to_bool(@item.modularity))
+            %span.mdl-checkbox__label= "Модульность"
+
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            = form.text_area(:description, "class":"mdl-textfield__input", "rows":6, "value": @item.description)
+            %label.mdl-textfield__label{"for":"description"}= "Описание"
+
+          %label= "Миниатюрное изображение (png, 188 x 178 px)"
+          .file_input_div
+            .file_input
+              %label.image_input_button.mdl-button.mdl-js-button.mdl-button--fab.mdl-button--mini-fab.mdl-button--colored
+                %i.material-icons= "attach_file"
+                = form.file_field(:thumbnail, "id":"file_input_file")
+            .file_input_text_div.mdl-textfield.mdl-js-textfield
+              %input#file_input_text.file_input_text.mdl-textfield__input{"disabled":"disabled", "readonly":"readonly", "type":"text"}
+              %label.mdl-textfield__label{"for":"file_input_text"}
+
+        .mdl-dialog__actions
+          = hidden_field_tag("window_id", "#{@window_id}")
+          = submit_tag("Сохранить", "class":"mdl-button mdl-button--raised mdl-button--accent")
+
+
+    #edit_specs.mdl-tabs__panel
+      = form_with("scope":"spec", "url": specs_path, "id":"new__specification") do |form|
+        = hidden_field_tag("spec[item]", "#{@item.id}")
+        .mdl-dialog__content
+          %h4= "Редактирование характеристик товара"
+          = render 'specs/edit'
+
+          %h6= "Новая характеристика"
+
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            = form.text_field(:name, "class":"mdl-textfield__input")
+            %label.mdl-textfield__label{"for":"name"}= "Наименование"
+
+          .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+            = form.text_field(:value, "class":"mdl-textfield__input")
+            %label.mdl-textfield__label{"for":"value"}= "Значение"
+
+          = submit_tag("Добавить", "class":"mdl-button mdl-button--raised mdl-button--accent")

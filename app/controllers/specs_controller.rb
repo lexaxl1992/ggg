@@ -1,7 +1,7 @@
 class SpecsController < ApplicationController
   def create
     @spec = Spec.create(params[:spec])
-    # and certainly "item":"[item_id]" in params[:spec]
+    # params[:spec] - name, value, "item":"[item_id]"
     respond_to do |format|
       if @spec.save
         format.js
